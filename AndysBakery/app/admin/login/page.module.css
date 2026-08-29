@@ -1,0 +1,130 @@
+.loginPage {
+  min-height: 100vh;
+  background: #fff0e7;
+  color: #3c2a1e;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 2rem 1rem;
+}
+
+.loginCard {
+  width: 100%;
+  max-width: 460px;
+
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(217, 140, 157, 0.32);
+  border-radius: 24px;
+
+  padding: 2rem;
+
+  box-shadow: 0 16px 40px rgba(107, 63, 42, 0.1);
+}
+
+.eyebrow {
+  margin: 0 0 0.5rem;
+  color: #d98c9d;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.loginCard h1 {
+  margin: 0;
+  font-family: var(--font-lobster);
+  font-size: clamp(2.25rem, 6vw, 3.35rem);
+  line-height: 1.18;
+  line-height: 0.95;
+  color: #6b3f2a;
+  text-align: center;
+}
+
+.intro {
+  margin: 1rem auto 1.5rem;
+  text-align: center;
+  line-height: 1.5;
+  font-weight: 700;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.loginForm label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+
+  color: #6b3f2a;
+  font-weight: 850;
+}
+
+.loginForm input {
+  min-height: 52px;
+  width: 100%;
+  box-sizing: border-box;
+
+  border: 1px solid rgba(198, 153, 134, 0.5);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.95);
+
+  color: #3c2a1e;
+  font: inherit;
+  font-weight: 650;
+
+  padding: 0.9rem 1rem;
+  outline: none;
+}
+
+.loginForm input:focus {
+  border-color: #d98c9d;
+  box-shadow: 0 0 0 3px rgba(217, 140, 157, 0.18);
+}
+
+.errorMessage {
+  margin: 0;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+
+  background: rgba(255, 220, 220, 0.75);
+  color: #8a1f1f;
+  font-weight: 800;
+  text-align: center;
+}
+
+.loginForm button {
+  min-height: 56px;
+
+  border: none;
+  border-radius: 15px;
+
+  background: #f3d8de;
+  color: #6b3f2a;
+
+  font-size: 1.1rem;
+  font-weight: 950;
+  cursor: pointer;
+
+  box-shadow: 0 6px 16px rgba(217, 140, 157, 0.18);
+}
+
+.loginForm button:hover:not(:disabled) {
+  background: #eec8d2;
+}
+
+.loginForm button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.loginCard h1 {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}

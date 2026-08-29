@@ -1,0 +1,645 @@
+.galleryPage {
+  min-height: 100vh;
+  padding: 2rem;
+  background:
+    radial-gradient(circle at top left, rgba(255, 231, 205, 0.95), transparent 34rem),
+    linear-gradient(135deg, #fffaf5 0%, #fff3e5 45%, #fffdf8 100%);
+  color: #3b2418;
+}
+
+.hero,
+.filterSection,
+.galleryGrid,
+.ctaSection {
+  max-width: 1180px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero {
+  padding: clamp(2rem, 6vw, 4rem) 0 2rem;
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 0.5rem;
+  color: #9a5a2d;
+  font-weight: 950;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2.5rem, 8vw, 5.4rem);
+  line-height: 0.9;
+}
+
+.hero p {
+  max-width: 720px;
+  margin: 1rem auto 0;
+  color: #77513b;
+  font-size: 1.08rem;
+  line-height: 1.7;
+  font-weight: 700;
+}
+
+.buttonRow {
+  margin-top: 1.3rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.primaryButton,
+.secondaryButton {
+  text-decoration: none;
+  border-radius: 999px;
+  padding: 0.9rem 1.2rem;
+  font-weight: 950;
+}
+
+.primaryButton {
+  background: #5c2e19;
+  color: #fffaf5;
+}
+
+.secondaryButton {
+  background: #fff7ed;
+  color: #5c2e19;
+  border: 1px solid rgba(120, 67, 32, 0.18);
+}
+
+.filterSection {
+  margin-bottom: 1.2rem;
+  padding: 1rem;
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(120, 67, 32, 0.14);
+  box-shadow: 0 16px 40px rgba(73, 38, 14, 0.07);
+}
+
+.filterSection p {
+  margin: 0 0 0.7rem;
+  font-weight: 950;
+  color: #4a2b1a;
+}
+
+.filterButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.filterButton {
+  border: 1px solid rgba(120, 67, 32, 0.18);
+  border-radius: 999px;
+  padding: 0.7rem 0.95rem;
+  background: #fff9f1;
+  color: #5c3925;
+  font: inherit;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.activeFilterButton {
+  background: #5c2e19;
+  color: #fffaf5;
+  border-color: #5c2e19;
+}
+
+.galleryGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.photoCard {
+  overflow: hidden;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(120, 67, 32, 0.14);
+  box-shadow: 0 18px 45px rgba(73, 38, 14, 0.08);
+}
+
+.imageWrap {
+  aspect-ratio: 1 / 1;
+  background: #fff0df;
+  overflow: hidden;
+}
+
+.imageWrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.photoText {
+  padding: 1rem;
+}
+
+.photoText span {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: #9a5a2d;
+  font-size: 0.78rem;
+  font-weight: 950;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.photoText h2 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.ctaSection {
+  margin-top: 1.25rem;
+  padding: clamp(1.4rem, 4vw, 2.2rem);
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(120, 67, 32, 0.14);
+  box-shadow: 0 18px 45px rgba(73, 38, 14, 0.08);
+  text-align: center;
+}
+
+.ctaSection h2 {
+  margin: 0;
+  font-size: clamp(1.9rem, 5vw, 3.2rem);
+  line-height: 0.95;
+}
+
+.ctaSection p {
+  max-width: 680px;
+  margin: 0.9rem auto 0;
+  color: #77513b;
+  font-weight: 700;
+  line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+  .galleryGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .galleryPage {
+    padding: 1rem;
+  }
+
+  .galleryGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .filterButtons,
+  .buttonRow {
+    flex-direction: column;
+  }
+
+  .filterButton,
+  .primaryButton,
+  .secondaryButton {
+    width: 100%;
+  }
+}
+
+.photoCard {
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  padding: 0;
+}
+
+.photoCard:hover img {
+  transform: scale(1.04);
+}
+
+.imageWrap img {
+  transition: transform 0.25s ease;
+}
+
+.photoText p {
+  margin: 0.45rem 0 0;
+  color: #8a5a3a;
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  padding: 1rem;
+  background: rgba(35, 20, 12, 0.56);
+  backdrop-filter: blur(5px);
+  display: grid;
+  place-items: center;
+}
+
+.detailModal {
+  position: relative;
+  width: min(100%, 920px);
+  max-height: 92vh;
+  overflow: auto;
+  border-radius: 32px;
+  background: #fffaf5;
+  border: 1px solid rgba(120, 67, 32, 0.18);
+  box-shadow: 0 30px 90px rgba(30, 15, 8, 0.35);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.closeModalButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 2;
+  width: 2.4rem;
+  height: 2.4rem;
+  border: 0;
+  border-radius: 999px;
+  background: #5c2e19;
+  color: #fffaf5;
+  font-size: 1rem;
+  font-weight: 950;
+  cursor: pointer;
+}
+
+.modalImageWrap {
+  min-height: 420px;
+  background: #fff0df;
+}
+
+.modalImageWrap img {
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  object-fit: cover;
+  display: block;
+}
+
+.modalText {
+  padding: clamp(1.4rem, 4vw, 2rem);
+}
+
+.modalCategory {
+  margin: 0 0 0.45rem;
+  color: #9a5a2d;
+  font-weight: 950;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+}
+
+.modalText h2 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  line-height: 0.92;
+}
+
+.modalText > p {
+  margin: 1rem 0;
+  color: #77513b;
+  font-weight: 750;
+  line-height: 1.7;
+}
+
+.infoBox {
+  margin-top: 0.8rem;
+  padding: 1rem;
+  border-radius: 20px;
+  background: #fff4e7;
+  border: 1px solid rgba(120, 67, 32, 0.12);
+}
+
+.infoBox span {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: #9a5a2d;
+  font-size: 0.76rem;
+  font-weight: 950;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.infoBox p {
+  margin: 0;
+  color: #5c3925;
+  font-weight: 750;
+  line-height: 1.6;
+}
+
+.modalButtons {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+@media (max-width: 800px) {
+  .detailModal {
+    grid-template-columns: 1fr;
+  }
+
+  .modalImageWrap,
+  .modalImageWrap img {
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 560px) {
+  .modalButtons {
+    flex-direction: column;
+  }
+}
+
+.galleryGrid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  align-items: start;
+}
+
+.photoCard {
+  width: 100%;
+  min-width: 0;
+  display: block;
+  overflow: hidden;
+  border: 1px solid rgba(120, 67, 32, 0.14);
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 18px 45px rgba(73, 38, 14, 0.08);
+}
+
+.imageWrap {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: #fff0df;
+  overflow: hidden;
+}
+
+.photoText {
+  min-height: 145px;
+  padding: 1rem 1.1rem 1.2rem;
+}
+
+.photoText span {
+  display: block;
+  margin-bottom: 0.45rem;
+  color: #9a5a2d;
+  font-size: 0.78rem;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.photoText h2 {
+  margin: 0;
+  color: #5c2e19;
+  font-size: clamp(1.15rem, 2.2vw, 1.55rem);
+  line-height: 1.2;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.photoText p {
+  margin-top: 0.7rem;
+  color: #8a5a3a;
+  font-size: 0.92rem;
+  font-weight: 900;
+}
+
+@media (max-width: 700px) {
+  .galleryGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .photoText {
+    min-height: auto;
+  }
+}
+
+.galleryGrid {
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  align-items: stretch;
+  gap: 1.4rem;
+}
+
+.photoCard {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.imageWrap {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  flex-shrink: 0;
+}
+
+.imageWrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photoText {
+  flex: 1;
+  min-height: 165px;
+  padding: 1.25rem 1.35rem 1.35rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.photoText span {
+  margin-bottom: 0.65rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.09em;
+}
+
+.photoText h2 {
+  margin: 0;
+  font-size: clamp(1.65rem, 3vw, 2.15rem);
+  line-height: 1.1;
+  color: #5c2e19;
+}
+
+.photoText p {
+  margin: auto 0 0;
+  padding-top: 1rem;
+  font-size: 1rem;
+  font-weight: 950;
+}
+
+@media (max-width: 760px) {
+  .galleryGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .photoText {
+    min-height: 140px;
+  }
+
+  .photoText h2 {
+    font-size: 1.7rem;
+  }
+}
+
+.photoText {
+  flex: 0 0 auto;
+  min-height: 0;
+  padding: 1.1rem 1.3rem 1.25rem;
+  display: block;
+  text-align: left;
+}
+
+.photoText h2 {
+  margin: 0;
+  font-size: clamp(1.65rem, 2.8vw, 2.15rem);
+  line-height: 1.08;
+  text-align: left;
+  max-width: 100%;
+}
+
+.photoText p {
+  margin: 0.7rem 0 0;
+  padding-top: 0;
+  font-size: 1rem;
+}
+
+.photoCard {
+  height: auto;
+}
+
+.galleryGrid {
+  align-items: start;
+}
+
+.photoText h2 {
+  width: 100%;
+  max-width: none;
+  display: block;
+  text-align: left;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: normal;
+  hyphens: none;
+  text-wrap: pretty;
+  font-size: clamp(1.45rem, 2.2vw, 1.9rem);
+  line-height: 1.15;
+}
+
+.photoText {
+  width: 100%;
+}
+
+.photoCard {
+  min-width: 0;
+}
+
+@media (min-width: 900px) {
+  .galleryGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.galleryPage {
+  position: relative;
+}
+
+.galleryPage :global(.fabWrapper) {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.galleryPage :global(.fab) {
+  pointer-events: auto;
+}
+
+.hero {
+  padding-top: 5rem;
+}
+
+.galleryPage {
+  position: relative;
+  overflow-x: hidden;
+}
+
+.galleryPage :global(.fabWrapper) {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.galleryPage :global(.fab) {
+  pointer-events: auto;
+}
+
+.hero {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 7rem 1rem 3rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero .eyebrow,
+.eyebrow {
+  text-align: center;
+}
+
+.hero h1 {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: clamp(3rem, 7vw, 5.8rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: normal;
+  text-wrap: balance;
+}
+
+.hero p {
+  width: 100%;
+  max-width: 760px;
+  margin: 1.2rem auto 0;
+  text-align: center;
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  line-height: 1.7;
+}
+
+.hero .buttonRow {
+  margin-top: 1.4rem;
+}
+
+@media (max-width: 700px) {
+  .hero {
+    padding: 6rem 0.5rem 2.25rem;
+  }
+
+  .hero h1 {
+    max-width: 100%;
+    font-size: clamp(2.6rem, 13vw, 4.2rem);
+    line-height: 0.95;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+}

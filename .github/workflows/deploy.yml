@@ -1,0 +1,37 @@
+name: Deploy Next.js to EC2
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Prepare SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.EC2_KEY }}" > ~/.ssh/ec2_key
+          chmod 600 ~/.ssh/ec2_key
+          ssh-keyscan -H ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Deploy on EC2
+        run: |
+          ssh -i ~/.ssh/ec2_key ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} "
+            set -e
+
+            cd /var/www/luxxbeebeauty
+            git fetch origin
+            git checkout main
+            git reset --hard origin/main
+
+            cd luxbeauty
+            npm ci
+            npm run build
+
+            pm2 delete luxbeauty || true
+            pm2 start npm --name luxbeauty -- start
+            pm2 save
+          "

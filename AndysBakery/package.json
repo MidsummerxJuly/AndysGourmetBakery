@@ -1,0 +1,43 @@
+{
+  "name": "andysGourmetBakery",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start -p 3050",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@docuseal/api": "^1.0.22",
+    "@docuseal/react": "^1.0.73",
+    "@libsql/client": "^0.17.2",
+    "@nutrient-sdk/viewer": "^1.14.0",
+    "@stripe/react-stripe-js": "^6.2.0",
+    "@stripe/stripe-js": "^9.2.0",
+    "@supabase/ssr": "^0.9.0",
+    "@supabase/supabase-js": "^2.99.3",
+    "dotenv": "^17.3.1",
+    "drizzle-orm": "^0.45.1",
+    "next": "16.1.4",
+    "nodemailer": "^8.0.6",
+    "pdf-lib": "^1.17.1",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "react-icons": "^5.7.0",
+    "react-signature-canvas": "^1.1.0-alpha.2",
+    "stripe": "^22.0.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/nodemailer": "^8.0.0",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "drizzle-kit": "^0.31.10",
+    "eslint": "^9",
+    "eslint-config-next": "16.1.4",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}

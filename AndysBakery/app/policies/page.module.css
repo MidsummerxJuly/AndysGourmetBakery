@@ -1,0 +1,197 @@
+.policiesPage {
+  min-height: 100vh;
+  padding: 2rem;
+  background:
+    radial-gradient(circle at top left, rgba(255, 231, 205, 0.95), transparent 34rem),
+    linear-gradient(135deg, #fffaf5 0%, #fff3e5 45%, #fffdf8 100%);
+  color: #3b2418;
+}
+
+.hero,
+.policyList,
+.noticeSection {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero {
+  padding: clamp(2rem, 6vw, 4rem) 0 2rem;
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 0.5rem;
+  color: #9a5a2d;
+  font-weight: 950;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2.8rem, 9vw, 6rem);
+  line-height: 0.88;
+}
+
+.hero p {
+  max-width: 720px;
+  margin: 1rem auto 0;
+  color: #77513b;
+  font-size: 1.08rem;
+  line-height: 1.7;
+  font-weight: 700;
+}
+
+.policyList {
+  display: grid;
+  gap: 1rem;
+}
+
+.policyCard,
+.noticeSection {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(120, 67, 32, 0.14);
+  border-radius: 30px;
+  box-shadow: 0 18px 45px rgba(73, 38, 14, 0.08);
+}
+
+.policyCard {
+  padding: clamp(1.25rem, 4vw, 2rem);
+}
+
+.policyCard h2 {
+  margin: 0 0 0.9rem;
+  font-size: clamp(1.5rem, 4vw, 2.3rem);
+}
+
+.policyCard ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: #77513b;
+  font-weight: 750;
+  line-height: 1.8;
+}
+
+.policyCard li + li {
+  margin-top: 0.4rem;
+}
+
+.noticeSection {
+  margin-top: 1.25rem;
+  padding: clamp(1.4rem, 4vw, 2.2rem);
+  text-align: center;
+}
+
+.noticeSection h2 {
+  margin: 0;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  line-height: 0.95;
+}
+
+.noticeSection p {
+  max-width: 640px;
+  margin: 0.8rem auto 1.2rem;
+  color: #77513b;
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+.buttonRow {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.primaryButton,
+.secondaryButton {
+  text-decoration: none;
+  border-radius: 999px;
+  padding: 0.9rem 1.2rem;
+  font-weight: 950;
+}
+
+.primaryButton {
+  background: #5c2e19;
+  color: #fffaf5;
+}
+
+.secondaryButton {
+  background: #fff7ed;
+  color: #5c2e19;
+  border: 1px solid rgba(120, 67, 32, 0.18);
+}
+
+@media (max-width: 560px) {
+  .policiesPage {
+    padding: 1rem;
+  }
+
+  .buttonRow {
+    flex-direction: column;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    width: 100%;
+  }
+}
+
+/* Match the main bakery theme */
+.policiesPage {
+  background:
+    radial-gradient(circle at top left, rgba(243, 216, 222, 0.82), transparent 34rem),
+    linear-gradient(135deg, #fff9f7 0%, #fff0e7 50%, #fce7ec 100%);
+}
+
+.hero {
+  padding-top: 5rem;
+}
+
+.hero h1 {
+  width: 100%;
+  max-width: 850px;
+  margin: 0 auto;
+  line-height: 1.05;
+  text-align: center;
+}
+
+.eyebrow {
+  color: #b8667b;
+}
+
+.policyCard,
+.noticeSection {
+  background: rgba(255, 252, 251, 0.94);
+  border: 2px solid rgba(217, 140, 157, 0.48);
+  box-shadow: 0 16px 38px rgba(184, 102, 123, 0.1);
+}
+
+.policyCard:nth-child(even) {
+  background: #fff7f4;
+}
+
+.policyCard h2 {
+  color: #6b3f2a;
+  line-height: 1.1;
+}
+
+.noticeSection {
+  background: linear-gradient(135deg, #fffafb, #f8dfe5);
+}
+
+.primaryButton {
+  background: #c8758b;
+  color: #fff;
+}
+
+.primaryButton:hover {
+  background: #b8667b;
+}
+
+.secondaryButton {
+  background: #fff8f4;
+  border: 2px solid #e5a7b6;
+}

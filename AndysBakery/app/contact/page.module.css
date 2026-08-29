@@ -1,0 +1,255 @@
+.contactPage {
+  min-height: 100vh;
+  padding: 2rem;
+  background:
+    radial-gradient(circle at top left, rgba(255, 231, 205, 0.95), transparent 34rem),
+    linear-gradient(135deg, #fffaf5 0%, #fff3e5 45%, #fffdf8 100%);
+  color: #3b2418;
+}
+
+.hero,
+.contactGrid,
+.infoSection,
+.ctaSection {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero {
+  padding: clamp(2rem, 6vw, 4rem) 0 2rem;
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 0.5rem;
+  color: #9a5a2d;
+  font-weight: 950;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2.5rem, 8vw, 5.2rem);
+  line-height: 0.9;
+}
+
+.hero p {
+  max-width: 680px;
+  margin: 1rem auto 0;
+  color: #77513b;
+  font-size: 1.08rem;
+  line-height: 1.7;
+  font-weight: 700;
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.contactCard,
+.infoSection,
+.ctaSection {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(120, 67, 32, 0.14);
+  box-shadow: 0 18px 45px rgba(73, 38, 14, 0.08);
+}
+
+.contactCard {
+  border-radius: 28px;
+  padding: 1.4rem;
+}
+
+.cardIcon {
+  width: 2.7rem;
+  height: 2.7rem;
+  border-radius: 999px;
+  background: #fff1db;
+  color: #9a5a13;
+  display: grid;
+  place-items: center;
+  font-weight: 950;
+  margin-bottom: 1rem;
+}
+
+.contactCard h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.35rem;
+}
+
+.contactCard p {
+  margin: 0 0 0.9rem;
+  color: #77513b;
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+.contactCard a,
+.contactCard strong {
+  color: #5c2e19;
+  font-weight: 950;
+  overflow-wrap: anywhere;
+}
+
+.infoSection,
+.ctaSection {
+  margin-top: 1.25rem;
+  border-radius: 30px;
+  padding: clamp(1.3rem, 4vw, 2rem);
+}
+
+.infoSection {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.infoSection h2,
+.ctaSection h2 {
+  margin: 0;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  line-height: 0.95;
+}
+
+.infoSection ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: #77513b;
+  font-weight: 750;
+  line-height: 1.8;
+}
+
+.ctaSection {
+  text-align: center;
+}
+
+.ctaSection p {
+  margin: 0.8rem 0 1.2rem;
+  color: #77513b;
+  font-weight: 700;
+}
+
+.buttonRow {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.primaryButton,
+.secondaryButton {
+  text-decoration: none;
+  border-radius: 999px;
+  padding: 0.9rem 1.2rem;
+  font-weight: 950;
+}
+
+.primaryButton {
+  background: #5c2e19;
+  color: #fffaf5;
+}
+
+.secondaryButton {
+  background: #fff7ed;
+  color: #5c2e19;
+  border: 1px solid rgba(120, 67, 32, 0.18);
+}
+
+@media (max-width: 850px) {
+  .contactGrid,
+  .infoSection {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .contactPage {
+    padding: 1rem;
+  }
+
+  .buttonRow {
+    flex-direction: column;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    width: 100%;
+  }
+}
+
+/* Match the main bakery theme */
+.contactPage {
+  background:
+    radial-gradient(circle at top left, rgba(243, 216, 222, 0.82), transparent 34rem),
+    linear-gradient(135deg, #fff9f7 0%, #fff0e7 50%, #fce7ec 100%);
+}
+
+.hero {
+  padding-top: 5rem;
+}
+
+.hero h1 {
+  width: 100%;
+  max-width: 850px;
+  margin: 0 auto;
+  line-height: 1.05;
+  text-align: center;
+}
+
+.eyebrow {
+  color: #b8667b;
+}
+
+.contactCard,
+.infoSection,
+.ctaSection {
+  background: rgba(255, 252, 251, 0.94);
+  border: 2px solid rgba(217, 140, 157, 0.48);
+  box-shadow: 0 16px 38px rgba(184, 102, 123, 0.1);
+}
+
+.contactCard {
+  text-align: center;
+}
+
+.cardIcon {
+  margin: 0 auto 1rem;
+  background: #f3d8de;
+  color: #9f4f67;
+}
+
+.infoSection {
+  background: linear-gradient(135deg, #fffafb, #fff3ed);
+}
+
+.primaryButton {
+  background: #c8758b;
+  color: #fff;
+}
+
+.primaryButton:hover {
+  background: #b8667b;
+}
+
+.secondaryButton {
+  background: #f8dfe5;
+  border: 2px solid #e5a7b6;
+}
+
+@media (max-width: 850px) {
+  .infoSection {
+    text-align: center;
+  }
+
+  .infoSection ul {
+    width: fit-content;
+    margin: 0 auto;
+    text-align: left;
+  }
+}

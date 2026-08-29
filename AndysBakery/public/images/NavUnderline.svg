@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="180" viewBox="0 0 900 180">
+  <defs>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#d98c9d" flood-opacity="0.25"/>
+    </filter>
+    <linearGradient id="vineGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e6a7b4"/>
+      <stop offset="50%" stop-color="#d98c9d"/>
+      <stop offset="100%" stop-color="#e6a7b4"/>
+    </linearGradient>
+  </defs>
+
+  <g filter="url(#softShadow)">
+    <!-- main vine -->
+    <path d="M120 92 C230 50, 340 115, 450 88 C560 115, 670 50, 780 92"
+          fill="none" stroke="url(#vineGrad)" stroke-width="7" stroke-linecap="round"/>
+
+    <!-- curled ends -->
+    <path d="M125 91 C75 70, 58 112, 102 122" fill="none" stroke="#e6a7b4" stroke-width="6" stroke-linecap="round"/>
+    <path d="M775 91 C825 70, 842 112, 798 122" fill="none" stroke="#e6a7b4" stroke-width="6" stroke-linecap="round"/>
+
+    <!-- leaves left -->
+    <ellipse cx="245" cy="72" rx="24" ry="10" fill="#b8c39b" opacity="0.85" transform="rotate(-25 245 72)"/>
+    <ellipse cx="290" cy="101" rx="22" ry="9" fill="#c7d0ad" opacity="0.85" transform="rotate(25 290 101)"/>
+    <ellipse cx="350" cy="78" rx="22" ry="9" fill="#b8c39b" opacity="0.85" transform="rotate(-22 350 78)"/>
+
+    <!-- leaves right -->
+    <ellipse cx="655" cy="72" rx="24" ry="10" fill="#b8c39b" opacity="0.85" transform="rotate(25 655 72)"/>
+    <ellipse cx="610" cy="101" rx="22" ry="9" fill="#c7d0ad" opacity="0.85" transform="rotate(-25 610 101)"/>
+    <ellipse cx="550" cy="78" rx="22" ry="9" fill="#b8c39b" opacity="0.85" transform="rotate(22 550 78)"/>
+
+    <!-- center flower petals -->
+    <g transform="translate(450 88)">
+      <ellipse cx="0" cy="-26" rx="20" ry="31" fill="#ffc1cf" stroke="#ec7f99" stroke-width="3"/>
+      <ellipse cx="0" cy="26" rx="20" ry="31" fill="#ffc1cf" stroke="#ec7f99" stroke-width="3"/>
+      <ellipse cx="-26" cy="0" rx="31" ry="20" fill="#ffc1cf" stroke="#ec7f99" stroke-width="3"/>
+      <ellipse cx="26" cy="0" rx="31" ry="20" fill="#ffc1cf" stroke="#ec7f99" stroke-width="3"/>
+      <ellipse cx="-18" cy="-18" rx="20" ry="25" fill="#f7a7ba" stroke="#e66f8c" stroke-width="2" transform="rotate(-45 -18 -18)"/>
+      <ellipse cx="18" cy="-18" rx="20" ry="25" fill="#f7a7ba" stroke="#e66f8c" stroke-width="2" transform="rotate(45 18 -18)"/>
+      <ellipse cx="-18" cy="18" rx="20" ry="25" fill="#f7a7ba" stroke="#e66f8c" stroke-width="2" transform="rotate(45 -18 18)"/>
+      <ellipse cx="18" cy="18" rx="20" ry="25" fill="#f7a7ba" stroke="#e66f8c" stroke-width="2" transform="rotate(-45 18 18)"/>
+      <circle cx="0" cy="0" r="13" fill="#d99038"/>
+      <circle cx="0" cy="0" r="6" fill="#ffe1a3"/>
+    </g>
+
+    <!-- small buds -->
+    <circle cx="395" cy="73" r="9" fill="#ffd0da" stroke="#e89aaa" stroke-width="2"/>
+    <circle cx="505" cy="73" r="9" fill="#ffd0da" stroke="#e89aaa" stroke-width="2"/>
+    <circle cx="370" cy="104" r="7" fill="#f7a7ba" opacity="0.9"/>
+    <circle cx="530" cy="104" r="7" fill="#f7a7ba" opacity="0.9"/>
+  </g>
+</svg>

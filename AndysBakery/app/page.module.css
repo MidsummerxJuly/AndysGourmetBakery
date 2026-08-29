@@ -1,0 +1,689 @@
+.homePage {
+  min-height: 100vh;
+  padding: 2rem;
+  background:
+    radial-gradient(circle at top left, rgba(255, 231, 205, 0.95), transparent 34rem),
+    linear-gradient(135deg, #fffaf5 0%, #fff3e5 45%, #fffdf8 100%);
+  color: #3b2418;
+  overflow-x: hidden;
+}
+
+.hero,
+.infoGrid,
+.featuredSection,
+.customSection,
+.finalCta {
+  max-width: 1180px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero {
+  min-height: 88vh;
+  padding: 5rem 0 3rem;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+
+.heroText {
+  min-width: 0;
+}
+
+.logoBadge {
+  width: fit-content;
+  margin-bottom: 1.2rem;
+  padding: 0.7rem 1rem 0.7rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(120, 67, 32, 0.14);
+  box-shadow: 0 16px 40px rgba(73, 38, 14, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.logo {
+  width: 4.4rem;
+  height: 4.4rem;
+  object-fit: contain;
+}
+
+.eyebrow {
+  margin: 0;
+  color: #9a5a2d;
+  font-weight: 950;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+}
+
+.smallText {
+  margin: 0.25rem 0 0;
+  color: #77513b;
+  font-weight: 850;
+}
+
+.hero h1 {
+  max-width: 850px;
+  margin: 0;
+  font-size: clamp(3.4rem, 8.5vw, 7rem);
+  line-height: 0.88;
+  letter-spacing: -0.04em;
+}
+
+.heroDescription {
+  max-width: 690px;
+  margin: 1.2rem 0 0;
+  color: #77513b;
+  font-size: clamp(1.05rem, 2vw, 1.22rem);
+  line-height: 1.7;
+  font-weight: 750;
+}
+
+.buttonRow,
+.customButtons {
+  margin-top: 1.35rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.primaryButton,
+.secondaryButton,
+.cardLink {
+  text-decoration: none;
+  border-radius: 999px;
+  padding: 0.9rem 1.2rem;
+  font-weight: 950;
+}
+
+.primaryButton {
+  background: #5c2e19;
+  color: #fffaf5;
+  box-shadow: 0 14px 30px rgba(92, 46, 25, 0.18);
+}
+
+.secondaryButton {
+  background: #fff7ed;
+  color: #5c2e19;
+  border: 1px solid rgba(120, 67, 32, 0.18);
+}
+
+.heroContact {
+  margin-top: 1.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  color: #5c3925;
+  font-weight: 900;
+}
+
+.heroContact span {
+  padding: 0.7rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.76);
+  border: 1px solid rgba(120, 67, 32, 0.12);
+}
+
+.heroImages {
+  position: relative;
+  min-height: 620px;
+}
+
+.largeImageCard,
+.smallImageCard {
+  overflow: hidden;
+  background: #fff0df;
+  border: 1px solid rgba(120, 67, 32, 0.14);
+  box-shadow: 0 24px 70px rgba(73, 38, 14, 0.14);
+}
+
+.largeImageCard {
+  height: 590px;
+  border-radius: 42px;
+}
+
+.smallImageCard {
+  position: absolute;
+  left: -3rem;
+  bottom: 1rem;
+  width: 45%;
+  height: 230px;
+  border-radius: 30px;
+}
+
+.heroImage,
+.featuredImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.infoCard,
+.featuredCard,
+.customSection,
+.finalCta {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(120, 67, 32, 0.14);
+  box-shadow: 0 18px 45px rgba(73, 38, 14, 0.08);
+}
+
+.infoCard {
+  border-radius: 28px;
+  padding: 1.4rem;
+}
+
+.infoCard h2 {
+  margin: 0 0 0.55rem;
+  font-size: 1.35rem;
+}
+
+.infoCard p {
+  margin: 0;
+  color: #77513b;
+  font-weight: 750;
+  line-height: 1.6;
+}
+
+.featuredSection {
+  padding: 4rem 0 1rem;
+}
+
+.sectionHeader {
+  max-width: 800px;
+  margin-bottom: 1.3rem;
+}
+
+.sectionHeader h2,
+.customSection h2,
+.finalCta h2 {
+  margin: 0.5rem 0 0;
+  font-size: clamp(2.3rem, 6vw, 4.6rem);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+}
+
+.sectionHeader p,
+.customSection p,
+.finalCta p {
+  color: #77513b;
+  font-weight: 750;
+  line-height: 1.7;
+}
+
+.featuredGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.featuredCard {
+  overflow: hidden;
+  border-radius: 32px;
+}
+
+.featuredImageWrap {
+  height: 280px;
+  background: #fff0df;
+}
+
+.featuredText {
+  padding: 1.25rem;
+}
+
+.featuredText h3 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+.featuredText p {
+  margin: 0.75rem 0 1rem;
+  color: #77513b;
+  font-weight: 750;
+  line-height: 1.6;
+}
+
+.cardLink {
+  display: inline-block;
+  background: #fff7ed;
+  color: #5c2e19;
+  border: 1px solid rgba(120, 67, 32, 0.18);
+}
+
+.customSection {
+  margin-top: 3rem;
+  border-radius: 36px;
+  padding: clamp(1.5rem, 5vw, 3rem);
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.customSection p {
+  margin-bottom: 0;
+}
+
+.customButtons {
+  justify-content: flex-end;
+}
+
+.finalCta {
+  margin-top: 1.25rem;
+  margin-bottom: 2rem;
+  border-radius: 36px;
+  padding: clamp(1.5rem, 5vw, 3rem);
+  text-align: center;
+}
+
+.finalCta p {
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.finalCta .buttonRow {
+  justify-content: center;
+}
+
+@media (max-width: 980px) {
+  .hero {
+    min-height: auto;
+    grid-template-columns: 1fr;
+  }
+
+  .heroImages {
+    min-height: auto;
+    display: grid;
+    grid-template-columns: 1fr 0.7fr;
+    gap: 1rem;
+  }
+
+  .largeImageCard,
+  .smallImageCard {
+    position: static;
+    width: auto;
+  }
+
+  .largeImageCard {
+    height: 420px;
+  }
+
+  .smallImageCard {
+    height: 420px;
+  }
+
+  .infoGrid,
+  .featuredGrid,
+  .customSection {
+    grid-template-columns: 1fr;
+  }
+
+  .customButtons {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 620px) {
+  .homePage {
+    padding: 1rem;
+  }
+
+  .hero {
+    padding-top: 4.5rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(3rem, 16vw, 4.5rem);
+    line-height: 0.88;
+  }
+
+  .logoBadge {
+    border-radius: 28px;
+    align-items: flex-start;
+  }
+
+  .heroImages {
+    grid-template-columns: 1fr;
+  }
+
+  .largeImageCard,
+  .smallImageCard {
+    height: 330px;
+    border-radius: 30px;
+  }
+
+  .buttonRow,
+  .customButtons {
+    flex-direction: column;
+  }
+
+  .primaryButton,
+  .secondaryButton,
+  .cardLink {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 620px) {
+  .heroText {
+    width: 100%;
+    text-align: center;
+  }
+
+  .hero h1 {
+    width: 100%;
+    max-width: 520px;
+    margin: 1.5rem auto 0;
+    font-size: clamp(2.65rem, 13vw, 4rem);
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    text-align: center;
+  }
+
+  .heroDescription {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .buttonRow,
+  .heroContact {
+    justify-content: center;
+  }
+}
+
+/* Restore the original bakery color palette */
+.homePage {
+  background:
+    radial-gradient(circle at top left, rgba(243, 216, 222, 0.9), transparent 34rem),
+    linear-gradient(135deg, #fff9f7 0%, #fff0e7 48%, #fce7ec 100%);
+}
+
+/* Center the complete bakery identity badge */
+.logoBadge {
+  margin: 0 auto 1.5rem;
+  justify-content: center;
+  text-align: center;
+  background: rgba(255, 250, 251, 0.94);
+  border-color: rgba(217, 140, 157, 0.5);
+  box-shadow: 0 16px 40px rgba(182, 104, 124, 0.14);
+}
+
+.logoBadge > div {
+  text-align: center;
+}
+
+.eyebrow {
+  color: #b8667b;
+}
+
+/* Use blush and rose for buttons and accents */
+.primaryButton {
+  background: #c8758b;
+  color: #fff;
+  box-shadow: 0 14px 30px rgba(184, 102, 123, 0.24);
+}
+
+.primaryButton:hover {
+  background: #b8667b;
+}
+
+.secondaryButton,
+.cardLink {
+  background: #f8dfe5;
+  color: #6b3f2a;
+  border-color: #e8aebe;
+}
+
+/* Add pink warmth to cards and sections */
+.infoCard,
+.featuredCard {
+  background: rgba(255, 250, 251, 0.94);
+  border-color: rgba(217, 140, 157, 0.32);
+}
+
+.customSection {
+  background: linear-gradient(135deg, #fffafb, #f8dfe5);
+  border-color: rgba(217, 140, 157, 0.38);
+}
+
+.finalCta {
+  background: linear-gradient(135deg, #f8dfe5, #fff5f2);
+  border-color: rgba(217, 140, 157, 0.38);
+}
+
+.heroContact span {
+  background: rgba(255, 248, 250, 0.9);
+  border-color: rgba(217, 140, 157, 0.32);
+}
+
+@media (max-width: 620px) {
+  .logoBadge {
+    width: min(100%, 490px);
+    padding: 0.8rem 1rem;
+    align-items: center;
+  }
+}
+
+/* Consistent centered section headings */
+.sectionHeader {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 2rem;
+  text-align: center;
+}
+
+.sectionHeader h2,
+.customSection h2,
+.finalCta h2 {
+  width: 100%;
+  max-width: 950px;
+  margin: 0.6rem auto 1rem;
+  line-height: 1.08;
+  text-align: center;
+}
+
+.sectionHeader p,
+.customSection p,
+.finalCta p {
+  width: 100%;
+  max-width: 820px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Center and simplify the custom-order section */
+.customSection {
+  grid-template-columns: 1fr;
+  justify-items: center;
+  gap: 1.75rem;
+  text-align: center;
+}
+
+.customSection > div:first-child {
+  width: 100%;
+  max-width: 950px;
+}
+
+.customButtons {
+  width: 100%;
+  margin-top: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Keep final call-to-action content properly spaced */
+.finalCta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.finalCta .buttonRow {
+  width: 100%;
+  justify-content: center;
+}
+
+/* Align the buttons consistently across product cards */
+.featuredCard {
+  display: flex;
+  flex-direction: column;
+}
+
+.featuredText {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.featuredText p {
+  flex: 1;
+}
+
+.cardLink {
+  align-self: center;
+  margin-top: auto;
+  text-align: center;
+}
+
+/* Prevent decorative font letters from touching */
+.featuredText h3 {
+  line-height: 1.15;
+}
+
+@media (max-width: 620px) {
+  .sectionHeader h2,
+  .customSection h2,
+  .finalCta h2 {
+    font-size: clamp(2.35rem, 11vw, 3.5rem);
+    line-height: 1.12;
+  }
+
+  .customButtons,
+  .finalCta .buttonRow {
+    align-items: stretch;
+  }
+}
+
+/* Keep the homepage centered at every window size */
+.hero {
+  min-height: auto;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  padding-top: 5rem;
+  text-align: center;
+}
+
+.heroText {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logoBadge {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero h1 {
+  width: 100%;
+  max-width: 1100px;
+  margin: 1.5rem auto 0;
+  font-size: clamp(3.25rem, 7vw, 6.5rem);
+  line-height: 1.05;
+  text-align: center;
+}
+
+.heroDescription {
+  width: 100%;
+  max-width: 760px;
+  margin: 1.5rem auto 0;
+  text-align: center;
+}
+
+.buttonRow,
+.heroContact {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Place the hero pictures beneath the centered text */
+.heroImages {
+  position: static;
+  width: 100%;
+  max-width: 1050px;
+  min-height: auto;
+  margin: 2.5rem auto 0;
+  display: grid;
+  grid-template-columns: 1.35fr 0.65fr;
+  gap: 1rem;
+}
+
+.largeImageCard,
+.smallImageCard {
+  position: static;
+  width: 100%;
+  height: 440px;
+}
+
+/* Keep the remaining homepage sections centered */
+.sectionHeader,
+.customSection,
+.finalCta {
+  text-align: center;
+}
+
+.sectionHeader h2,
+.customSection h2,
+.finalCta h2 {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.08;
+}
+
+.customButtons,
+.finalCta .buttonRow {
+  justify-content: center;
+}
+
+@media (max-width: 700px) {
+  .hero {
+    padding-top: 4.5rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.7rem, 13vw, 4.25rem);
+    line-height: 1.08;
+  }
+
+  .heroImages {
+    grid-template-columns: 1fr;
+  }
+
+  .largeImageCard,
+  .smallImageCard {
+    height: 330px;
+  }
+
+  .buttonRow,
+  .customButtons,
+  .heroContact {
+    justify-content: center;
+    align-items: stretch;
+  }
+}

@@ -1,0 +1,460 @@
+.checkoutPage {
+  min-height: 100vh;
+  background: #fff0e7;
+  color: #3c2a1e;
+  padding: 2rem 1rem 5rem;
+}
+
+.checkoutShell {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.topRow {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.75rem 1rem;
+  border-radius: 999px;
+
+  background: #f3d8de;
+  color: #6b3f2a;
+  border: 1px solid rgba(217, 140, 157, 0.55);
+
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.headerSection {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.35rem;
+  color: #d98c9d;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.pageTitle {
+  margin: 0;
+  font-family: var(--font-lobster);
+  font-size: clamp(2.6rem, 6vw, 4.8rem);
+  line-height: 1;
+  color: #6b3f2a;
+}
+
+.pageIntro {
+  max-width: 640px;
+  margin: 1rem auto 0;
+  color: #6b3f2a;
+  font-weight: 650;
+  line-height: 1.5;
+}
+
+.checkoutGrid {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.9fr) minmax(320px, 1.1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.card,
+.emptyCard {
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(217, 140, 157, 0.28);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 12px 30px rgba(107, 63, 42, 0.08);
+}
+
+.emptyCard {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.emptyCard h2 {
+  margin-top: 0;
+  color: #6b3f2a;
+}
+
+.primaryLink {
+  display: inline-flex;
+  margin-top: 1rem;
+  padding: 0.85rem 1.2rem;
+  border-radius: 999px;
+  background: #f3d8de;
+  color: #6b3f2a;
+  text-decoration: none;
+  font-weight: 900;
+}
+
+.sectionTitle {
+  margin: 0 0 1rem;
+  color: #6b3f2a;
+  font-size: 1.75rem;
+  line-height: 1.1;
+}
+
+.basketList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.basketItem {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+
+  padding: 1rem;
+  border-radius: 14px;
+  background: rgba(255, 240, 231, 0.8);
+  border: 1px solid rgba(198, 153, 134, 0.22);
+}
+
+.basketItem h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1rem;
+  color: #3c2a1e;
+}
+
+.basketItem p {
+  margin: 0;
+  color: #6b3f2a;
+  font-weight: 650;
+}
+
+.basketItem strong {
+  white-space: nowrap;
+  color: #6b3f2a;
+}
+
+.totalBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(198, 153, 134, 0.3);
+
+  font-size: 1.15rem;
+  font-weight: 900;
+}
+
+.checkoutForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.formField {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+
+  color: #6b3f2a;
+  font-weight: 850;
+}
+
+.formField input,
+.formField select,
+.formField textarea {
+  width: 100%;
+  box-sizing: border-box;
+
+  border: 1px solid rgba(198, 153, 134, 0.5);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.9);
+
+  color: #3c2a1e;
+  font: inherit;
+  font-weight: 650;
+
+  padding: 0.9rem 1rem;
+  outline: none;
+}
+
+.formField input,
+.formField select {
+  min-height: 52px;
+}
+
+.formField textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.formField input:focus,
+.formField select:focus,
+.formField textarea:focus {
+  border-color: #d98c9d;
+  box-shadow: 0 0 0 3px rgba(217, 140, 157, 0.18);
+}
+
+.errorMessage {
+  margin: 0;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+
+  background: rgba(255, 220, 220, 0.75);
+  color: #8a1f1f;
+  font-weight: 800;
+}
+
+.successBox {
+  padding: 1rem;
+  border-radius: 14px;
+
+  background: rgba(224, 255, 226, 0.75);
+  border: 1px solid rgba(80, 150, 90, 0.3);
+  color: #245b2f;
+}
+
+.successBox h3 {
+  margin: 0 0 0.5rem;
+}
+
+.successBox p {
+  margin: 0.35rem 0 0;
+}
+
+.successText {
+  font-weight: 750;
+}
+
+.submitButton {
+  width: 100%;
+  min-height: 58px;
+
+  border: none;
+  border-radius: 15px;
+
+  background: #f3d8de;
+  color: #6b3f2a;
+
+  font-size: 1.15rem;
+  font-weight: 950;
+  cursor: pointer;
+
+  box-shadow: 0 6px 16px rgba(217, 140, 157, 0.18);
+}
+
+.submitButton:hover:not(:disabled) {
+  background: #eec8d2;
+}
+
+.submitButton:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+  .dateSelectRow {
+    grid-template-columns: 1fr;
+  }
+
+
+  .topRow {
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .backLink {
+    font-size: 0.9rem;
+    padding: 0.65rem 0.85rem;
+  }
+
+  .headerSection {
+    margin: 1.5rem auto 1.75rem;
+  }
+
+  .pageTitle {
+    max-width: 360px;
+    font-size: clamp(2.5rem, 12vw, 3.7rem);
+    line-height: 0.95;
+  }
+
+  .pageIntro {
+    max-width: 360px;
+    font-size: 0.95rem;
+  }
+
+  .checkoutGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .card,
+  .emptyCard {
+    padding: 1.15rem;
+    border-radius: 18px;
+  }
+}
+
+.topRow {
+  position: fixed;
+  top: 1.25rem;
+  right: 1.25rem;
+  z-index: 80;
+
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0;
+}
+
+.backLink {
+  padding: 0.7rem 1rem;
+  border-radius: 999px;
+
+  background: #f3d8de;
+  color: #6b3f2a;
+  border: 1px solid rgba(217, 140, 157, 0.55);
+
+  font-weight: 850;
+  text-decoration: none;
+  white-space: nowrap;
+
+  box-shadow: 0 6px 18px rgba(107, 63, 42, 0.08);
+}
+
+.headerSection {
+  width: 100%;
+  max-width: 780px;
+  margin: 4.5rem auto 2.25rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.pageTitle {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+
+  text-align: center;
+  font-family: var(--font-lobster);
+  font-size: clamp(2.7rem, 5vw, 4.5rem);
+  line-height: 0.95;
+  color: #6b3f2a;
+}
+
+.pageIntro {
+  max-width: 680px;
+  margin: 1rem auto 0;
+  text-align: center;
+}
+
+.dateSelectRow {
+  display: grid;
+  grid-template-columns: 1.4fr 0.8fr 1fr;
+  gap: 0.75rem;
+}
+
+.successBox {
+  padding: 1rem;
+  border-radius: 14px;
+
+  background: rgba(224, 255, 226, 0.75);
+  border: 1px solid rgba(80, 150, 90, 0.3);
+  color: #245b2f;
+}
+
+.successBox h3 {
+  margin: 0 0 0.5rem;
+  font-family: inherit;
+  font-size: 1.35rem;
+  line-height: 1.1;
+  font-weight: 900;
+}
+
+.successBox p {
+  margin: 0.35rem 0 0;
+  line-height: 1.35;
+  font-size: 0.95rem;
+}
+
+.successText {
+  font-weight: 750;
+}
+
+@media (max-width: 600px) {
+  .dateSelectRow {
+    grid-template-columns: 1fr;
+  }
+
+  .successBox h3 {
+    font-size: 1.2rem;
+  }
+}
+
+.dateSelectRow {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr 0.9fr;
+  gap: 0.65rem;
+  width: 100%;
+}
+
+.dateSelectRow select {
+  height: 46px;
+  min-height: 46px;
+  width: 100%;
+
+  padding: 0 2rem 0 0.85rem;
+  border: 1px solid rgba(198, 153, 134, 0.45);
+  border-radius: 12px;
+
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #3c2a1e;
+
+  font-size: 0.95rem;
+  font-weight: 750;
+  line-height: 1;
+
+  appearance: none;
+  -webkit-appearance: none;
+
+  background-image: linear-gradient(45deg, transparent 50%, #6b3f2a 50%),
+    linear-gradient(135deg, #6b3f2a 50%, transparent 50%);
+  background-position:
+    calc(100% - 17px) 50%,
+    calc(100% - 12px) 50%;
+  background-size:
+    5px 5px,
+    5px 5px;
+  background-repeat: no-repeat;
+}
+
+.dateSelectRow select:focus {
+  border-color: #d98c9d;
+  box-shadow: 0 0 0 3px rgba(217, 140, 157, 0.18);
+  outline: none;
+}
+
+@media (max-width: 600px) {
+  .dateSelectRow {
+    grid-template-columns: 1.2fr 0.75fr 0.85fr;
+    gap: 0.5rem;
+  }
+
+  .dateSelectRow select {
+    height: 44px;
+    min-height: 44px;
+    padding-left: 0.7rem;
+    padding-right: 1.7rem;
+    font-size: 0.88rem;
+  }
+}

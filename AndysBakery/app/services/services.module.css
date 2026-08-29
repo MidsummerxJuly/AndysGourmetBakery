@@ -1,0 +1,1306 @@
+.servicesContainer {
+  width: 100%;
+  max-width: 760px;
+  margin: 0.6rem 0 1rem;
+  padding: 1rem 1.25rem;
+
+  background: #fffdfd;
+  border: 1px solid rgba(217, 140, 157, 0.18);
+  border-radius: 18px;
+
+  box-shadow: 0 4px 12px rgba(217, 140, 157, 0.05);
+}
+
+.textContent {
+  margin-bottom: 0.75rem;
+}
+
+.heroParagraphServices {
+  margin: 0.25rem 0;
+  color: #111;
+  line-height: 1.5;
+}
+
+.addBtn,
+.removeBtn {
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.addBtn {
+  background: rgb(198, 153, 134);
+  color: white;
+}
+
+.removeBtn {
+  background: #fff;
+  color: rgb(198, 153, 134);
+  border: 1px solid rgb(198, 153, 134);
+}
+
+.servicesPage {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.servicesPage h2 {
+  max-width: 700px;
+  margin: 1.5rem auto 0.75rem;
+  color: rgb(198, 153, 134);
+  font-size: 1.5rem;
+}
+
+.categoryButton {
+  position: relative;
+  width: 100%;
+  max-width: 760px;
+  margin: 0.85rem auto;
+  padding: 1rem 3rem 1rem 1.25rem;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  background: #fff7f8;
+  color: #6b3f2a;
+  border: 1px solid rgba(217, 140, 157, 0.35);
+  border-radius: 16px;
+
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+
+  box-shadow: 0 4px 12px rgba(217, 140, 157, 0.08);
+}
+
+.itemButton {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.9rem 3rem 0.9rem 1rem;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  background: #fff7f8;
+  border: 1px solid rgba(217, 140, 157, 0.25);
+  border-radius: 14px;
+
+  color: #6b3f2a;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.dropdownIcon {
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+  color: #8b5a63;
+  font-size: 1rem;
+}
+
+.sizeButton {
+  background: #fff7f8;
+  color: #6b3f2a;
+  border: 1px solid rgba(217, 140, 157, 0.45);
+  border-radius: 12px;
+  padding: 0.7rem 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(217, 140, 157, 0.08);
+}
+
+.sizeButton:hover {
+  background: #f3d8de;
+}
+
+.sizeButtonActive {
+  background: #f2c8d1;
+  color: #6b3f2a;
+  border: 1px solid #d98c9d;
+}
+
+.addBtn {
+  background: #d98c9d;
+  color: white;
+  border: 1px solid #d98c9d;
+  border-radius: 12px;
+  padding: 0.7rem 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(217, 140, 157, 0.14);
+}
+
+.categoryDropdownBtn,
+.itemDropdownBtn {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  background: transparent;
+  border: none;
+  color: #3c2a1e;
+  cursor: pointer;
+}
+
+.categoryDropdownBtn {
+  max-width: 900px;
+  margin: 1rem auto;
+  padding: 1.5rem;
+  border: 1px solid rgba(198, 153, 134, 0.45);
+  border-radius: 12px;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.itemDropdownBtn {
+  padding: 0.75rem 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.itemDropdownBtn {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  background: transparent;
+  border: 1px solid rgba(198, 153, 134, 0.35);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  color: #3c2a1e;
+  cursor: pointer;
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.dropdownIcon {
+  min-width: 44px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.itemDropdownBtn {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  background: transparent;
+  border: 1px solid rgba(198, 153, 134, 0.35);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  color: #3c2a1e;
+  cursor: pointer;
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.itemArrow {
+  margin-left: auto;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #3c2a1e;
+}
+
+.dropdownIcon,
+.itemArrow {
+  min-width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(236, 121, 148, 0.15);
+  color: #d85f7f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin-left: 1rem;
+  box-shadow: 0 2px 6px rgba(216, 95, 127, 0.12);
+}
+
+.categoryButton {
+  width: 100%;
+  margin: 1rem 0;
+  padding: 1.5rem 2rem;
+  border: 1px solid rgba(198, 153, 134, 0.45);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.45);
+  color: #3c2a1e;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  cursor: pointer;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.productCardGrid {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 2rem;
+  align-items: start;
+  width: 100%;
+}
+
+.productImagePlaceholder {
+  width: 100%;
+  min-height: 300px;
+  border-radius: 14px;
+  border: 1px solid rgba(198, 153, 134, 0.35);
+  background: rgba(255, 240, 237, 0.65);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #b96b7d;
+  font-size: 3rem;
+}
+
+.productDetails {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .productCardGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .productImagePlaceholder {
+    min-height: 220px;
+  }
+}
+
+.productDetails {
+  width: 100%;
+  padding-top: 1.25rem;
+}
+
+.sizeButton {
+  min-width: 115px;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid rgba(198, 153, 134, 0.5);
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.55);
+  color: #3c2a1e;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.sizeButton:hover {
+  border-color: #e56f93;
+  background: rgba(255, 236, 240, 0.75);
+}
+
+.sizeButtonActive {
+  border-color: #e56f93;
+  background: rgba(255, 221, 229, 0.9);
+  color: #3c2a1e;
+  box-shadow: 0 4px 12px rgba(229, 111, 147, 0.18);
+}
+
+.optionGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(198, 153, 134, 0.35);
+}
+
+.optionGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.optionLabel {
+  font-weight: 700;
+  color: #3c2a1e;
+}
+
+.optionSelect {
+  width: 100%;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid rgba(198, 153, 134, 0.5);
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.65);
+  color: #3c2a1e;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .optionGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.orderActionRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.25rem;
+  margin-left: calc(260px + 2rem);
+  width: calc(100% - 260px - 2rem);
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .orderActionRow {
+    margin-left: 0;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+
+.quantityControl {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.qtyButton {
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(198, 153, 134, 0.5);
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.65);
+  color: #3c2a1e;
+  font-size: 1.4rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.qtyButton:hover {
+  border-color: #e56f93;
+  background: rgba(255, 236, 240, 0.75);
+}
+
+.qtyInput {
+  width: 55px;
+  height: 42px;
+  border: 1px solid rgba(198, 153, 134, 0.5);
+  border-radius: 9px;
+  text-align: center;
+  color: #3c2a1e;
+  font-weight: 700;
+}
+
+.orderAddButton {
+  min-width: 160px;
+  height: 44px;
+  border-radius: 10px;
+  background: #df7f98;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.sizeSummary {
+  margin-top: 0.75rem;
+  font-weight: 700;
+  color: #3c2a1e;
+}
+
+.orderActionRow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.quantityControl {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.qtyButton {
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(198, 153, 134, 0.5);
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.65);
+  color: #3c2a1e;
+  font-size: 1.4rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.qtyButton:hover {
+  border-color: #e56f93;
+  background: rgba(255, 236, 240, 0.75);
+}
+
+.qtyInput {
+  width: 55px;
+  height: 42px;
+  border: 1px solid rgba(198, 153, 134, 0.5);
+  border-radius: 9px;
+  text-align: center;
+  color: #3c2a1e;
+  font-weight: 700;
+}
+
+.orderAddButton {
+  min-width: 160px;
+  height: 44px;
+  border-radius: 10px;
+  background: #df7f98;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.qtyInput::-webkit-outer-spin-button,
+.qtyInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.qtyInput {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.customPager {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(198, 153, 134, 0.35);
+}
+
+.customPagerHeader {
+  display: grid;
+  grid-template-columns: 32px 1fr 32px;
+  align-items: center;
+  gap: 0.75rem;
+  max-width: 420px;
+  margin: 0 auto 1rem auto;
+}
+
+.customPagerTitle {
+  text-align: center;
+  font-weight: 800;
+  color: #3c2a1e;
+  margin: 0;
+}
+
+.customArrowButton {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(198, 153, 134, 0.5);
+  background: rgba(255, 255, 255, 0.65);
+  color: #3c2a1e;
+  font-size: 1.35rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.customArrowButton:hover {
+  border-color: #e56f93;
+  background: rgba(255, 236, 240, 0.75);
+}
+
+.customArrowSpacer {
+  width: 32px;
+  height: 32px;
+}
+
+.customOptionCard {
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.customArrowButton {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(198, 153, 134, 0.5);
+  background: rgba(255, 245, 247, 0.85);
+  color: #3c2a1e;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.customArrowIcon {
+  font-size: 1.4rem;
+  display: block;
+}
+
+
+.sizeButtonGroup {
+  width: 100%;
+  max-width: 430px;
+  margin: 0.5rem 0 0.75rem;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.sizeButton {
+  width: 100%;
+  min-width: 0;
+  height: 44px;
+  padding: 0 0.75rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.productDetails {
+  width: 100%;
+  padding-top: 0;
+}
+
+.sizeSummary {
+  max-width: 430px;
+  margin: 0.85rem 0 0.65rem;
+  text-align: center;
+  font-weight: 800;
+}
+
+.customPager {
+  width: 100%;
+  max-width: 430px;
+  margin: 0.75rem 0 0;
+  padding-top: 0.8rem;
+  border-top: 1px solid rgba(198, 153, 134, 0.3);
+}
+
+.customPagerHeader {
+  display: grid;
+  grid-template-columns: 36px 1fr 36px;
+  align-items: center;
+  gap: 0.5rem;
+
+  width: 100%;
+  margin: 0 0 0.65rem;
+}
+
+.customOptionCard {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+}
+
+.optionLabel {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 800;
+}
+
+.optionSelect {
+  width: 100%;
+  height: 46px;
+  padding: 0 0.85rem;
+  font-size: 0.95rem;
+}
+
+.orderActionRow {
+  width: calc(100% - 240px - 2rem);
+  margin: 1rem 0 0 calc(240px + 2rem);
+  padding-top: 0.9rem;
+  border-top: 1px solid rgba(198, 153, 134, 0.25);
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  flex-wrap: nowrap;
+}
+
+.quantityControl {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  height: 44px;
+}
+
+.qtyButton,
+.qtyInput,
+.orderAddButton {
+  height: 42px;
+}
+
+.qtyButton {
+  width: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  line-height: 1;
+}
+
+.qtyInput {
+  width: 52px;
+  padding: 0;
+  line-height: 42px;
+}
+
+.orderAddButton {
+  min-width: 150px;
+  padding: 0 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quantityControl {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  height: 44px;
+}
+
+.qtyButton,
+.qtyInput {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  line-height: 1;
+
+  border: 1px solid rgba(198, 153, 134, 0.5);
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.65);
+
+  color: #3c2a1e;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.qtyInput {
+  text-align: center;
+}
+
+.orderActionRow {
+  align-items: center;
+}
+
+/* Stronger, cleaner borders throughout the ordering menu */
+.categoryButton,
+.servicesContainer,
+.itemDropdownBtn {
+  border: 2px solid rgba(217, 140, 157, 0.58);
+}
+
+.sizeButton,
+.optionSelect,
+.qtyButton,
+.qtyInput,
+.customArrowButton {
+  border-width: 2px;
+  border-color: rgba(217, 140, 157, 0.58);
+}
+
+.optionGrid,
+.customPager,
+.orderActionRow {
+  border-top-width: 2px;
+  border-top-color: rgba(217, 140, 157, 0.42);
+}
+
+/* Separate nested boxes with soft bakery colors */
+.categoryButton {
+  background: linear-gradient(135deg, #f8dfe5, #fff1f3);
+}
+
+.servicesContainer {
+  background: #fff9fa;
+}
+
+.itemDropdownBtn {
+  background: #eee8f5;
+  border-color: #bba9cf;
+}
+
+.itemDropdownBtn:hover {
+  background: #f3d5dd;
+}
+
+/* Use one clean card instead of a box inside another box */
+.servicesContainer {
+  padding: 0;
+  overflow: hidden;
+  background: #fffdfd;
+  border: 2px solid rgba(217, 140, 157, 0.58);
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    transform 0.18s ease;
+}
+
+.servicesContainer:hover {
+  background: #fff3f6;
+  border-color: #d98c9d;
+  box-shadow: 0 8px 22px rgba(217, 140, 157, 0.14);
+  transform: translateY(-2px);
+}
+
+/* Remove the smaller colored box */
+.itemDropdownBtn,
+.itemDropdownBtn:hover {
+  width: 100%;
+  padding: 1.75rem 2rem;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* Give the cake/pastry name more presence */
+.itemDropdownBtn {
+  font-size: clamp(1.45rem, 2.5vw, 1.85rem);
+  line-height: 1.15;
+}
+
+/* Keep expanded product information inside the main card */
+.productCardGrid {
+  padding: 0 2rem 1rem;
+  box-sizing: border-box;
+}
+
+.orderActionRow {
+  margin-bottom: 1.5rem;
+}
+
+/* Compact product rows with a details label */
+.textContent {
+  margin-bottom: 0;
+}
+
+.itemDropdownBtn,
+.itemDropdownBtn:hover {
+  position: relative;
+  min-height: 100px;
+  padding: 1.2rem 1.5rem 2.35rem;
+  align-items: flex-start;
+  background: transparent;
+}
+
+.itemDropdownBtn > span:first-child {
+  font-size: clamp(1.45rem, 2.2vw, 1.8rem);
+  line-height: 1.15;
+}
+
+.itemArrow {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 0.75rem;
+
+  width: auto;
+  min-width: 0;
+  height: auto;
+  margin: 0;
+
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+
+  color: #a9556d;
+  font-family: "Nunito", sans-serif;
+  font-size: 0.82rem;
+  line-height: 1;
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.itemDropdownBtn:hover .itemArrow {
+  color: #7f344c;
+}
+
+/* Further compact collapsed product rows */
+.itemDropdownBtn,
+.itemDropdownBtn:hover {
+  min-height: 82px;
+  padding: 0.85rem 1.25rem 1.8rem;
+}
+
+.itemArrow {
+  right: 1.25rem;
+  bottom: 0.5rem;
+}
+
+.itemDropdownBtn > span:first-child {
+  transform: translateY(7px);
+}
+
+/* Vertically balance product names inside collapsed rows */
+.servicesContainer .itemDropdownBtn > span:first-child {
+  position: relative;
+  top: 15px;
+  transform: none;
+}
+
+/* Expanded product layout */
+.productCardGrid {
+  width: 100%;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 340px minmax(0, 1fr);
+  gap: 2rem;
+  align-items: stretch;
+  box-sizing: border-box;
+}
+
+/* Make product photos fill their column */
+.productImageWrap {
+  width: 100%;
+  min-height: 420px;
+  overflow: hidden;
+  border: 2px solid rgba(217, 140, 157, 0.5);
+  border-radius: 18px;
+  background: #fff3f6;
+}
+
+.productImage {
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  display: block;
+  object-fit: cover;
+}
+
+/* One grouped panel for description, price and sizes */
+.productDetails {
+  width: 100%;
+  padding: 1.5rem;
+  box-sizing: border-box;
+
+  background: #fff9fa;
+  border: 2px solid rgba(217, 140, 157, 0.5);
+  border-bottom: none;
+  border-radius: 18px 18px 0 0;
+}
+
+/* Connect quantity and Add to Basket to the details panel */
+.orderActionRow {
+  width: calc(100% - 340px - 4rem);
+  margin: 0 2rem 1.5rem calc(340px + 4rem);
+  padding: 1rem 1.5rem;
+
+  box-sizing: border-box;
+  background: #fff9fa;
+  border: 2px solid rgba(217, 140, 157, 0.5);
+  border-top: 1px solid rgba(217, 140, 157, 0.3);
+  border-radius: 0 0 18px 18px;
+
+  justify-content: center;
+}
+
+/* Keep size names contained inside their buttons */
+.sizeButton {
+  min-width: 0;
+  min-height: 56px;
+  height: auto;
+  padding: 0.65rem 0.5rem;
+
+  font-size: 0.92rem;
+  line-height: 1.1;
+  white-space: nowrap;
+  text-align: center;
+}
+
+/* Stack cleanly when the browser becomes narrow */
+@media (max-width: 900px) {
+  .productCardGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .productImageWrap,
+  .productImage {
+    min-height: 340px;
+  }
+
+  .productDetails {
+    border-bottom: 2px solid rgba(217, 140, 157, 0.5);
+    border-radius: 18px;
+  }
+
+  .orderActionRow {
+    width: calc(100% - 4rem);
+    margin: 1rem 2rem 1.5rem;
+    border-top: 2px solid rgba(217, 140, 157, 0.5);
+    border-radius: 18px;
+  }
+}
+
+/* Stable expanded layout at every browser width */
+.productCardGrid {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+/* Keep the photo large but prevent it from taking over the page */
+.productImageWrap {
+  width: min(100%, 600px);
+  height: auto;
+  min-height: 0;
+  aspect-ratio: 4 / 3;
+  margin: 0 auto;
+
+  overflow: hidden;
+  border: 2px solid rgba(217, 140, 157, 0.5);
+  border-radius: 18px;
+}
+
+.productImage {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+/* Full-width details panel */
+.productDetails {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: clamp(1.25rem, 4vw, 2rem);
+  box-sizing: border-box;
+
+  background: #fff9fa;
+  border: 2px solid rgba(217, 140, 157, 0.5);
+  border-radius: 18px 18px 0 0;
+}
+
+/* Attach the action controls beneath the details */
+.orderActionRow {
+  width: calc(100% - 3rem);
+  max-width: 720px;
+  margin: -2px auto 1.5rem;
+  padding: 1rem 1.25rem;
+  box-sizing: border-box;
+
+  background: #fff9fa;
+  border: 2px solid rgba(217, 140, 157, 0.5);
+  border-radius: 0 0 18px 18px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* Prevent size labels from overlapping */
+.sizeButtonGroup {
+  width: 100%;
+  max-width: 100%;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.sizeButton {
+  width: 100%;
+  min-width: 0;
+  min-height: 58px;
+  height: auto;
+  padding: 0.55rem 0.35rem;
+
+  font-size: clamp(0.72rem, 1.8vw, 0.92rem);
+  line-height: 1.15;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* Keep the main action text on one line */
+.orderAddButton {
+  min-width: 190px;
+  padding: 0 1.1rem;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+/* Narrow-screen adjustments without changing the overall structure */
+@media (max-width: 620px) {
+  .productCardGrid {
+    padding: 0 0.75rem;
+  }
+
+  .orderActionRow {
+    width: calc(100% - 1.5rem);
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .quantityControl {
+    width: 100%;
+  }
+
+  .orderAddButton {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .sizeButtonGroup {
+    grid-template-columns: 1fr;
+  }
+
+  .sizeButton {
+    font-size: 0.95rem;
+  }
+}
+
+/* Compact expanded product layout */
+.productCardGrid {
+  width: 100%;
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  box-sizing: border-box;
+
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: stretch;
+}
+
+/* Smaller image without cropping */
+.productImageWrap {
+  width: 280px;
+  height: 280px;
+  min-height: 0;
+  aspect-ratio: auto;
+  margin: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+  background: #fff7f5;
+  border-radius: 16px;
+}
+
+.productImage {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  aspect-ratio: auto;
+  object-fit: contain;
+}
+
+/* Tighter, cleaner details panel */
+.productDetails {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 1.15rem 1.25rem;
+
+  border: 2px solid rgba(217, 140, 157, 0.5);
+  border-radius: 16px;
+}
+
+.productDetails > p {
+  margin: 0 0 0.75rem;
+  line-height: 1.45;
+}
+
+.productDetails > div {
+  margin-top: 0.6rem !important;
+}
+
+.sizeButtonGroup {
+  margin: 0.4rem 0 0.5rem;
+  gap: 0.55rem;
+}
+
+.sizeButton {
+  min-height: 48px;
+  padding: 0.45rem 0.3rem;
+}
+
+/* Compact action row beneath the product */
+.orderActionRow {
+  width: fit-content;
+  max-width: calc(100% - 2.5rem);
+  margin: 1rem auto 1.25rem;
+  padding: 0.75rem 1rem;
+
+  border: 2px solid rgba(217, 140, 157, 0.5);
+  border-radius: 14px;
+
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+/* On narrow screens, stack without allowing the image to explode */
+@media (max-width: 760px) {
+  .productCardGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .productImageWrap {
+    width: min(100%, 320px);
+    height: 260px;
+    margin: 0 auto;
+  }
+
+  .productDetails {
+    width: 100%;
+  }
+
+  .orderActionRow {
+    width: calc(100% - 2.5rem);
+    max-width: 520px;
+    flex-wrap: wrap;
+  }
+}
+
+/* Use the card’s full inner width for predictable alignment */
+.productCardGrid {
+  max-width: none;
+  align-items: stretch;
+}
+
+/* Extend the photo to match the details-panel height */
+.productImageWrap {
+  height: 100%;
+  min-height: 380px;
+}
+
+.productImage {
+  height: 100%;
+  min-height: 380px;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Align quantity and Add to Basket beneath the details column */
+.orderActionRow {
+  width: calc(100% - 280px - 3.75rem);
+  max-width: none;
+
+  margin-top: 1rem;
+  margin-right: 1.25rem;
+  margin-bottom: 1.25rem;
+  margin-left: calc(280px + 2.5rem);
+
+  justify-content: center;
+}
+
+/* Return to centered stacking on narrow screens */
+@media (max-width: 760px) {
+  .productImageWrap,
+  .productImage {
+    height: 280px;
+    min-height: 280px;
+  }
+
+  .orderActionRow {
+    width: calc(100% - 2.5rem);
+    max-width: 520px;
+    margin: 1rem auto 1.25rem;
+  }
+}
+
+/* Keep action controls inside their outer border */
+.orderActionRow {
+  padding: 1rem 1.5rem;
+  gap: 1rem;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.quantityControl {
+  flex-shrink: 0;
+}
+
+.orderAddButton {
+  flex: 1 1 190px;
+  min-width: 170px;
+  max-width: 260px;
+  box-sizing: border-box;
+}
+
+.orderAddButton {
+  transition:
+    background 0.18s ease,
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.orderAddButton:active {
+  transform: scale(0.97);
+}
+
+.orderAddButtonAdded {
+  background: #a95c73;
+  box-shadow: 0 0 0 4px rgba(217, 140, 157, 0.22);
+  transform: scale(1.02);
+}
+
+/* Vertically center category labels and arrows */
+.categoryButton {
+  align-items: center;
+}
+
+.categoryButton > span:first-child {
+  position: relative;
+  top: 3px;
+}
+
+.categoryButton .dropdownIcon {
+  position: static;
+  top: auto;
+  right: auto;
+  margin-left: auto;
+  align-self: center;
+}

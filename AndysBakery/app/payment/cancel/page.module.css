@@ -1,0 +1,140 @@
+.cancelPage {
+  min-height: 100vh;
+  padding: 2rem;
+  background:
+    radial-gradient(circle at top left, rgba(255, 231, 205, 0.95), transparent 34rem),
+    linear-gradient(135deg, #fffaf5 0%, #fff3e5 45%, #fffdf8 100%);
+  display: grid;
+  place-items: center;
+  color: #3b2418;
+}
+
+.cancelCard {
+  width: min(100%, 680px);
+  padding: clamp(1.5rem, 5vw, 3rem);
+  border-radius: 34px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(120, 67, 32, 0.14);
+  box-shadow: 0 24px 70px rgba(73, 38, 14, 0.12);
+  text-align: center;
+}
+
+.iconCircle {
+  width: 4.4rem;
+  height: 4.4rem;
+  margin: 0 auto 1rem;
+  border-radius: 999px;
+  background: #fff1db;
+  color: #9a5a13;
+  display: grid;
+  place-items: center;
+  font-size: 2rem;
+  font-weight: 950;
+  border: 1px solid #ffd9a3;
+}
+
+.eyebrow {
+  margin: 0 0 0.5rem;
+  color: #9a5a2d;
+  font-weight: 950;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+}
+
+.cancelCard h1 {
+  margin: 0;
+  font-size: clamp(2.1rem, 7vw, 4rem);
+  line-height: 0.95;
+}
+
+.message {
+  max-width: 540px;
+  margin: 1rem auto 0;
+  color: #77513b;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  font-weight: 700;
+}
+
+.referenceBox,
+.noticeBox {
+  margin: 1.5rem auto;
+  padding: 1rem;
+  max-width: 420px;
+  border-radius: 22px;
+  background: #fff8ef;
+  border: 1px solid rgba(120, 67, 32, 0.14);
+}
+
+.referenceBox span {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: #9a5a2d;
+  font-size: 0.78rem;
+  font-weight: 950;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.referenceBox strong {
+  font-size: 1.8rem;
+  color: #3b2418;
+}
+
+.noticeBox {
+  text-align: left;
+}
+
+.noticeBox h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.15rem;
+}
+
+.noticeBox p {
+  margin: 0;
+  color: #77513b;
+  font-weight: 750;
+  line-height: 1.6;
+}
+
+.buttonRow {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.primaryButton,
+.secondaryButton {
+  text-decoration: none;
+  border-radius: 999px;
+  padding: 0.9rem 1.2rem;
+  font-weight: 950;
+}
+
+.primaryButton {
+  background: #5c2e19;
+  color: #fffaf5;
+}
+
+.secondaryButton {
+  background: #fff7ed;
+  color: #5c2e19;
+  border: 1px solid rgba(120, 67, 32, 0.18);
+}
+
+@media (max-width: 560px) {
+  .cancelPage {
+    padding: 1rem;
+  }
+
+  .buttonRow {
+    flex-direction: column;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    width: 100%;
+  }
+}
