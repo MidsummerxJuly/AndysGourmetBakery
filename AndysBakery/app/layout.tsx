@@ -3,7 +3,7 @@ import { Geist, Geist_Mono, Inter, Instrument_Serif, Shadows_Into_Light, Lobster
 // @ts-ignore
 import "./globals.css";
 import { CartProvider } from "./context/cartContext";
-import { BookingProvider } from "./context/bookingContext";
+
 
 
 const inter = Inter({
@@ -61,9 +61,7 @@ export default function RootLayout({
       <body
         className={`${instrument.variable} ${lobster.variable} ${shadows.variable}  antialiased`}>
         <CartProvider>
-          <BookingProvider>
             {children}
-          </BookingProvider>
         </CartProvider>
 
 

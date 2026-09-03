@@ -1,11 +1,11 @@
 "use client";
 
+import { Suspense, useState } from "react";
+import type { FormEvent } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import { useState } from "react";
 import styles from "./page.module.css";
 
-
-export default function AdminLoginPage() {
+function AdminLoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -16,7 +16,7 @@ export default function AdminLoginPage() {
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  async function handleLogin(event: React.FormEvent<HTMLFormElement>) {
+  async function handleLogin(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     setIsLoading(true);
@@ -93,5 +93,21 @@ export default function AdminLoginPage() {
         </form>
       </section>
     </main>
+  );
+}
+
+export default function AdminLoginPage() {
+  return (
+    <Suspense
+      fallback={
+        <main className={styles.loginPage}>
+          <section className={styles.loginCard}>
+            <p>Loading admin login...</p>
+          </section>
+        </main>
+      }
+    >
+      <AdminLoginForm />
+    </Suspense>
   );
 }

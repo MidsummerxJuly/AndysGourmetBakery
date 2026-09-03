@@ -1,13 +1,9 @@
 "use client";
 
-import React, { useState, useEffect, useInsertionEffect } from "react";
+import React, { useState, useEffect} from "react";
 import { useStripe, PaymentElement, useElements } from "@stripe/react-stripe-js";
-import { AwsDataApiTransaction } from "drizzle-orm/aws-data-api/pg";
 import Link from 'next/link';
-import { useBooking } from "../context/bookingContext";
 import { useCart } from "../context/cartContext";
-import { stat } from "fs";
-import { unique } from "drizzle-orm/gel-core";
 
 
 const CheckoutPage = ({ amount, uniqueBookingID, customerEmail, formattedDate, selectedTime,
@@ -38,7 +34,6 @@ const CheckoutPage = ({ amount, uniqueBookingID, customerEmail, formattedDate, s
     const [clientSecret, setClientSecret] = useState("");
     const [loading, setLoading] = useState(false);
 
-    const { addBooking } = useBooking();
     const { cart } = useCart();
 
     const totalMinutes = cart.reduce(

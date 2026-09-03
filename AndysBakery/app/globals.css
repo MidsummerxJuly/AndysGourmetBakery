@@ -148,7 +148,8 @@ button,
 html [type="button"],
 [type="reset"],
 [type="submit"] {
-  -webkit-appearance: button
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 button::-moz-focus-inner,
@@ -200,8 +201,9 @@ textarea {
 }
 
 [type="search"] {
-  -webkit-appearance: textfield;
-  outline-offset: -2px
+  -webkit-appearance: none;
+  appearance: none;
+  outline-offset: -2px;
 }
 
 [type="search"]::-webkit-search-cancel-button,
@@ -354,12 +356,32 @@ body {
   font-size: 1rem
 }
 
-body,
+
+body {
+  color: #6B7A90;
+  font-size: 1rem
+}
+
+html,
+body {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  color: #6b7a90;
+  font-size: 1rem;
+  font-family: "Heebo", sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fff7ec 0%, #ffe8c8 45%, #f8c58b 100%);
+  background-attachment: fixed;
+}
+
 button,
 input,
 select,
 textarea {
-  /* font-family: "Heebo", sans-serif */
+  font: inherit;
 }
 
 a {
@@ -593,21 +615,7 @@ address {
   margin: 0 0 24px
 }
 
-pre,
-pre h1,
-pre h2,
-pre h3,
-pre h4,
-pre h5,
-pre h6,
-pre .h1,
-pre .h2,
-pre .h3,
-pre .h4,
-pre .h5,
-pre .h6 {
-  /* font-family: "Courier 10 Pitch", Courier, monospace */
-}
+
 
 pre,
 code,
@@ -1401,7 +1409,7 @@ label {
   }
 
   .hero-copy {
-    /* margin-top: 50px; */
+    margin-top: 50px;
   }
 
   .hero-paragraph {
@@ -2228,10 +2236,8 @@ img {
 .cal-body__day,
 .cal-body__dayDisabled,
 .cal-body__daySelected {
-  display: inline-block;
   width: 50px;
   height: 50px;
-  float: left;
 }
 
 .cal-body__week,

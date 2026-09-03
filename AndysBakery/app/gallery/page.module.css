@@ -643,3 +643,8 @@
     font-size: 1rem;
   }
 }
+
+.galleryPage {
+  min-height: 100vh;
+  background:  linear-gradient(135deg, #f8dfe5, #fff5f2);
+}
