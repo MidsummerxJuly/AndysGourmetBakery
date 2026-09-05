@@ -14,7 +14,7 @@ export default function ContactPage() {
         <p className={styles.eyebrow}>Contact Andy’s Bakery</p>
         <h1>Questions about an order?</h1>
         <p>
-          Reach out for custom cake questions, pickup details, order changes, or
+          Reach out for custom cake questions, pickup details, order changes , or
           general bakery inquiries.
         </p>
       </section>
