@@ -377,6 +377,95 @@ body {
   background-attachment: fixed;
 }
 
+/* Shared mobile and keyboard-accessibility baseline. */
+html {
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: rgba(107, 63, 42, 0.2);
+}
+
+body {
+  overflow-x: hidden;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  touch-action: manipulation;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #6b3f2a;
+  outline-offset: 3px;
+}
+
+input,
+select,
+textarea {
+  max-width: 100%;
+}
+
+.languageToggle {
+  min-height: 44px;
+  min-width: 92px;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid rgba(107, 63, 42, 0.4);
+  border-radius: 999px;
+  background: #fffaf4;
+  color: #6b3f2a;
+  box-shadow: 0 4px 14px rgba(76, 42, 27, 0.18);
+  cursor: pointer;
+  font-family: var(--font-lobster), cursive;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.languageToggleActive {
+  color: #b33e5c;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.languageToggleDivider {
+  padding: 0 0.25rem;
+  color: #9b7663;
+}
+
+.siteLanguageToggle {
+  position: fixed;
+  top: max(1rem, env(safe-area-inset-top));
+  right: max(1rem, env(safe-area-inset-right));
+  z-index: 110;
+}
+
+@media (max-width: 640px) {
+  body {
+    background-attachment: scroll;
+  }
+
+  .siteLanguageToggle {
+    top: max(0.75rem, env(safe-area-inset-top));
+    right: max(0.75rem, env(safe-area-inset-right));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 button,
 input,
 select,

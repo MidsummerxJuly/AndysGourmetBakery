@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import styles from "./page.module.css";
@@ -15,7 +16,7 @@ function formatReference(value: string) {
   return value.slice(0, 8).toUpperCase();
 }
 
-export default function PaymentSuccessPage() {
+function PaymentSuccessContent() {
   const { t } = useLanguage();
   const searchParams = useSearchParams();
 
@@ -25,44 +26,52 @@ export default function PaymentSuccessPage() {
   const reference = formatReference(orderId) || formatReference(sessionId);
 
   return (
-    <main className={styles.successPage}>
-      <section className={styles.successCard}>
-        <div className={styles.iconCircle}>✓</div>
+      <main className={styles.successPage}>
+        <section className={styles.successCard}>
+          <div className={styles.iconCircle}>✓</div>
 
-        <p className={styles.eyebrow}>{t("payment.successEyebrow")}</p>
+          <p className={styles.eyebrow}>{t("payment.successEyebrow")}</p>
 
-        <h1>{t("payment.successHeadline")}</h1>
+          <h1>{t("payment.successHeadline")}</h1>
 
-        <p className={styles.message}>{t("payment.successMessage")}</p>
+          <p className={styles.message}>{t("payment.successMessage")}</p>
 
-        {reference ? (
-          <div className={styles.referenceBox}>
-            <span>{t("payment.orderReference")}</span>
-            <strong>#{reference}</strong>
+          {reference ? (
+              <div className={styles.referenceBox}>
+                <span>{t("payment.orderReference")}</span>
+                <strong>#{reference}</strong>
+              </div>
+          ) : null}
+
+          <div className={styles.nextSteps}>
+            <h2>{t("payment.nextStepsTitle")}</h2>
+
+            <ul>
+              <li>{t("payment.nextSteps1")}</li>
+              <li>{t("payment.nextSteps2")}</li>
+              <li>{t("payment.nextSteps3")}</li>
+              <li>{t("payment.nextSteps4")}</li>
+            </ul>
           </div>
-        ) : null}
 
-        <div className={styles.nextSteps}>
-          <h2>{t("payment.nextStepsTitle")}</h2>
+          <div className={styles.buttonRow}>
+            <Link href="/" className={styles.primaryButton}>
+              {t("payment.backHome")}
+            </Link>
 
-          <ul>
-            <li>{t("payment.nextSteps1")}</li>
-            <li>{t("payment.nextSteps2")}</li>
-            <li>{t("payment.nextSteps3")}</li>
-            <li>{t("payment.nextSteps4")}</li>
-          </ul>
-        </div>
+            <Link href="/services" className={styles.secondaryButton}>
+              {t("payment.placeAnother")}
+            </Link>
+          </div>
+        </section>
+      </main>
+  );
+}
 
-        <div className={styles.buttonRow}>
-          <Link href="/" className={styles.primaryButton}>
-            {t("payment.backHome")}
-          </Link>
-
-          <Link href="/services" className={styles.secondaryButton}>
-            {t("payment.placeAnother")}
-          </Link>
-        </div>
-      </section>
-    </main>
+export default function PaymentSuccessPage() {
+  return (
+      <Suspense fallback={null}>
+        <PaymentSuccessContent />
+      </Suspense>
   );
 }

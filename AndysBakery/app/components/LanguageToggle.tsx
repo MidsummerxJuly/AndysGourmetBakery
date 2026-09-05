@@ -11,6 +11,7 @@ export default function LanguageToggle({ className = "" }: { className?: string 
       onClick={toggleLang}
       className={`languageToggle ${className}`}
       aria-label={t("toggle.label")}
+      aria-pressed={lang === "es"}
     >
       <span className={lang === "en" ? "languageToggleActive" : ""}>EN</span>
       <span className="languageToggleDivider">/</span>
