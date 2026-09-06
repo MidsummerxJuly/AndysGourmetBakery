@@ -898,3 +898,20 @@
   stroke: rgba(217, 140, 157, 0.78);
   stroke-width: 4.5;
 }
+
+.appointmentPage {
+  width: 100%;
+  max-width: none;
+  min-height: 100vh;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  overflow-x: hidden;
+}
+
+.appointmentPage::before,
+.appointmentPage::after {
+  display: none !important;
+  content: none !important;
+}

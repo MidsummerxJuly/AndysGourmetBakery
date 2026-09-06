@@ -282,7 +282,7 @@ const [customOptionPage, setCustomOptionPage] = useState<{ [key: string]: number
 ];
 
   return (
-    <div className="body-wrap boxed-container">
+    <div>
       <main>
         <header className={pageCSS.bakeryHeader}>
           <img

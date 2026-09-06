@@ -3,7 +3,12 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
-export default function BottomSheetNav() {
+type BottomSheetNavProps = {
+  buttonTop?: string;
+  buttonLeft?: string;
+};
+
+export default function BottomSheetNav({ buttonTop, buttonLeft }: BottomSheetNavProps) {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -70,7 +75,13 @@ export default function BottomSheetNav() {
         </div>
       </div>
 
-      <div className="fabWrapper">
+        <div
+          className="fabWrapper"
+          style={{
+            ...(buttonTop ? { top: buttonTop } : {}),
+            ...(buttonLeft ? { left: buttonLeft } : {}),
+          }}
+        >
         <button
           className={`fab ${open ? "isOpen" : "isClose"}`}
           onClick={() => setOpen(true)}

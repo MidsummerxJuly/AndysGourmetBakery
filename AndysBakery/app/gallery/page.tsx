@@ -5,6 +5,7 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import BottomSheetNav from "@/app/components/BottomSheetNav";
 
+
 const categories = [
   "All",
   "Custom Cakes",
@@ -256,6 +257,7 @@ const galleryPhotos: GalleryPhoto[] = [
 ];
 
 export default function GalleryPage() {
+  const [selectedCategory, setSelectedCategory] = useState("All");
   const [activeCategory, setActiveCategory] = useState("All");
   const [selectedPhoto, setSelectedPhoto] = useState<GalleryPhoto | null>(null);
 
@@ -280,7 +282,9 @@ export default function GalleryPage() {
 
   return (
     <main className={styles.galleryPage}>
-      <BottomSheetNav />
+      <div className={styles.galleryMenuFix}>
+        <BottomSheetNav buttonTop="4.5rem" buttonLeft="1.5em" />
+      </div>
       
       <section className={styles.hero}>
         <p className={styles.eyebrow}>Andy’s Bakery Gallery</p>
@@ -301,20 +305,20 @@ export default function GalleryPage() {
         </div>
       </section>
 
-      <section className={styles.filterSection}>
-        <p>Filter gallery</p>
+     <section className={styles.filterCard}>
+        <div className={styles.filterHeader}>
+          <p className={styles.filterEyebrow}>Browse by category</p>
+          <h2>Filter Gallery</h2>
+        </div>
 
         <div className={styles.filterButtons}>
           {categories.map((category) => (
             <button
               key={category}
-              type="button"
-              className={
-                activeCategory === category
-                  ? `${styles.filterButton} ${styles.activeFilterButton}`
-                  : styles.filterButton
-              }
-              onClick={() => setActiveCategory(category)}
+              className={`${styles.filterButton} ${
+                selectedCategory === category ? styles.filterButtonActive : ""
+              }`}
+              onClick={() => setSelectedCategory(category)}
             >
               {category}
             </button>

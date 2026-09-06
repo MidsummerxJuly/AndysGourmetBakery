@@ -369,12 +369,10 @@ body {
 }
 
 body {
-  color: #6b7a90;
-  font-size: 1rem;
-  font-family: "Heebo", sans-serif;
+  color: rgb(107, 122, 144);
+  background: linear-gradient(135deg, #fffafb, #f8dfe5);
   min-height: 100vh;
-  background: linear-gradient(135deg, #fff7ec 0%, #ffe8c8 45%, #f8c58b 100%);
-  background-attachment: fixed;
+  font-family: Nunito, sans-serif;
 }
 
 button,
