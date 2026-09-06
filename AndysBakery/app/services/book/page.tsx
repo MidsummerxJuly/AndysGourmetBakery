@@ -94,20 +94,6 @@ export default function Book() {
     return String(day).padStart(2, "0");
   });
 
-  useEffect(() => {
-    if (!orderMonth || !orderYear || !orderDay) return;
-
-    const maxDay = new Date(
-      Number(orderYear),
-      Number(orderMonth),
-      0
-    ).getDate();
-
-    if (Number(orderDay) > maxDay) {
-      setOrderDay(String(maxDay).padStart(2, "0"));
-    }
-  }, [orderMonth, orderYear, orderDay]);
-
   const orderDate =
     orderMonth && orderDay && orderYear
       ? `${orderYear}-${orderMonth}-${orderDay}`
@@ -359,6 +345,7 @@ export default function Book() {
                       value={orderYear}
                       onChange={(event) => {
                         setOrderYear(event.target.value);
+                        setOrderDay("");
                       }}
                     >
                       <option value="">Year</option>
