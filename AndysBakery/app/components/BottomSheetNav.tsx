@@ -3,7 +3,12 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
-export default function BottomSheetNav() {
+type BottomSheetNavProps = {
+  buttonTop?: string;
+  buttonLeft?: string;
+};
+
+export default function BottomSheetNav({ buttonTop, buttonLeft }: BottomSheetNavProps) {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -32,9 +37,11 @@ export default function BottomSheetNav() {
         role="dialog"
         aria-modal="true"
         aria-label="Navigation menu"
+        aria-hidden={!open}
       >
         <div className="sheetHandleRow">
           <button
+            type="button"
             className="sheetClose"
             onClick={closeMenu}
             aria-label="Close menu"
@@ -46,7 +53,7 @@ export default function BottomSheetNav() {
         <div className="sheetContent">
           <h3 className="sheetTitle">Menu</h3>
 
-          <nav className="sheetNav">
+          <nav id="site-navigation" className="sheetNav">
             <Link className="sheetItem" href="/" onClick={closeMenu}>
               Home
             </Link>
@@ -70,10 +77,19 @@ export default function BottomSheetNav() {
         </div>
       </div>
 
-      <div className="fabWrapper">
+        <div
+          className="fabWrapper"
+          style={{
+            ...(buttonTop ? { top: buttonTop } : {}),
+            ...(buttonLeft ? { left: buttonLeft } : {}),
+          }}
+        >
         <button
+          type="button"
           className={`fab ${open ? "isOpen" : "isClose"}`}
           onClick={() => setOpen(true)}
+          aria-expanded={open}
+          aria-controls="site-navigation"
         >
           ☰ Menu
         </button>

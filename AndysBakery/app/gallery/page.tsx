@@ -4,6 +4,8 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import styles from "./page.module.css";
 import BottomSheetNav from "@/app/components/BottomSheetNav";
+import { useLanguage } from "@/app/context/LanguageContext";
+
 
 const categories = [
   "All",
@@ -234,7 +236,7 @@ const galleryPhotos: GalleryPhoto[] = [
     goodFor: "Birthdays, celebrations, classic cake orders",
   },
   {
-    title:"Thousand Layer Cake",
+    title: "Thousand Layer Cake",
     category: "Menu Cakes",
     image: "/images/Thousand_Layer_ With_Dulce_de_Leche.jpg",
     description:
@@ -255,17 +257,38 @@ const galleryPhotos: GalleryPhoto[] = [
   },
 ];
 
+const categoryKeyMap: Record<string, string> = {
+  "All": "gallery.all",
+  "Custom Cakes": "gallery.customCakes",
+  "Menu Cakes": "gallery.menuCakes",
+  "Pastries": "gallery.pastries",
+  "Bakery Case": "gallery.bakeryCase",
+};
+
 export default function GalleryPage() {
-  const [activeCategory, setActiveCategory] = useState("All");
+  const { t } = useLanguage();
+
+  const categories = [
+    t("gallery.all"),
+    t("gallery.customCakes"),
+    t("gallery.menuCakes"),
+    t("gallery.pastries"),
+    t("gallery.bakeryCase"),
+  ];
+
+  const [activeCategory, setActiveCategory] = useState(t("gallery.all"));
+  const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedPhoto, setSelectedPhoto] = useState<GalleryPhoto | null>(null);
 
   const visiblePhotos = useMemo(() => {
-    if (activeCategory === "All") return galleryPhotos;
+    if (activeCategory === t("gallery.all")) return galleryPhotos;
 
-    return galleryPhotos.filter(
-      (photo) => photo.category === activeCategory
+    const targetCategory = Object.keys(categoryKeyMap).find(
+      (key) => t(categoryKeyMap[key]) === activeCategory
     );
-  }, [activeCategory]);
+
+    return galleryPhotos.filter((photo) => photo.category === targetCategory);
+  }, [activeCategory, t]);
 
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
@@ -280,41 +303,40 @@ export default function GalleryPage() {
 
   return (
     <main className={styles.galleryPage}>
-      <BottomSheetNav />
+      <div className={styles.galleryMenuFix}>
+        <BottomSheetNav buttonTop="4.5rem" buttonLeft="1.5em" />
+      </div>
       
       <section className={styles.hero}>
-        <p className={styles.eyebrow}>Andy’s Bakery Gallery</p>
-        <h1>Custom cakes, pastries, and sweet creations.</h1>
-        <p>
-          Browse recent bakery work, custom cake ideas, and menu favorites.
-          Custom designs can vary based on size, theme, flavor, and availability.
-        </p>
+        <p className={styles.eyebrow}>{t("gallery.eyebrow")}</p>
+        <h1>{t("gallery.headline")}</h1>
+        <p>{t("gallery.description")}</p>
 
         <div className={styles.buttonRow}>
           <Link href="/services" className={styles.primaryButton}>
-            Start an Order
+            {t("gallery.startOrder")}
           </Link>
 
           <Link href="/contact" className={styles.secondaryButton}>
-            Ask a Question
+            {t("gallery.askQuestion")}
           </Link>
         </div>
       </section>
 
-      <section className={styles.filterSection}>
-        <p>Filter gallery</p>
+     <section className={styles.filterCard}>
+        <div className={styles.filterHeader}>
+          <p className={styles.filterEyebrow}>Browse by category</p>
+          <h2>Filter Gallery</h2>
+        </div>
 
         <div className={styles.filterButtons}>
           {categories.map((category) => (
             <button
               key={category}
-              type="button"
-              className={
-                activeCategory === category
-                  ? `${styles.filterButton} ${styles.activeFilterButton}`
-                  : styles.filterButton
-              }
-              onClick={() => setActiveCategory(category)}
+              className={`${styles.filterButton} ${
+                selectedCategory === category ? styles.filterButtonActive : ""
+              }`}
+              onClick={() => setSelectedCategory(category)}
             >
               {category}
             </button>
@@ -335,28 +357,25 @@ export default function GalleryPage() {
             </div>
 
             <div className={styles.photoText}>
-              <span>{photo.category}</span>
+              <span>{t(categoryKeyMap[photo.category] ?? "gallery.customCakes")}</span>
               <h2>{photo.title}</h2>
-              <p>Click for details</p>
+              <p>{t("gallery.clickForDetails")}</p>
             </div>
           </button>
         ))}
       </section>
 
       <section className={styles.ctaSection}>
-        <h2>Want something custom?</h2>
-        <p>
-          Send inspiration photos, serving size, colors, flavors, and the date
-          you need it. Andy’s Bakery can follow up with details.
-        </p>
+        <h2>{t("gallery.customEyebrow")}</h2>
+        <p>{t("gallery.customText")}</p>
 
         <div className={styles.buttonRow}>
           <Link href="/services" className={styles.primaryButton}>
-            Order Online
+            {t("gallery.orderOnline")}
           </Link>
 
           <Link href="/policies" className={styles.secondaryButton}>
-            View Policies
+            {t("gallery.viewPolicies")}
           </Link>
         </div>
       </section>
@@ -375,7 +394,7 @@ export default function GalleryPage() {
               type="button"
               className={styles.closeModalButton}
               onClick={() => setSelectedPhoto(null)}
-              aria-label="Close gallery details"
+              aria-label={t("gallery.close")}
             >
               ✕
             </button>
@@ -385,27 +404,29 @@ export default function GalleryPage() {
             </div>
 
             <div className={styles.modalText}>
-              <p className={styles.modalCategory}>{selectedPhoto.category}</p>
+              <p className={styles.modalCategory}>
+                {t(categoryKeyMap[selectedPhoto.category] ?? "gallery.customCakes")}
+              </p>
               <h2>{selectedPhoto.title}</h2>
               <p>{selectedPhoto.description}</p>
 
               <div className={styles.infoBox}>
-                <span>Details</span>
+                <span>{t("gallery.details")}</span>
                 <p>{selectedPhoto.details}</p>
               </div>
 
               <div className={styles.infoBox}>
-                <span>Good For</span>
+                <span>{t("gallery.goodFor")}</span>
                 <p>{selectedPhoto.goodFor}</p>
               </div>
 
               <div className={styles.modalButtons}>
                 <Link href="/services" className={styles.primaryButton}>
-                  Start an Order
+                  {t("gallery.startOrder")}
                 </Link>
 
                 <Link href="/contact" className={styles.secondaryButton}>
-                  Ask About This
+                  {t("gallery.askAboutThis")}
                 </Link>
               </div>
             </div>

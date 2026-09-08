@@ -1,14 +1,12 @@
+"use client";
+
+import { Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import styles from "./page.module.css";
+import { useLanguage } from "@/app/context/LanguageContext";
 
-type SuccessPageProps = {
-  searchParams?: Promise<{
-    order_id?: string | string[];
-    session_id?: string | string[];
-  }>;
-};
-
-function getSingleValue(value: string | string[] | undefined) {
+function getSingleValue(value: string | string[] | null) {
   if (Array.isArray(value)) return value[0] || "";
   return value || "";
 }
@@ -18,58 +16,62 @@ function formatReference(value: string) {
   return value.slice(0, 8).toUpperCase();
 }
 
-export default async function PaymentSuccessPage({
-  searchParams,
-}: SuccessPageProps) {
-  const params = searchParams ? await searchParams : {};
+function PaymentSuccessContent() {
+  const { t } = useLanguage();
+  const searchParams = useSearchParams();
 
-  const orderId = getSingleValue(params.order_id);
-  const sessionId = getSingleValue(params.session_id);
+  const orderId = getSingleValue(searchParams.get("order_id"));
+  const sessionId = getSingleValue(searchParams.get("session_id"));
 
   const reference = formatReference(orderId) || formatReference(sessionId);
 
   return (
-    <main className={styles.successPage}>
-      <section className={styles.successCard}>
-        <div className={styles.iconCircle}>✓</div>
+      <main className={styles.successPage}>
+        <section className={styles.successCard}>
+          <div className={styles.iconCircle}>✓</div>
 
-        <p className={styles.eyebrow}>Payment Successful</p>
+          <p className={styles.eyebrow}>{t("payment.successEyebrow")}</p>
 
-        <h1>Thank you for your order!</h1>
+          <h1>{t("payment.successHeadline")}</h1>
 
-        <p className={styles.message}>
-          Your order has been received, and a confirmation email has been sent.
-          Andy’s Bakery will contact you if anything else is needed.
-        </p>
+          <p className={styles.message}>{t("payment.successMessage")}</p>
 
-        {reference ? (
-          <div className={styles.referenceBox}>
-            <span>Order Reference</span>
-            <strong>#{reference}</strong>
+          {reference ? (
+              <div className={styles.referenceBox}>
+                <span>{t("payment.orderReference")}</span>
+                <strong>#{reference}</strong>
+              </div>
+          ) : null}
+
+          <div className={styles.nextSteps}>
+            <h2>{t("payment.nextStepsTitle")}</h2>
+
+            <ul>
+              <li>{t("payment.nextSteps1")}</li>
+              <li>{t("payment.nextSteps2")}</li>
+              <li>{t("payment.nextSteps3")}</li>
+              <li>{t("payment.nextSteps4")}</li>
+            </ul>
           </div>
-        ) : null}
 
-        <div className={styles.nextSteps}>
-          <h2>What happens next?</h2>
+          <div className={styles.buttonRow}>
+            <Link href="/" className={styles.primaryButton}>
+              {t("payment.backHome")}
+            </Link>
 
-          <ul>
-            <li>Your payment has been recorded.</li>
-            <li>The bakery will review the order details.</li>
-            <li>You will be contacted if the order needs clarification.</li>
-            <li>Please save your confirmation email for your records.</li>
-          </ul>
-        </div>
+            <Link href="/services" className={styles.secondaryButton}>
+              {t("payment.placeAnother")}
+            </Link>
+          </div>
+        </section>
+      </main>
+  );
+}
 
-        <div className={styles.buttonRow}>
-          <Link href="/" className={styles.primaryButton}>
-            Back to Home
-          </Link>
-
-          <Link href="/services" className={styles.secondaryButton}>
-            Place Another Order
-          </Link>
-        </div>
-      </section>
-    </main>
+export default function PaymentSuccessPage() {
+  return (
+      <Suspense fallback={null}>
+        <PaymentSuccessContent />
+      </Suspense>
   );
 }

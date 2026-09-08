@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import BottomSheetNav from "@/app/components/BottomSheetNav";
 import { useCart } from "@/app/context/cartContext";
+import { useLanguage } from "@/app/context/LanguageContext";
 import styles from "./page.module.css";
 
 function formatPhoneNumber(value: string) {
@@ -48,6 +49,7 @@ function getCategoryFromName(name: string) {
 }
 
 export default function Book() {
+  const { t } = useLanguage();
   const { cart } = useCart();
 
   const [hasMounted, setHasMounted] = useState(false);
@@ -70,18 +72,18 @@ export default function Book() {
   const yearOptions = [currentYear, currentYear + 1, currentYear + 2];
 
   const monthOptions = [
-    { value: "01", label: "January" },
-    { value: "02", label: "February" },
-    { value: "03", label: "March" },
-    { value: "04", label: "April" },
-    { value: "05", label: "May" },
-    { value: "06", label: "June" },
-    { value: "07", label: "July" },
-    { value: "08", label: "August" },
-    { value: "09", label: "September" },
-    { value: "10", label: "October" },
-    { value: "11", label: "November" },
-    { value: "12", label: "December" },
+    { value: "01", label: t("book.january") },
+    { value: "02", label: t("book.february") },
+    { value: "03", label: t("book.march") },
+    { value: "04", label: t("book.april") },
+    { value: "05", label: t("book.may") },
+    { value: "06", label: t("book.june") },
+    { value: "07", label: t("book.july") },
+    { value: "08", label: t("book.august") },
+    { value: "09", label: t("book.september") },
+    { value: "10", label: t("book.october") },
+    { value: "11", label: t("book.november") },
+    { value: "12", label: t("book.december") },
   ];
 
   const daysInSelectedMonth =
@@ -93,6 +95,20 @@ export default function Book() {
     const day = index + 1;
     return String(day).padStart(2, "0");
   });
+
+  useEffect(() => {
+    if (!orderMonth || !orderYear || !orderDay) return;
+
+    const maxDay = new Date(
+      Number(orderYear),
+      Number(orderMonth),
+      0
+    ).getDate();
+
+    if (Number(orderDay) > maxDay) {
+      setOrderDay(String(maxDay).padStart(2, "0"));
+    }
+  }, [orderMonth, orderYear, orderDay]);
 
   const orderDate =
     orderMonth && orderDay && orderYear
@@ -123,7 +139,7 @@ export default function Book() {
     event.preventDefault();
 
     if (!isFormReady) {
-      setErrorMessage("Please complete all required fields before continuing.");
+      setErrorMessage(t("book.helperText"));
       return;
     }
 
@@ -171,26 +187,26 @@ export default function Book() {
 
       setOrderId(result.orderId);
 
-        const paymentResponse = await fetch("/api/payment", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            orderId: result.orderId,
-          }),
-        });
+      const paymentResponse = await fetch("/api/payment", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          orderId: result.orderId,
+        }),
+      });
 
-        const paymentResult = await paymentResponse.json();
+      const paymentResult = await paymentResponse.json();
 
-        if (!paymentResponse.ok || !paymentResult.success) {
-          throw new Error(paymentResult.message || "Failed to create payment checkout.");
-        }
+      if (!paymentResponse.ok || !paymentResult.success) {
+        throw new Error(paymentResult.message || "Failed to create payment checkout.");
+      }
 
-        window.location.href = paymentResult.checkoutUrl;
+      window.location.href = paymentResult.checkoutUrl;
     } catch (error) {
       console.error(error);
-      setErrorMessage("Something went wrong while creating the order.");
+      setErrorMessage(t("book.errorMessage"));
     } finally {
       setIsSubmitting(false);
     }
@@ -205,24 +221,22 @@ export default function Book() {
       <main className={styles.checkoutShell}>
         <div className={styles.topRow}>
           <Link href="/services" className={styles.backLink}>
-            ← Return to Order Page
+            ← {t("book.backToOrder")}
           </Link>
         </div>
 
         <section className={styles.headerSection}>
-          <p className={styles.eyebrow}>Checkout</p>
-          <h1 className={styles.pageTitle}>Complete Your Bakery Order</h1>
-          <p className={styles.pageIntro}>
-            Review your basket, add your contact details, and choose your requested pickup date.
-          </p>
+          <p className={styles.eyebrow}>{t("book.eyebrow")}</p>
+          <h1 className={styles.pageTitle}>{t("book.headline")}</h1>
+          <p className={styles.pageIntro}>{t("book.intro")}</p>
         </section>
 
         {cart.length <= 0 && (
           <section className={styles.emptyCard}>
-            <h2>Your basket is empty.</h2>
-            <p>Please return to the order page and add at least one item before checking out.</p>
+            <h2>{t("book.emptyTitle")}</h2>
+            <p>{t("book.emptyText")}</p>
             <Link href="/services" className={styles.primaryLink}>
-              Start an Order
+              {t("book.startOrder")}
             </Link>
           </section>
         )}
@@ -230,7 +244,7 @@ export default function Book() {
         {cart.length > 0 && (
           <div className={styles.checkoutGrid}>
             <section className={styles.card}>
-              <h2 className={styles.sectionTitle}>Your Basket</h2>
+              <h2 className={styles.sectionTitle}>{t("book.basketTitle")}</h2>
 
               <div className={styles.basketList}>
                 {cart.map((item) => {
@@ -252,66 +266,65 @@ export default function Book() {
               </div>
 
               <div className={styles.totalBox}>
-                <span>Subtotal</span>
+                <span>{t("book.subtotal")}</span>
                 <strong>{formatMoneyFromCents(subtotalCents)}</strong>
               </div>
 
               <div className={styles.totalBox}>
-                <span>Total</span>
+                <span>{t("services.total")}</span>
                 <strong>{formatMoneyFromCents(totalCents)}</strong>
               </div>
             </section>
 
             <section className={styles.card}>
-              <h2 className={styles.sectionTitle}>Customer Details</h2>
-
+              <h2 className={styles.sectionTitle}>{t("book.customerTitle")}</h2>
 
               <form className={styles.checkoutForm} onSubmit={handleSubmit}>
                 <label className={styles.formField}>
-                  Name *
+                  {t("book.nameLabel")}
                   <input
                     type="text"
                     value={customerName}
                     onChange={(event) => setCustomerName(event.target.value)}
-                    placeholder="Customer name"
+                    placeholder={t("book.namePlaceholder")}
                   />
                 </label>
 
                 <label className={styles.formField}>
-                  Phone *
+                  {t("book.phoneLabel")}
                   <input
                     type="tel"
                     inputMode="numeric"
                     value={customerPhone}
                     onChange={(event) => setCustomerPhone(formatPhoneNumber(event.target.value))}
-                    placeholder="000-000-0000"
+                    placeholder={t("book.phonePlaceholder")}
                     maxLength={12}
                   />
                 </label>
 
                 <label className={styles.formField}>
-                  Email *
+                  {t("book.emailLabel")}
                   <input
                     type="email"
                     value={customerEmail}
                     onChange={(event) => setCustomerEmail(event.target.value)}
-                    placeholder="Email address"
+                    placeholder={t("book.emailPlaceholder")}
                   />
                 </label>
 
                 <label className={styles.formField}>
-                  Fulfillment *
+                  {t("book.fulfillmentLabel")}
                   <select
                     value={fulfillmentType}
                     onChange={(event) => setFulfillmentType(event.target.value)}
                   >
-                    <option value="pickup">Pickup</option>
-                    <option value="delivery">Delivery Requested</option>
+                    <option value="pickup">{t("book.pickup")}</option>
+                    <option value="delivery">{t("book.deliveryRequested")}</option>
                   </select>
                 </label>
 
                 <div className={styles.formField}>
-                  <span>Requested Date *</span>
+                  <span>{t("book.dateLabel")}</span>
 
                   <div className={styles.dateSelectRow}>
                     <select
@@ -321,7 +334,7 @@ export default function Book() {
                         setOrderDay("");
                       }}
                     >
-                      <option value="">Month</option>
+                      <option value="">{t("book.month")}</option>
                       {monthOptions.map((month) => (
                         <option key={month.value} value={month.value}>
                           {month.label}
@@ -333,7 +346,7 @@ export default function Book() {
                       value={orderDay}
                       onChange={(event) => setOrderDay(event.target.value)}
                     >
-                      <option value="">Day</option>
+                      <option value="">{t("book.day")}</option>
                       {dayOptions.map((day) => (
                         <option key={day} value={day}>
                           {day}
@@ -345,10 +358,9 @@ export default function Book() {
                       value={orderYear}
                       onChange={(event) => {
                         setOrderYear(event.target.value);
-                        setOrderDay("");
                       }}
                     >
-                      <option value="">Year</option>
+                      <option value="">{t("book.year")}</option>
                       {yearOptions.map((year) => (
                         <option key={year} value={String(year)}>
                           {year}
@@ -359,36 +371,32 @@ export default function Book() {
                 </div>
 
                 <label className={styles.formField}>
-                  Notes
+                  {t("book.notesLabel")}
                   <textarea
                     value={customerNotes}
                     onChange={(event) => setCustomerNotes(event.target.value)}
-                    placeholder="Add pickup notes, design notes, flavor notes, or any special requests."
+                    placeholder={t("book.notesPlaceholder")}
                   />
                 </label>
 
                 {!isFormReady && (
-                  <p className={styles.helperText}>
-                    Please complete all required fields before continuing.
-                  </p>
+                  <p className={styles.helperText}>{t("book.helperText")}</p>
                 )}
 
                 {errorMessage && (
                   <p className={styles.errorMessage}>{errorMessage}</p>
                 )}
 
-               {orderId && (
+                {orderId && (
                   <div className={styles.successBox}>
-                    <h3>Order received</h3>
+                    <h3>{t("book.orderReceived")}</h3>
 
                     <p>
-                      Reference:{" "}
+                      {t("book.reference")}:{" "}
                       <strong>{orderId.slice(0, 8).toUpperCase()}</strong>
                     </p>
 
-                    <p className={styles.successText}>
-                      Your order has been saved. Payment will be connected next.
-                    </p>
+                    <p className={styles.successText}>{t("book.orderSaved")}</p>
                   </div>
                 )}
 
@@ -397,7 +405,7 @@ export default function Book() {
                   className={styles.submitButton}
                   disabled={!isFormReady || isSubmitting || !!orderId}
                 >
-                  {isSubmitting ? "Creating Order..." : "Save Order & Continue"}
+                  {isSubmitting ? t("book.submitting") : t("book.submit")}
                 </button>
               </form>
             </section>

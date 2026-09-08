@@ -1,48 +1,50 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import BottomSheetNav from "./components/BottomSheetNav";
 import styles from "./page.module.css";
-
-const featuredItems = [
-  {
-    title: "Custom Cakes",
-    description:
-      "Beautiful custom cakes for birthdays, weddings, family events, and special celebrations.",
-    image: "/images/gallery13.jpg",
-    href: "/gallery",
-  },
-  {
-    title: "Menu Cakes",
-    description:
-      "Classic cake options like dulce de leche, Italian meringue, Black Forest, and layered cakes.",
-    image: "/images/Italian_Meringue.jpg",
-    href: "/services",
-  },
-  {
-    title: "Pastries & Sweets",
-    description:
-      "Sweet bakery favorites including fruit tarts, alfajores, berlines, chilenitos, and more.",
-    image: "/images/gallery10.jpg",
-    href: "/services",
-  },
-];
-
-const quickInfo = [
-  {
-    title: "Order Online",
-    text: "Choose menu items, add them to your basket, and checkout securely online.",
-  },
-  {
-    title: "Custom Designs",
-    text: "Send details for theme, colors, flavor, filling, date needed, and serving size.",
-  },
-  {
-    title: "Local Pickup",
-    text: "Orders are prepared by Andy’s Bakery and pickup details can be confirmed after ordering.",
-  },
-];
+import { useLanguage } from "./context/LanguageContext";
 
 export default function HomePage() {
+  const { t } = useLanguage();
+
+  const featuredItems = [
+    {
+      title: t("home.customCakesTitle"),
+      description: t("home.customCakesDescription"),
+      image: "/images/gallery13.jpg",
+      href: "/gallery",
+    },
+    {
+      title: t("home.menuCakesTitle"),
+      description: t("home.menuCakesDescription"),
+      image: "/images/Italian_Meringue.jpg",
+      href: "/services",
+    },
+    {
+      title: t("home.pastriesTitle"),
+      description: t("home.pastriesDescription"),
+      image: "/images/gallery10.jpg",
+      href: "/services",
+    },
+  ];
+
+  const quickInfo = [
+    {
+      title: t("home.orderOnlineTitle"),
+      text: t("home.orderOnlineText"),
+    },
+    {
+      title: t("home.customDesignsTitle"),
+      text: t("home.customDesignsText"),
+    },
+    {
+      title: t("home.localPickupTitle"),
+      text: t("home.localPickupText"),
+    },
+  ];
+
   return (
     <main className={styles.homePage}>
       <BottomSheetNav />
@@ -60,31 +62,28 @@ export default function HomePage() {
             />
 
             <div>
-              <p className={styles.eyebrow}>Andy’s Gourmet Bakery</p>
-              <p className={styles.smallText}>Davie, Florida</p>
+              <p className={styles.eyebrow}>{t("home.eyebrow")}</p>
+              <p className={styles.smallText}>{t("home.location")}</p>
             </div>
           </div>
 
-          <h1>Custom cakes, pastries, and desserts for every celebration.</h1>
+          <h1>{t("home.headline")}</h1>
 
-          <p className={styles.heroDescription}>
-            Browse bakery favorites, view custom cake inspiration, and place an
-            order online for pickup.
-          </p>
+          <p className={styles.heroDescription}>{t("home.description")}</p>
 
           <div className={styles.buttonRow}>
             <Link href="/services" className={styles.primaryButton}>
-              Start an Order
+              {t("home.startOrder")}
             </Link>
 
             <Link href="/gallery" className={styles.secondaryButton}>
-              View Gallery
+              {t("home.viewGallery")}
             </Link>
           </div>
 
           <div className={styles.heroContact}>
-            <span>📞 754-242-4383</span>
-            <span>🧁 6947 Stirling Road, Davie, FL 33314</span>
+            <span>📞 {t("home.phone")}</span>
+            <span>🧁 {t("home.address")}</span>
           </div>
         </div>
 
@@ -123,12 +122,9 @@ export default function HomePage() {
 
       <section className={styles.featuredSection}>
         <div className={styles.sectionHeader}>
-          <p className={styles.eyebrow}>Bakery Favorites</p>
-          <h2>Explore what Andy’s Bakery makes.</h2>
-          <p>
-            These sections use placeholder descriptions for now. Final names,
-            ingredients, and pricing can be adjusted after review.
-          </p>
+          <p className={styles.eyebrow}>{t("home.favoritesEyebrow")}</p>
+          <h2>{t("home.favoritesHeadline")}</h2>
+          <p>{t("home.favoritesNote")}</p>
         </div>
 
         <div className={styles.featuredGrid}>
@@ -149,7 +145,7 @@ export default function HomePage() {
                 <p>{item.description}</p>
 
                 <Link href={item.href} className={styles.cardLink}>
-                  View {item.title}
+                  {t("home.viewItem")} {item.title}
                 </Link>
               </div>
             </article>
@@ -159,41 +155,34 @@ export default function HomePage() {
 
       <section className={styles.customSection}>
         <div>
-          <p className={styles.eyebrow}>Custom Orders</p>
-          <h2>Need a cake made for your event?</h2>
-          <p>
-            Send the date needed, serving size, flavor ideas, colors, theme, and
-            any inspiration photos. Andy’s Bakery can review the details and
-            follow up if anything needs clarification.
-          </p>
+          <p className={styles.eyebrow}>{t("home.customOrdersEyebrow")}</p>
+          <h2>{t("home.customOrdersHeadline")}</h2>
+          <p>{t("home.customOrdersText")}</p>
         </div>
 
         <div className={styles.customButtons}>
           <Link href="/services" className={styles.primaryButton}>
-            Order a Custom Cake
+            {t("home.orderCustomCake")}
           </Link>
 
           <Link href="/contact" className={styles.secondaryButton}>
-            Contact the Bakery
+            {t("home.contactBakery")}
           </Link>
         </div>
       </section>
 
       <section className={styles.finalCta}>
-        <p className={styles.eyebrow}>Ready to order?</p>
-        <h2>Start your bakery order online.</h2>
-        <p>
-          Choose your items, confirm your basket, and complete payment through
-          secure checkout.
-        </p>
+        <p className={styles.eyebrow}>{t("home.ctaEyebrow")}</p>
+        <h2>{t("home.ctaHeadline")}</h2>
+        <p>{t("home.ctaText")}</p>
 
         <div className={styles.buttonRow}>
           <Link href="/services" className={styles.primaryButton}>
-            Start an Order
+            {t("home.startOrder")}
           </Link>
 
           <Link href="/policies" className={styles.secondaryButton}>
-            View Policies
+            {t("home.viewPolicies")}
           </Link>
         </div>
       </section>
