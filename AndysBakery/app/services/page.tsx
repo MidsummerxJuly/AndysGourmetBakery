@@ -304,7 +304,7 @@ export default function Services() {
   );
 
   return (
-    <div className="body-wrap boxed-container">
+    <div>
       <main>
         <header className={pageCSS.bakeryHeader}>
           <img
