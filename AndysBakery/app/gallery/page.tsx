@@ -6,6 +6,15 @@ import styles from "./page.module.css";
 import BottomSheetNav from "@/app/components/BottomSheetNav";
 import { useLanguage } from "@/app/context/LanguageContext";
 
+
+const categories = [
+  "All",
+  "Custom Cakes",
+  "Menu Cakes",
+  "Pastries",
+  "Bakery Case",
+];
+
 type GalleryPhoto = {
   title: string;
   category: string;
@@ -268,6 +277,7 @@ export default function GalleryPage() {
   ];
 
   const [activeCategory, setActiveCategory] = useState(t("gallery.all"));
+  const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedPhoto, setSelectedPhoto] = useState<GalleryPhoto | null>(null);
 
   const visiblePhotos = useMemo(() => {
@@ -293,8 +303,10 @@ export default function GalleryPage() {
 
   return (
     <main className={styles.galleryPage}>
-      <BottomSheetNav />
-
+      <div className={styles.galleryMenuFix}>
+        <BottomSheetNav buttonTop="4.5rem" buttonLeft="1.5em" />
+      </div>
+      
       <section className={styles.hero}>
         <p className={styles.eyebrow}>{t("gallery.eyebrow")}</p>
         <h1>{t("gallery.headline")}</h1>
@@ -311,20 +323,20 @@ export default function GalleryPage() {
         </div>
       </section>
 
-      <section className={styles.filterSection}>
-        <p>{t("gallery.filter")}</p>
+     <section className={styles.filterCard}>
+        <div className={styles.filterHeader}>
+          <p className={styles.filterEyebrow}>Browse by category</p>
+          <h2>Filter Gallery</h2>
+        </div>
 
         <div className={styles.filterButtons}>
           {categories.map((category) => (
             <button
               key={category}
-              type="button"
-              className={
-                activeCategory === category
-                  ? `${styles.filterButton} ${styles.activeFilterButton}`
-                  : styles.filterButton
-              }
-              onClick={() => setActiveCategory(category)}
+              className={`${styles.filterButton} ${
+                selectedCategory === category ? styles.filterButtonActive : ""
+              }`}
+              onClick={() => setSelectedCategory(category)}
             >
               {category}
             </button>
