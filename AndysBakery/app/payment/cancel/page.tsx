@@ -1,68 +1,65 @@
+"use client";
+
+import { Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import styles from "./page.module.css";
+import { useLanguage } from "@/app/context/LanguageContext";
 
-type CancelPageProps = {
-  searchParams?: Promise<{
-    order_id?: string | string[];
-  }>;
-};
-
-function getSingleValue(value: string | string[] | undefined) {
-  if (Array.isArray(value)) return value[0] || "";
-  return value || "";
+function getSingleValue(value: string | string[] | null) {
+    if (Array.isArray(value)) return value[0] || "";
+    return value || "";
 }
 
 function formatReference(value: string) {
-  if (!value) return "";
-  return value.slice(0, 8).toUpperCase();
+    if (!value) return "";
+    return value.slice(0, 8).toUpperCase();
 }
 
-export default async function PaymentCancelPage({
-  searchParams,
-}: CancelPageProps) {
-  const params = searchParams ? await searchParams : {};
-  const orderId = getSingleValue(params.order_id);
-  const reference = formatReference(orderId);
+function PaymentSuccessContent() {
+    const { t } = useLanguage();
+    const searchParams = useSearchParams();
 
-  return (
-    <main className={styles.cancelPage}>
-      <section className={styles.cancelCard}>
-        <div className={styles.iconCircle}>!</div>
+    const orderId = getSingleValue(searchParams.get("order_id"));
+    const reference = formatReference(orderId);
 
-        <p className={styles.eyebrow}>Payment Not Completed</p>
+    return (
+        <main className={styles.successPage}>
+            <section className={styles.successCard}>
+                <div className={styles.iconCircle}>✓</div>
 
-        <h1>Your payment was canceled.</h1>
+                <p className={styles.eyebrow}>{t("payment.successEyebrow")}</p>
 
-        <p className={styles.message}>
-          Your order was not marked as paid. You can return to checkout and try
-          again, or place a new order if needed.
-        </p>
+                <h1>{t("payment.successHeadline")}</h1>
 
-        {reference ? (
-          <div className={styles.referenceBox}>
-            <span>Order Reference</span>
-            <strong>#{reference}</strong>
-          </div>
-        ) : null}
+                <p className={styles.message}>{t("payment.successMessage")}</p>
 
-        <div className={styles.noticeBox}>
-          <h2>Need help?</h2>
-          <p>
-            If you were trying to complete an order and something went wrong,
-            please contact Andy’s Bakery before placing a duplicate order.
-          </p>
-        </div>
+                {reference ? (
+                    <div className={styles.referenceBox}>
+                        <span>{t("payment.orderReference")}</span>
+                        <strong>#{reference}</strong>
+                    </div>
+                ) : null}
 
-        <div className={styles.buttonRow}>
-          <Link href="/services/book" className={styles.primaryButton}>
-            Return to Checkout
-          </Link>
+                <div className={styles.noticeBox}>
+                    <h2>{t("payment.nextSteps")}</h2>
+                    <p>{t("payment.successHelpText")}</p>
+                </div>
 
-          <Link href="/services" className={styles.secondaryButton}>
-            Back to Order Page
-          </Link>
-        </div>
-      </section>
-    </main>
-  );
+                <div className={styles.buttonRow}>
+                    <Link href="/services" className={styles.primaryButton}>
+                        {t("payment.backToServices")}
+                    </Link>
+                </div>
+            </section>
+        </main>
+    );
+}
+
+export default function PaymentSuccessPage() {
+    return (
+        <Suspense fallback={null}>
+            <PaymentSuccessContent />
+        </Suspense>
+    );
 }

@@ -1,69 +1,47 @@
+"use client";
+
 import Link from "next/link";
 import styles from "./page.module.css";
 import BottomSheetNav from "../components/BottomSheetNav";
-
-const policies = [
-  {
-    title: "Online Orders",
-    details: [
-      "Orders submitted through the website are reviewed by Andy’s Bakery after payment is completed.",
-      "Customers should include accurate contact information so the bakery can follow up if anything needs clarification.",
-      "Submitting an order does not guarantee changes can be made after payment, especially close to the selected pickup date.",
-    ],
-  },
-  {
-    title: "Payments",
-    details: [
-      "Website orders require payment at checkout before the order is marked as paid.",
-      "Unpaid or canceled checkout orders are not considered confirmed.",
-      "If there is an issue during payment, customers should contact the bakery before submitting a duplicate order.",
-    ],
-  },
-  {
-    title: "Custom Cakes",
-    details: [
-      "Custom cake prices may vary depending on size, flavor, filling, decorations, and design complexity.",
-      "Customers should include design notes, theme ideas, colors, and serving size when placing a custom order.",
-      "Andy’s Bakery may contact the customer if a requested design needs to be adjusted.",
-    ],
-  },
-  {
-    title: "Pickup",
-    details: [
-      "Customers are responsible for picking up orders on the selected date unless another arrangement has been confirmed.",
-      "Pickup details may be confirmed by email, phone, or text.",
-      "Orders should be handled carefully after pickup, especially cakes and decorated desserts.",
-    ],
-  },
-  {
-    title: "Changes and Cancellations",
-    details: [
-      "Order changes should be requested as early as possible.",
-      "Some changes may not be available after preparation has started.",
-      "Cancellation and refund decisions may depend on the order type, ingredients purchased, and preparation progress.",
-    ],
-  },
-  {
-    title: "Allergens",
-    details: [
-      "Bakery items may contain or come into contact with common allergens including wheat, milk, eggs, soy, peanuts, and tree nuts.",
-      "Customers with allergies should contact the bakery before ordering.",
-      "Andy’s Bakery cannot guarantee that items are completely free from cross-contact.",
-    ],
-  },
-];
+import { useLanguage } from "../context/LanguageContext";
 
 export default function PoliciesPage() {
+  const { t } = useLanguage();
+
+  const policies = [
+    {
+      title: t("policies.onlineOrders"),
+      details: [t("policies.onlineOrders1"), t("policies.onlineOrders2"), t("policies.onlineOrders3")],
+    },
+    {
+      title: t("policies.payments"),
+      details: [t("policies.payments1"), t("policies.payments2"), t("policies.payments3")],
+    },
+    {
+      title: t("policies.customCakes"),
+      details: [t("policies.customCakes1"), t("policies.customCakes2"), t("policies.customCakes3")],
+    },
+    {
+      title: t("policies.pickup"),
+      details: [t("policies.pickup1"), t("policies.pickup2"), t("policies.pickup3")],
+    },
+    {
+      title: t("policies.changes"),
+      details: [t("policies.changes1"), t("policies.changes2"), t("policies.changes3")],
+    },
+    {
+      title: t("policies.allergens"),
+      details: [t("policies.allergens1"), t("policies.allergens2"), t("policies.allergens3")],
+    },
+  ];
+
   return (
     <main className={styles.policiesPage}>
       <BottomSheetNav />
       <section className={styles.hero}>
-        <p className={styles.eyebrow}>Andy’s Bakery</p>
-        <h1>Order Policies</h1>
-        <p>
-          Please review these policies before placing an order. They help keep
-          the ordering process clear for both customers and the bakery.
-        </p>
+        <p className={styles.eyebrow}>{t("policies.eyebrow")}</p>
+        <h1>{t("policies.headline")}</h1>
+        <p>{t("policies.intro")}</p>
       </section>
 
       <section className={styles.policyList}>
@@ -81,19 +59,16 @@ export default function PoliciesPage() {
       </section>
 
       <section className={styles.noticeSection}>
-        <h2>Questions before ordering?</h2>
-        <p>
-          Contact Andy’s Bakery before submitting your order if you need help
-          with sizing, flavors, pickup details, or custom design questions.
-        </p>
+        <h2>{t("policies.questionsTitle")}</h2>
+        <p>{t("policies.questionsText")}</p>
 
         <div className={styles.buttonRow}>
           <Link href="/contact" className={styles.primaryButton}>
-            Contact Us
+            {t("policies.contactUs")}
           </Link>
 
           <Link href="/services" className={styles.secondaryButton}>
-            Start an Order
+            {t("policies.startOrder")}
           </Link>
         </div>
       </section>
