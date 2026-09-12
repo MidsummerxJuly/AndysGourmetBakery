@@ -458,3 +458,30 @@
     font-size: 0.88rem;
   }
 }
+
+/* Mobile overrides — must follow later unqualified rules */
+@media (max-width: 600px) {
+  .topRow {
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .headerSection {
+    margin: 1.5rem auto 1.75rem;
+  }
+
+  .pageTitle {
+    max-width: 360px;
+    font-size: clamp(2.5rem, 12vw, 3.7rem);
+    line-height: 0.95;
+  }
+
+  .pageIntro {
+    max-width: 360px;
+    font-size: 0.95rem;
+  }
+
+  .dateSelectRow {
+    grid-template-columns: 1fr;
+  }
+}

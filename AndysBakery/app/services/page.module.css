@@ -215,7 +215,37 @@
         position: relative;
         overflow: hidden;
         isolation: isolate;
-        
+    }
+
+    .bakeryHeader {
+      grid-template-columns: 1fr;
+      padding: 1rem 1rem 2.5rem;
+    }
+
+    .logoArea {
+      grid-column: auto;
+    }
+
+    .bakeryLogo {
+      width: 200px;
+    }
+
+    .qrBox {
+      display: none;
+    }
+
+    .flowerBanner {
+      max-height: 180px;
+    }
+
+    .cartContainer {
+      padding: 1rem;
+      overflow-x: auto;
+    }
+
+    .contactRow {
+      gap: 0.5rem;
+      font-size: 0.9rem;
     }
 }
 
@@ -709,17 +739,6 @@
   transform: translateY(45px);
 }
 
-.appointmentPage {
-    padding-left: 5rem;
-    margin-bottom: 5rem;
-
-    background: #fff0e7;
-    padding-top: 0;
-    padding-bottom: 4rem;
-}
-
-
-
 .cartContainer {
   width: 100%;
   max-width: 760px;
@@ -903,10 +922,10 @@
   width: 100%;
   max-width: none;
   min-height: 100vh;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 0;
+  margin-right: 0;
   overflow-x: hidden;
 }
 
@@ -914,4 +933,11 @@
 .appointmentPage::after {
   display: none !important;
   content: none !important;
+}
+
+@media (max-width: 768px) {
+  .appointmentPage {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
