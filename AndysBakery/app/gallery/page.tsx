@@ -404,7 +404,7 @@ export default function GalleryPage() {
           </Link>
         </div>
       </section>
-
+  
       {selectedPhoto ? (
         <div
           className={styles.modalBackdrop}

@@ -329,13 +329,6 @@ export default function Services() {
             </div>
           </div>
 
-          <div className={pageCSS.qrBox}>
-            <div className={pageCSS.qrPlaceholder}>
-              QR
-            </div>
-
-            <p className={pageCSS.followText}>{t("services.followUs")}</p>
-          </div>
 
           <div className={pageCSS.headerWave}>
             <svg viewBox="0 0 1200 70" preserveAspectRatio="none">
