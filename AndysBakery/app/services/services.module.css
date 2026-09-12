@@ -1096,6 +1096,22 @@
   .sizeButton {
     font-size: 0.95rem;
   }
+
+  .categoryButton {
+    padding: 1rem 1.25rem;
+    font-size: clamp(1.15rem, 5vw, 1.5rem);
+  }
+
+  .itemDropdownBtn {
+    padding: 0.85rem 1rem 1.6rem;
+    font-size: clamp(1.1rem, 4.5vw, 1.35rem);
+  }
+
+  .itemArrow {
+    right: 1rem;
+    bottom: 0.4rem;
+    font-size: 0.75rem;
+  }
 }
 
 /* Compact expanded product layout */
