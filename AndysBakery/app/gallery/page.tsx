@@ -6,15 +6,6 @@ import styles from "./page.module.css";
 import BottomSheetNav from "@/app/components/BottomSheetNav";
 import { useLanguage } from "@/app/context/LanguageContext";
 
-
-const categories = [
-  "All",
-  "Custom Cakes",
-  "Menu Cakes",
-  "Pastries",
-  "Bakery Case",
-];
-
 type GalleryPhoto = {
   title: string;
   category: string;
@@ -23,6 +14,13 @@ type GalleryPhoto = {
   details: string;
   goodFor: string;
 };
+
+type GalleryCategoryId =
+  | "all"
+  | "customCakes"
+  | "menuCakes"
+  | "pastries"
+  | "bakeryCase";
 
 const galleryPhotos: GalleryPhoto[] = [
   {
@@ -199,8 +197,7 @@ const galleryPhotos: GalleryPhoto[] = [
     title: "Bakery Display",
     category: "Bakery Case",
     image: "/images/gallery19.jpg",
-    description:
-      "A display of bakery items and dessert options.",
+    description: "A display of bakery items and dessert options.",
     details:
       "Placeholder info: availability may change depending on orders and baking schedule.",
     goodFor: "Dessert inspiration, bakery variety",
@@ -209,8 +206,7 @@ const galleryPhotos: GalleryPhoto[] = [
     title: "Pink Sheet Cake",
     category: "Custom Cakes",
     image: "/images/gallery20.jpg",
-    description:
-      "A custom sheet cake design with pink decoration.",
+    description: "A custom sheet cake design with pink decoration.",
     details:
       "Placeholder info: sheet cakes can be customized with writing, color, and flavor options.",
     goodFor: "Birthdays, family parties, larger servings",
@@ -229,8 +225,7 @@ const galleryPhotos: GalleryPhoto[] = [
     title: "Italian Meringue Cake",
     category: "Menu Cakes",
     image: "/images/Italian_Meringue.jpg",
-    description:
-      "A cake option featuring Italian meringue-style frosting.",
+    description: "A cake option featuring Italian meringue-style frosting.",
     details:
       "Placeholder info: final cake flavor, filling, and size options should be confirmed.",
     goodFor: "Birthdays, celebrations, classic cake orders",
@@ -239,8 +234,7 @@ const galleryPhotos: GalleryPhoto[] = [
     title: "Thousand Layer Cake",
     category: "Menu Cakes",
     image: "/images/Thousand_Layer_ With_Dulce_de_Leche.jpg",
-    description:
-      "A layered cake option with dulce de leche inspiration.",
+    description: "A layered cake option with dulce de leche inspiration.",
     details:
       "Placeholder info: final name, serving sizes, and pricing should be confirmed.",
     goodFor: "Family parties, dessert tables, special occasions",
@@ -258,37 +252,62 @@ const galleryPhotos: GalleryPhoto[] = [
 ];
 
 const categoryKeyMap: Record<string, string> = {
-  "All": "gallery.all",
+  All: "gallery.all",
   "Custom Cakes": "gallery.customCakes",
   "Menu Cakes": "gallery.menuCakes",
-  "Pastries": "gallery.pastries",
+  Pastries: "gallery.pastries",
   "Bakery Case": "gallery.bakeryCase",
 };
 
 export default function GalleryPage() {
   const { t } = useLanguage();
 
-  const categories = [
-    t("gallery.all"),
-    t("gallery.customCakes"),
-    t("gallery.menuCakes"),
-    t("gallery.pastries"),
-    t("gallery.bakeryCase"),
+  const categories: {
+    id: GalleryCategoryId;
+    label: string;
+    value: string;
+  }[] = [
+    { id: "all", label: t("gallery.all", "All"), value: "All" },
+    {
+      id: "customCakes",
+      label: t("gallery.customCakes", "Custom Cakes"),
+      value: "Custom Cakes",
+    },
+    {
+      id: "menuCakes",
+      label: t("gallery.menuCakes", "Menu Cakes"),
+      value: "Menu Cakes",
+    },
+    {
+      id: "pastries",
+      label: t("gallery.pastries", "Pastries"),
+      value: "Pastries",
+    },
+    {
+      id: "bakeryCase",
+      label: t("gallery.bakeryCase", "Bakery Case"),
+      value: "Bakery Case",
+    },
   ];
 
-  const [activeCategory, setActiveCategory] = useState(t("gallery.all"));
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedCategory, setSelectedCategory] =
+    useState<GalleryCategoryId>("all");
+
   const [selectedPhoto, setSelectedPhoto] = useState<GalleryPhoto | null>(null);
 
   const visiblePhotos = useMemo(() => {
-    if (activeCategory === t("gallery.all")) return galleryPhotos;
-
-    const targetCategory = Object.keys(categoryKeyMap).find(
-      (key) => t(categoryKeyMap[key]) === activeCategory
+    const currentCategory = categories.find(
+      (category) => category.id === selectedCategory
     );
 
-    return galleryPhotos.filter((photo) => photo.category === targetCategory);
-  }, [activeCategory, t]);
+    if (!currentCategory || currentCategory.id === "all") {
+      return galleryPhotos;
+    }
+
+    return galleryPhotos.filter(
+      (photo) => photo.category === currentCategory.value
+    );
+  }, [selectedCategory, categories]);
 
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
@@ -306,7 +325,7 @@ export default function GalleryPage() {
       <div className={styles.galleryMenuFix}>
         <BottomSheetNav buttonTop="4.5rem" buttonLeft="1.5em" />
       </div>
-      
+
       <section className={styles.hero}>
         <p className={styles.eyebrow}>{t("gallery.eyebrow")}</p>
         <h1>{t("gallery.headline")}</h1>
@@ -323,22 +342,26 @@ export default function GalleryPage() {
         </div>
       </section>
 
-     <section className={styles.filterCard}>
+      <section className={styles.filterCard}>
         <div className={styles.filterHeader}>
-          <p className={styles.filterEyebrow}>Browse by category</p>
-          <h2>Filter Gallery</h2>
+          <p className={styles.filterEyebrow}>
+            {t("gallery.browseByCategory", "Browse by category")}
+          </p>
+          <h2>{t("gallery.filterTitle", "Filter Gallery")}</h2>
         </div>
 
         <div className={styles.filterButtons}>
           {categories.map((category) => (
             <button
-              key={category}
+              key={category.id}
               className={`${styles.filterButton} ${
-                selectedCategory === category ? styles.filterButtonActive : ""
+                selectedCategory === category.id
+                  ? styles.filterButtonActive
+                  : ""
               }`}
-              onClick={() => setSelectedCategory(category)}
+              onClick={() => setSelectedCategory(category.id)}
             >
-              {category}
+              {category.label}
             </button>
           ))}
         </div>
@@ -357,7 +380,9 @@ export default function GalleryPage() {
             </div>
 
             <div className={styles.photoText}>
-              <span>{t(categoryKeyMap[photo.category] ?? "gallery.customCakes")}</span>
+              <span>
+                {t(categoryKeyMap[photo.category] ?? "gallery.customCakes")}
+              </span>
               <h2>{photo.title}</h2>
               <p>{t("gallery.clickForDetails")}</p>
             </div>
@@ -405,8 +430,12 @@ export default function GalleryPage() {
 
             <div className={styles.modalText}>
               <p className={styles.modalCategory}>
-                {t(categoryKeyMap[selectedPhoto.category] ?? "gallery.customCakes")}
+                {t(
+                  categoryKeyMap[selectedPhoto.category] ??
+                    "gallery.customCakes"
+                )}
               </p>
+
               <h2>{selectedPhoto.title}</h2>
               <p>{selectedPhoto.description}</p>
 
