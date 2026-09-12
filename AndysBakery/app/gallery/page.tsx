@@ -5,6 +5,7 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import BottomSheetNav from "@/app/components/BottomSheetNav";
 import { useLanguage } from "@/app/context/LanguageContext";
+//burgers//
 
 type GalleryPhoto = {
   title: string;
