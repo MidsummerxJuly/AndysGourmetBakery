@@ -376,10 +376,7 @@
   margin: 0 auto;
 }
 
-.valuesGrid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
-}
+
 
 .valueCard {
   padding: 1.35rem 1rem;
@@ -674,4 +671,35 @@
 
 .aboutPage :global(.fab) {
   z-index: 10000 !important;
+}
+
+
+/* Keep value cards centered, only fix text wrapping */
+.valuesGrid {
+  justify-items: center;
+}
+
+.valueCard {
+  width: 100%;
+  min-width: 0;
+}
+
+.valueCard h3 {
+  width: 100%;
+  max-width: 135px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-size: clamp(0.95rem, 1.5vw, 1.12rem);
+  line-height: 1.35;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+}
+
+.valueCard p {
+  max-width: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
