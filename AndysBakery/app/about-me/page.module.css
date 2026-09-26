@@ -425,7 +425,9 @@
   overflow: hidden;
 }
 
-.aboutPage > * {
+.heroSection,
+.storySection,
+.familySection {
   position: relative;
   z-index: 1;
 }
@@ -632,5 +634,44 @@
 
 .aboutPage :global(.fab) {
   position: relative;
+  z-index: 10000 !important;
+}
+
+/* Stop BottomSheetNav from creating layout space on About page */
+.aboutPage :global(.fabWrapper) {
+  position: fixed !important;
+  top: 6rem !important;
+  left: 1.5rem !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  z-index: 9999 !important;
+}
+
+.aboutPage :global(.fab) {
+  position: relative !important;
+  z-index: 10000 !important;
+}
+
+/* Keep BottomSheetNav floating above the About page */
+.aboutPage :global(.fabWrapper) {
+  position: fixed !important;
+  top: 4.5rem !important;
+  left: 1.5rem !important;
+  z-index: 9999 !important;
+}
+
+.aboutPage :global(.sheetBackdrop) {
+  position: fixed !important;
+  z-index: 9998 !important;
+}
+
+.aboutPage :global(.bottomSheet) {
+  position: fixed !important;
+  z-index: 9999 !important;
+}
+
+.aboutPage :global(.fab) {
   z-index: 10000 !important;
 }
