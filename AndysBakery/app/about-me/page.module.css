@@ -1,0 +1,636 @@
+.aboutPage {
+  min-height: 100vh;
+  padding: 5rem 1.5rem 4rem;
+  background:
+    radial-gradient(circle at top left, rgba(255, 230, 236, 0.95), transparent 32rem),
+    radial-gradient(circle at top right, rgba(255, 246, 232, 0.9), transparent 28rem),
+    linear-gradient(180deg, #fff7f3 0%, #fde4e8 55%, #f8dce3 100%);
+  color: #6f3f2a;
+}
+
+/* Shared card style */
+.heroSection,
+.storyText,
+.storyCard,
+.valuesSection,
+.familySection {
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(116, 64, 42, 0.08);
+  box-shadow: 0 20px 50px rgba(116, 64, 42, 0.11);
+}
+
+/* Hero */
+.heroSection {
+  width: min(94%, 1050px);
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  border-radius: 34px;
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 0.8rem;
+  color: #c06f82;
+  font-size: 0.82rem;
+  font-weight: 900;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.heroSection h1 {
+  margin: 0;
+  color: #74402a;
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  line-height: 0.95;
+}
+
+.heroSection p {
+  max-width: 760px;
+  margin: 1.35rem auto 0;
+  color: #6f3f2a;
+  font-size: clamp(1rem, 2vw, 1.18rem);
+  line-height: 1.85;
+}
+
+.buttonRow {
+  margin-top: 2.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.primaryButton,
+.secondaryButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.2rem;
+  padding: 0.95rem 1.55rem;
+  border-radius: 999px;
+  font-weight: 850;
+  text-decoration: none;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.primaryButton {
+  background: #74402a;
+  color: white;
+  box-shadow: 0 14px 28px rgba(116, 64, 42, 0.24);
+}
+
+.secondaryButton {
+  background: #fff8f5;
+  color: #74402a;
+  border: 1px solid rgba(116, 64, 42, 0.2);
+}
+
+.primaryButton:hover,
+.secondaryButton:hover {
+  transform: translateY(-2px);
+}
+
+/* Story */
+.storySection {
+  width: min(94%, 1050px);
+  margin: 2rem auto 0;
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+.storyText,
+.storyCard {
+  padding: 2rem;
+  border-radius: 30px;
+}
+
+.storyText h2 {
+  margin: 0;
+  color: #74402a;
+  font-size: clamp(2.1rem, 5vw, 3.35rem);
+  line-height: 1;
+}
+
+.storyText p {
+  margin: 1rem 0 0;
+  color: #6f3f2a;
+  font-size: 1.05rem;
+  line-height: 1.85;
+}
+
+.storyCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.storyCard h3 {
+  margin: 0 0 1.25rem;
+  color: #74402a;
+  font-size: clamp(1.35rem, 3vw, 1.7rem);
+}
+
+.storyCard ul {
+  width: fit-content;
+  max-width: 330px;
+  margin: 0 auto;
+  padding-left: 1.2rem;
+  text-align: left;
+}
+
+.storyCard li {
+  margin-bottom: 0.9rem;
+  color: #6f3f2a;
+  line-height: 1.65;
+}
+
+/* Values */
+.valuesSection {
+  width: min(94%, 1050px);
+  margin: 2rem auto 0;
+  padding: 2rem;
+  border-radius: 34px;
+}
+
+.valuesHeader {
+  max-width: 720px;
+  margin: 0 auto 2rem;
+  text-align: center;
+}
+
+.valuesHeader h2 {
+  margin: 0;
+  color: #74402a;
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  line-height: 1;
+}
+
+.valuesHeader p {
+  margin: 1rem auto 0;
+  color: #6f3f2a;
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+.valuesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.valueCard {
+  padding: 1.65rem;
+  border-radius: 26px;
+  background: #fff8f5;
+  border: 1px solid rgba(116, 64, 42, 0.12);
+  box-shadow: 0 12px 28px rgba(116, 64, 42, 0.08);
+  text-align: center;
+}
+
+.valueCard h3 {
+  margin: 0 0 0.75rem;
+  color: #74402a;
+  font-size: 1.25rem;
+}
+
+.valueCard p {
+  margin: 0;
+  color: #6f3f2a;
+  line-height: 1.7;
+}
+
+/* Family photos */
+.familySection {
+  width: min(94%, 1050px);
+  margin: 2rem auto 0;
+  padding: 2rem;
+  border-radius: 34px;
+}
+
+.familyHeader {
+  max-width: 730px;
+  margin: 0 auto 2rem;
+  text-align: center;
+}
+
+.familyHeader h2 {
+  margin: 0;
+  color: #74402a;
+  font-size: clamp(2rem, 5vw, 3.35rem);
+  line-height: 1;
+}
+
+.familyHeader p {
+  margin: 1rem auto 0;
+  color: #6f3f2a;
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+.familyGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.familyPhotoCard {
+  overflow: hidden;
+  min-height: 320px;
+  border-radius: 28px;
+  background:
+    linear-gradient(135deg, #fff8f5, #fde4e8);
+  border: 1px solid rgba(116, 64, 42, 0.1);
+  box-shadow: 0 14px 32px rgba(116, 64, 42, 0.12);
+}
+
+.familyPhotoCard img {
+  display: block;
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .aboutPage {
+    padding: 4.5rem 1rem 3rem;
+  }
+
+  .heroSection {
+    padding: 3rem 1.5rem;
+  }
+
+  .storySection {
+    grid-template-columns: 1fr;
+  }
+
+  .valuesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .familyGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .familyPhotoCard img {
+    height: 320px;
+  }
+}
+
+/* Phones */
+@media (max-width: 560px) {
+  .aboutPage {
+    padding: 4rem 0.85rem 2.5rem;
+  }
+
+  .heroSection,
+  .storyText,
+  .storyCard,
+  .valuesSection,
+  .familySection {
+    border-radius: 24px;
+  }
+
+  .heroSection {
+    padding: 2.4rem 1.15rem;
+  }
+
+  .storyText,
+  .storyCard,
+  .valuesSection,
+  .familySection {
+    padding: 1.25rem;
+  }
+
+  .buttonRow {
+    gap: 0.75rem;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .storyText p,
+  .storyCard li,
+  .valuesHeader p,
+  .valueCard p,
+  .familyHeader p {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .storyCard ul {
+    max-width: 100%;
+  }
+
+  .familyPhotoCard img {
+    height: 280px;
+  }
+}
+
+.storySection {
+  width: min(94%, 1050px);
+  margin: 2rem auto 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-areas:
+    "story values"
+    "special special";
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+.storyText {
+  grid-area: story;
+}
+
+.valuesSection {
+  grid-area: values;
+  width: 100%;
+  margin: 0;
+}
+
+.storyCard {
+  grid-area: special;
+  width: min(100%, 760px);
+  justify-self: center;
+  min-height: auto;
+  padding: 1.75rem 2rem;
+}
+
+.storyCard h3 {
+  text-align: center;
+}
+
+.storyCard ul {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.valuesGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.valueCard {
+  padding: 1.35rem 1rem;
+}
+
+.valueCard h3 {
+  font-size: 1.05rem;
+  line-height: 1.35;
+}
+
+.valueCard p {
+  font-size: 0.98rem;
+  line-height: 1.65;
+}
+
+@media (max-width: 900px) {
+  .storySection {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "story"
+      "values"
+      "special";
+  }
+
+  .storyCard {
+    width: 100%;
+  }
+
+  .valuesGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Pretty bakery polish layer */
+
+.aboutPage {
+  background:
+    radial-gradient(circle at 8% 8%, rgba(255, 211, 222, 0.75), transparent 18rem),
+    radial-gradient(circle at 92% 12%, rgba(255, 244, 218, 0.8), transparent 20rem),
+    radial-gradient(circle at 50% 100%, rgba(255, 205, 217, 0.45), transparent 28rem),
+    linear-gradient(180deg, #fff8f4 0%, #fde6ea 50%, #f8dce3 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.aboutPage > * {
+  position: relative;
+  z-index: 1;
+}
+
+.aboutPage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.32;
+  background-image:
+    radial-gradient(circle, rgba(116, 64, 42, 0.28) 1.5px, transparent 2px),
+    radial-gradient(circle, rgba(219, 119, 146, 0.35) 1.5px, transparent 2px),
+    radial-gradient(circle, rgba(255, 205, 123, 0.45) 1.5px, transparent 2px);
+  background-size: 90px 90px, 120px 120px, 150px 150px;
+  background-position: 0 0, 35px 45px, 80px 20px;
+  z-index: 0;
+}
+
+.aboutPage > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Make cards feel less flat */
+.heroSection,
+.storyText,
+.storyCard,
+.valuesSection,
+.familySection {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 250, 248, 0.9));
+  border: 1px solid rgba(116, 64, 42, 0.1);
+  box-shadow:
+    0 22px 55px rgba(116, 64, 42, 0.11),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+/* Decorative blush corner */
+.heroSection::before,
+.storyText::before,
+.valuesSection::before,
+.familySection::before {
+  content: "";
+  position: absolute;
+  width: 11rem;
+  height: 11rem;
+  right: -4rem;
+  top: -4rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 202, 216, 0.5), transparent 70%);
+  pointer-events: none;
+}
+
+/* Small top accent line */
+.heroSection::after,
+.storyText::after,
+.valuesSection::after,
+.familySection::after {
+  content: "";
+  position: absolute;
+  left: 2rem;
+  right: 2rem;
+  top: 0;
+  height: 5px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #d98298, #f5c2cf, #f7d8a6);
+  opacity: 0.7;
+}
+
+/* Make the menu/story/value cards feel more premium */
+.storySection {
+  gap: 2rem;
+}
+
+.storyCard {
+  background:
+    radial-gradient(circle at top, rgba(255, 225, 232, 0.7), transparent 16rem),
+    rgba(255, 255, 255, 0.92);
+}
+
+/* Values card glow/icons */
+.valuesGrid {
+  gap: 1.35rem;
+}
+
+.valueCard {
+  position: relative;
+  padding: 4.2rem 1.35rem 1.6rem;
+  background:
+    linear-gradient(180deg, #fffaf7, #fff3f5);
+  border: 1px solid rgba(116, 64, 42, 0.13);
+  box-shadow:
+    0 14px 30px rgba(116, 64, 42, 0.09),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+}
+
+.valueCard::before {
+  position: absolute;
+  top: 1.1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: #fde4e8;
+  color: #74402a;
+  border: 1px solid rgba(116, 64, 42, 0.12);
+  box-shadow: 0 8px 18px rgba(116, 64, 42, 0.1);
+  font-size: 1.1rem;
+}
+
+.valueCard:nth-child(1)::before {
+  content: "♡";
+}
+
+.valueCard:nth-child(2)::before {
+  content: "✦";
+}
+
+.valueCard:nth-child(3)::before {
+  content: "✿";
+}
+
+.valueCard h3 {
+  font-size: clamp(1rem, 2vw, 1.22rem);
+  line-height: 1.35;
+}
+
+.valueCard p {
+  max-width: 180px;
+  margin: 0 auto;
+}
+
+/* Family placeholder cards look intentional until photos are added */
+.familyPhotoCard {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 217, 226, 0.8), transparent 12rem),
+    linear-gradient(135deg, #fff8f5, #fde4e8);
+  border: 1px dashed rgba(116, 64, 42, 0.22);
+}
+
+/* Mobile polish */
+@media (max-width: 900px) {
+  .storySection {
+    gap: 1.25rem;
+  }
+
+  .valueCard {
+    padding: 4rem 1.25rem 1.4rem;
+  }
+
+  .valueCard p {
+    max-width: 280px;
+  }
+}
+
+@media (max-width: 560px) {
+  .aboutPage::before {
+    opacity: 0.22;
+  }
+
+  .heroSection::after,
+  .storyText::after,
+  .valuesSection::after,
+  .familySection::after {
+    left: 1.25rem;
+    right: 1.25rem;
+  }
+
+  .valuesGrid {
+    gap: 1rem;
+  }
+}
+
+/* Keep menu button above About page cards */
+.aboutPage :global(.fabWrapper) {
+  z-index: 9999 !important;
+}
+
+.aboutPage :global(.fab) {
+  position: relative;
+  z-index: 10000 !important;
+}
+
+/* Fix extra empty top space */
+.aboutPage {
+  padding-top: 2rem !important;
+}
+
+.heroSection {
+  margin-top: 0 !important;
+}
+
+/* Make sure the floating menu does not take layout space */
+.aboutPage :global(.fabWrapper) {
+  position: fixed !important;
+  z-index: 9999 !important;
+}
+
+.aboutPage :global(.fab) {
+  position: relative;
+  z-index: 10000 !important;
+}
