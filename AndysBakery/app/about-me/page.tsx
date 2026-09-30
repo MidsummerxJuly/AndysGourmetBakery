@@ -125,14 +125,12 @@ export default function AboutMePage() {
                             </li>
                             <li>
                                 {t(
-                                    "about.specialTwo",
-                                    "Homemade desserts with a personal touch"
+                                    "All kosher ingredients"
                                 )}
                             </li>
                             <li>
                                 {t(
-                                    "about.specialThree",
-                                    "Pickup orders made with care and planning"
+                                    "Served with positivity"
                                 )}
                             </li>
                         </ul>
