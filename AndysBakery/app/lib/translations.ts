@@ -4,6 +4,7 @@ export const translations = {
       home: "Home",
       order: "Order",
       gallery: "Gallery",
+      about: "About Me",
       contact: "Contact",
       policies: "Policies",
       menu: "Menu",
@@ -189,6 +190,41 @@ export const translations = {
       goodFor: "Good For",
       askAboutThis: "Ask About This",
     },
+    about: {
+      eyebrow: "About Andy's Bakery",
+      title: "Meet Andy",
+      heroText:
+        "Hi, I’m Andrea Chereau, baking has been my passion for over 15 years. What started off as homemade baking for friends and family has grown into a journey filled with creativity and love for creating delicious desserts. Throughout the years, I have continued developing my skills by taking courses in gastronomy and pastry design. I truly enjoy experimenting and putting my own personal touch into every cake and dessert I make!",
+      orderOnline: "Order Online",
+      contactUs: "Contact Us",
+      storyEyebrow: "Our Story",
+      storyTitle: "Made from home, shared with the community",
+      storyTextOne:
+        "My cakes are inspired by the traditional flavors and styles of Chile, bringing a taste of Chilean baking to every occasion. At the same time, I cherish working closely with my customers to create cakes tailored to their individual tastes, whether it’s a favorite flavor, filling, or special design. All of the products and ingredients I use are Kosher, allowing me to provide quality desserts made with care and attention to every detail.",
+      storyTextTwo:
+        "Since 2023, I have opened my own bakery, proudly serving the community from Davie. Every creation is made with love, creativity, and the goal of making your every occasion even sweeter!",
+      valuesEyebrow: "Our Values",
+      valuesTitle: "What makes every dessert special",
+      valuesText:
+        "Every order is made with care, creativity, and a personal touch.",
+      valueOneTitle: "Homemade Care",
+      valueOneText: "Made with attention, love, and care.",
+      valueTwoTitle: "Custom Designs & Desserts",
+      valueTwoText: "Cakes made for your events.",
+      valueThreeTitle: "Chilean Flavor",
+      valueThreeText: "Inspired by Chilean traditions.",
+      specialTitle: "What makes us special",
+      specialOne: "Custom cakes for birthdays and events",
+      specialTwo: "Homemade desserts with a personal touch",
+      specialThree: "Pickup orders made with care and planning",
+      familyEyebrow: "Family Owned",
+      familyTitle: "From our family to yours",
+      familyText:
+        "Behind Andy’s Bakery is a family story built on love, support, and the joy of sharing homemade sweets with the community.",
+      familyPhotoOneAlt: "Andy and her husband",
+      familyPhotoTwoAlt: "Andy and her husband smiling together",
+    },
+
     contact: {
       eyebrow: "Contact Andy’s Bakery",
       headline: "Questions about an order?",
@@ -289,6 +325,7 @@ export const translations = {
       home: "Inicio",
       order: "Pedir",
       gallery: "Galería",
+      about: "Sobre Mí",
       contact: "Contacto",
       policies: "Políticas",
       menu: "Menú",
@@ -476,6 +513,41 @@ export const translations = {
       goodFor: "Ideal Para",
       askAboutThis: "Preguntar por Esto",
     },
+    about: {
+      eyebrow: "Sobre Andy's Bakery",
+      title: "Conoce a Andy",
+      heroText:
+        "Hola, soy Andrea Chereau. La repostería ha sido mi pasión por más de 15 años. Lo que comenzó como postres caseros para amigos y familiares se convirtió en un camino lleno de creatividad y amor por crear postres deliciosos. A lo largo de los años, he seguido desarrollando mis habilidades tomando cursos de gastronomía y diseño de pastelería. ¡Me encanta experimentar y poner mi toque personal en cada torta y postre que preparo!",
+      orderOnline: "Ordenar en línea",
+      contactUs: "Contáctanos",
+      storyEyebrow: "Nuestra historia",
+      storyTitle: "Hecho en casa, compartido con la comunidad",
+      storyTextOne:
+        "Mis tortas están inspiradas en los sabores y estilos tradicionales de Chile, llevando un sabor de la repostería chilena a cada ocasión. Al mismo tiempo, me encanta trabajar de cerca con mis clientes para crear tortas adaptadas a sus gustos individuales, ya sea un sabor favorito, relleno o diseño especial. Todos los productos e ingredientes que uso son kosher, lo que me permite ofrecer postres de calidad hechos con cuidado y atención a cada detalle.",
+      storyTextTwo:
+        "Desde 2023, abrí mi propia pastelería, sirviendo con orgullo a la comunidad desde Davie. ¡Cada creación está hecha con amor, creatividad y con el objetivo de hacer que cada ocasión sea aún más dulce!",
+      valuesEyebrow: "Nuestros valores",
+      valuesTitle: "Lo que hace especial cada postre",
+      valuesText:
+        "Cada pedido se prepara con cuidado, creatividad y un toque personal.",
+      valueOneTitle: "Cuidado casero",
+      valueOneText: "Hecho con atención, amor y cuidado.",
+      valueTwoTitle: "Diseños y postres personalizados",
+      valueTwoText: "Tortas hechas para tus eventos.",
+      valueThreeTitle: "Sabor chileno",
+      valueThreeText: "Inspirado en tradiciones chilenas.",
+      specialTitle: "Lo que nos hace especiales",
+      specialOne: "Tortas personalizadas para cumpleaños y eventos",
+      specialTwo: "Postres caseros con un toque personal",
+      specialThree: "Pedidos para recoger hechos con cuidado y planificación",
+      familyEyebrow: "Negocio familiar",
+      familyTitle: "De nuestra familia a la tuya",
+      familyText:
+        "Detrás de Andy’s Bakery hay una historia familiar basada en el amor, el apoyo y la alegría de compartir postres caseros con la comunidad.",
+      familyPhotoOneAlt: "Andy y su esposo",
+      familyPhotoTwoAlt: "Andy y su esposo sonriendo juntos",
+    },
+
     contact: {
       eyebrow: "Contacta a Andy’s Bakery",
       headline: "¿Preguntas sobre un pedido?",
