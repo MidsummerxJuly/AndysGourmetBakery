@@ -22,7 +22,7 @@ export default function AboutMePage() {
                 <p>
                     {t(
                         "about.heroText",
-                        "Hi, I’m Andrea Chereau, baking has been my passion for over 15 years. What started off as homemade baking for friends and family has grown into a journey filled with creativity and love for creating delicious desserts. Throughout the years, I have continued developing my skills by taking courses in gastronomy and pastry design. I truly enjoy experimenting and putting my own personal touch into every cake and dessert I make!"
+                        "Hi, I’m Andrea Chereau!, baking has been my passion for over 15 years. What started off as homemade baking for friends and family has grown into a journey filled with creativity and love for creating delicious desserts. Throughout the years, I have continued developing my skills by taking courses in gastronomy and pastry design. I truly enjoy experimenting and putting my own personal touch into every cake and dessert I make!"
                     )}
                 </p>
 
