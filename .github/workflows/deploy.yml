@@ -26,11 +26,8 @@ jobs:
             nvm install 20
             nvm use 20
             node --version
-            cd "${{ secrets.VPS_PROJECT_PATH }}"
-            test -d .git
+            cd "$HOME/frontends/AndysGourmetBakery/AndysBakery"
             git fetch
             git pull origin main
-            cd AndysBakery
-            test -f package.json
             npm install
             npm run build
