@@ -1,307 +1,200 @@
 "use client";
+
 import BottomSheetNav from "../components/BottomSheetNav";
 import pageCSS from "./page.module.css";
 import servicesCSS from "./services.module.css";
-import { BiMinusCircle, BiPlusCircle, BiChevronLeft, BiChevronRight } from "react-icons/bi";
+import { BiMinusCircle, BiPlusCircle } from "react-icons/bi";
 import Image from "next/image";
-
-import { useState } from "react";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 import { useCart } from "../context/cartContext";
 import { useLanguage } from "../context/LanguageContext";
 
-import Link from 'next/link';
-
-const flavorKeyMap: Record<string, string> = {
-  "Chocolate": "services.chocolate",
-  "Vanilla": "services.vanilla",
-  "Strawberry": "services.strawberry",
-  "Red Velvet": "services.redVelvet",
+type MenuSize = {
+  id: number;
+  sizeName: string;
+  displaySize: string;
+  price: number;
+  serves: string;
+  sortOrder: number;
 };
 
-const fillingKeyMap: Record<string, string> = {
-  "None": "services.none",
-  "Chocolate Ganache": "services.chocolateGanache",
-  "Vanilla Cream": "services.vanillaCream",
-  "Fruit Filling": "services.fruitFilling",
+type MenuItem = {
+  id: number;
+  name: string;
+  description: string;
+  imageUrl: string;
+  note: string | null;
+  isCallOnly: boolean;
+  sortOrder: number;
+  sizes: MenuSize[];
 };
 
-const frostingKeyMap: Record<string, string> = {
-  "Buttercream": "services.buttercream",
-  "Chocolate Buttercream": "services.chocolateButtercream",
-  "Vanilla Buttercream": "services.vanillaButtercream",
-  "Cream Cheese": "services.creamCheese",
+type MenuCategory = {
+  id: number;
+  name: string;
+  sortOrder: number;
+  items: MenuItem[];
 };
 
-const addonKeyMap: Record<string, string> = {
-  "None": "services.none",
-  "Writing": "services.writing",
-  "Flowers": "services.flowers",
-  "Extra Decoration": "services.extraDecoration",
+type CustomerAvailabilityRow = {
+  menu_item_size_id: number;
+  menu_item_id: number;
+  item_name: string;
+  size_id: number;
+  size_name: string;
+  price_cents: number;
+  batch_availability_id: string | null;
+  quantity_available: number;
+  made_this_batch: boolean;
 };
 
 export default function Services() {
   const { t } = useLanguage();
+  const {
+    cart,
+    addToCart,
+    increaseQuantity,
+    decreaseQuantity,
+  } = useCart();
 
-  const services = [
-    {
-      category: t("services.menuCakes"),
-      items: [
-        {
-          id: "dulce-de-leche-peach-cake",
-          name: "Dulce de Leche & Peach Cake",
-          price: 35,
-          duration: 0,
-          image: "/images/Dulce_de_Leche_&_Peach.jpg",
-          description:
-            "Cake with dulce de leche and peach flavor inspiration. Placeholder details until final menu info is confirmed.",
-          sizes: [
-            { size: t("services.small"), price: 35, serves: "6–8" },
-            { size: t("services.medium"), price: 45, serves: "10–14" },
-            { size: t("services.large"), price: 60, serves: "18–24" },
-          ],
-        },
-        {
-          id: "italian-meringue-cake",
-          name: "Italian Meringue Cake",
-          price: 35,
-          duration: 0,
-          image: "/images/Italian_Meringue.jpg",
-          description:
-            "Cake finished with Italian meringue-style frosting. Placeholder details until final menu info is confirmed.",
-          sizes: [
-            { size: t("services.small"), price: 35, serves: "6–8" },
-            { size: t("services.medium"), price: 45, serves: "10–14" },
-            { size: t("services.large"), price: 60, serves: "18–24" },
-          ],
-        },
-        {
-          id: "thousand-layer-cake",
-          name: "Thousand Layer Cake",
-          price: 35,
-          duration: 0,
-          image: "/images/Thousand_Layer_ With_Dulce_de_Leche.jpg",
-          description:
-            "Layered cake with dulce de leche inspiration. Placeholder details until final menu info is confirmed.",
-          sizes: [
-            { size: t("services.small"), price: 35, serves: "6–8" },
-            { size: t("services.medium"), price: 45, serves: "10–14" },
-            { size: t("services.large"), price: 60, serves: "18–24" },
-          ],
-        },
-        {
-          id: "black-forest-cake",
-          name: "Black Forest Cake",
-          price: 35,
-          duration: 0,
-          image: "/images/selva_negra.jpg",
-          description:
-            "Black Forest-style cake with chocolate and cherry flavor inspiration. Placeholder details until final menu info is confirmed.",
-          sizes: [
-            { size: t("services.small"), price: 35, serves: "6–8" },
-            { size: t("services.medium"), price: 45, serves: "10–14" },
-            { size: t("services.large"), price: 60, serves: "18–24" },
-          ],
-        },
-      ],
-    },
-    {
-      category: t("services.pastriesSweets"),
-      items: [
-        {
-          id: "alfajores",
-          name: "Alfajores",
-          price: 3,
-          duration: 0,
-          image: "/images/gallery11.jpg",
-          description:
-            "Sweet sandwich-style pastry. Placeholder price and description until final menu info is confirmed.",
-          sizes: [
-            { size: t("services.single"), price: 3, serves: "1" },
-            { size: t("services.halfDozen"), price: 16, serves: "6" },
-            { size: t("services.dozen"), price: 30, serves: "12" },
-          ],
-        },
-        {
-          id: "empolvados",
-          name: "Empolvados",
-          price: 3,
-          duration: 0,
-          image: "/images/gallery11.jpg",
-          description:
-            "Soft sweet pastry. Placeholder price and description until final menu info is confirmed.",
-          sizes: [
-            { size: t("services.single"), price: 3, serves: "1" },
-            { size: t("services.halfDozen"), price: 16, serves: "6" },
-            { size: t("services.dozen"), price: 30, serves: "12" },
-          ],
-        },
-        {
-          id: "berlines",
-          name: "Berlines",
-          price: 3.5,
-          duration: 0,
-          image: "/images/gallery11.jpg",
-          description:
-            "Sweet filled pastry. Placeholder price and description until final menu info is confirmed.",
-          sizes: [
-            { size: t("services.single"), price: 3.5, serves: "1" },
-            { size: t("services.halfDozen"), price: 19, serves: "6" },
-            { size: t("services.dozen"), price: 36, serves: "12" },
-          ],
-        },
-        {
-          id: "fruit-tart",
-          name: "Fruit Tart",
-          price: 4,
-          duration: 0,
-          image: "/images/gallery10.jpg",
-          description:
-            "Fruit tart dessert with fresh fruit presentation. Placeholder price until final menu info is confirmed.",
-          sizes: [
-            { size: t("services.single"), price: 4, serves: "1" },
-            { size: t("services.halfDozen"), price: 22, serves: "6" },
-            { size: t("services.dozen"), price: 42, serves: "12" },
-          ],
-        },
-        {
-          id: "chilenitos",
-          name: "Chilenitos",
-          price: 3,
-          duration: 0,
-          image: "/images/gallery11.jpg",
-          description:
-            "Traditional sweet pastry. Placeholder price and description until final menu info is confirmed.",
-          sizes: [
-            { size: t("services.single"), price: 3, serves: "1" },
-            { size: t("services.halfDozen"), price: 16, serves: "6" },
-            { size: t("services.dozen"), price: 30, serves: "12" },
-          ],
-        },
-        {
-          id: "cuchufli",
-          name: "Cuchuflí",
-          price: 2.5,
-          duration: 0,
-          image: "/images/gallery11.jpg",
-          description:
-            "Sweet rolled treat. Placeholder price and description until final menu info is confirmed.",
-          sizes: [
-            { size: t("services.single"), price: 2.5, serves: "1" },
-            { size: t("services.halfDozen"), price: 14, serves: "6" },
-            { size: t("services.dozen"), price: 26, serves: "12" },
-          ],
-        },
-        {
-          id: "brazo-de-reina",
-          name: "Brazo de Reina / Brazo Gitano",
-          price: 4,
-          duration: 0,
-          image: "/images/menu1.jpg",
-          description:
-            "Rolled cake dessert. Placeholder price and description until final menu info is confirmed.",
-          sizes: [
-            { size: t("services.slice"), price: 4, serves: "1" },
-            { size: t("services.halfRoll"), price: 20, serves: "4–6" },
-            { size: t("services.wholeRoll"), price: 38, serves: "8–12" },
-          ],
-        },
-      ],
-    },
-    {
-      category: t("services.customOrders"),
-      items: [
-        {
-          id: "custom-cake",
-          name: "Custom Cake Order",
-          price: 50,
-          duration: 0,
-          image: "/images/gallery13.jpg",
-          description:
-            "Custom pricing depends on size, flavor, filling, frosting, and design complexity.",
-          sizes: [
-            {
-              size: t("services.basic"),
-              displaySize: '10" Cake',
-              price: 50,
-              serves: "18–24",
-            },
-            {
-              size: t("services.detailed"),
-              displaySize: '12" Cake',
-              price: 100,
-              serves: "25–35",
-            },
-            {
-              size: t("services.premium"),
-              displaySize: '14" Cake',
-              price: 200,
-              serves: "35–50",
-            },
-          ],
-        },
-      ],
-    },
-  ];
+  const [menu, setMenu] = useState<MenuCategory[]>([]);
+  const [menuLoading, setMenuLoading] = useState(true);
+  const [menuError, setMenuError] = useState("");
 
-  const customOptionPages = [
-    {
-      title: t("services.flavor"),
-      label: t("services.chooseFlavor"),
-      options: ["Chocolate", "Vanilla", "Strawberry", "Red Velvet"].map((o) => t(flavorKeyMap[o])),
-    },
-    {
-      title: t("services.filling"),
-      label: t("services.chooseFilling"),
-      options: ["None", "Chocolate Ganache", "Vanilla Cream", "Fruit Filling"].map((o) => t(fillingKeyMap[o])),
-    },
-    {
-      title: t("services.frosting"),
-      label: t("services.chooseFrosting"),
-      options: ["Buttercream", "Chocolate Buttercream", "Vanilla Buttercream", "Cream Cheese"].map((o) => t(frostingKeyMap[o])),
-    },
-    {
-      title: t("services.addons"),
-      label: t("services.chooseAddons"),
-      options: ["None", "Writing", "Flowers", "Extra Decoration"].map((o) => t(addonKeyMap[o])),
-    },
-  ];
-
-  const [openCategory, setOpenCategory] = useState<string | null>(null);
-  const [openItem, setOpenItem] = useState<string | null>(null);
+  const [openCategory, setOpenCategory] = useState<number | null>(null);
+  const [openItem, setOpenItem] = useState<number | null>(null);
   const [recentlyAddedItem, setRecentlyAddedItem] = useState<string | null>(null);
-  const [quantityInputs, setQuantityInputs] = useState<{ [key: string]: string }>({});
+  const [quantityInputs, setQuantityInputs] = useState<Record<number, string>>({});
   const [activeQtyEditor, setActiveQtyEditor] = useState<{
     id: string;
     mode: "add" | "subtract";
   } | null>(null);
-
   const [basketQtyInput, setBasketQtyInput] = useState("");
-  const { cart } = useCart();
-  const { addToCart } = useCart();
-  const { updateQuantity, increaseQuantity, decreaseQuantity } = useCart();
-  const { removeFromCart } = useCart();
-  const { clearCart } = useCart();
-  const { checkCart } = useCart();
-  const [selectedSizes, setSelectedSizes] = useState<{
-    [key: string]: {
-      size: string;
-      price: number;
-      serves?: string;
-      displaySize?: string;
-    };
-  }>({});
+  const [selectedSizes, setSelectedSizes] = useState<Record<number, MenuSize>>({});
 
-  const [customOptionPage, setCustomOptionPage] = useState<{ [key: string]: number }>({});
+  const [availabilityRows, setAvailabilityRows] = useState<CustomerAvailabilityRow[]>([]);
+  const [availabilityLoading, setAvailabilityLoading] = useState(false);
+  const [availabilityError, setAvailabilityError] = useState("");
+
   const exists = cart.length > 0;
 
   const totalPrice = cart.reduce(
     (total, service) => total + service.price * service.quantity,
     0
   );
-  const totalDuration = cart.reduce(
-    (total, service) => total + service.duration,
-    0
-  );
+
+  useEffect(() => {
+    async function loadMenu() {
+      try {
+        setMenuLoading(true);
+        setMenuError("");
+
+        const response = await fetch("/api/menu", {
+          cache: "no-store",
+        });
+
+        if (!response.ok) {
+          throw new Error("Failed to load menu.");
+        }
+
+        const data = await response.json();
+        setMenu(Array.isArray(data.categories) ? data.categories : []);
+      } catch (error) {
+        console.error(error);
+        setMenuError("The menu could not be loaded.");
+      } finally {
+        setMenuLoading(false);
+      }
+    }
+
+    loadMenu();
+  }, []);
+
+  useEffect(() => {
+    async function loadAvailability() {
+      try {
+        setAvailabilityLoading(true);
+        setAvailabilityError("");
+
+        const response = await fetch("/api/admin/batch-availability", {
+          cache: "no-store",
+        });
+
+        if (!response.ok) {
+          throw new Error("Failed to load availability.");
+        }
+
+        const data = await response.json();
+        setAvailabilityRows(data.items ?? []);
+      } catch (error) {
+        console.error(error);
+        setAvailabilityError("Availability could not be loaded.");
+      } finally {
+        setAvailabilityLoading(false);
+      }
+    }
+
+    loadAvailability();
+  }, []);
+
+  function getAvailabilityForSize(sizeId: number | undefined) {
+    if (sizeId === undefined) {
+      return undefined;
+    }
+
+    return availabilityRows.find(
+      (row) => Number(row.menu_item_size_id) === Number(sizeId)
+    );
+  }
+
+  function getCustomerAvailabilityStatus(
+    row: CustomerAvailabilityRow | undefined
+  ) {
+    if (!row) {
+      return "Availability not set";
+    }
+
+    if (!row.made_this_batch) {
+      return "Unavailable this batch";
+    }
+
+    if (row.quantity_available <= 0) {
+      return "Sold out";
+    }
+
+    if (row.quantity_available <= 3) {
+      return `Only ${row.quantity_available} left`;
+    }
+
+    return "Available";
+  }
+
+  function canAddAvailabilityToCart(
+    row: CustomerAvailabilityRow | undefined
+  ) {
+    if (!row) {
+      return false;
+    }
+
+    return row.made_this_batch && row.quantity_available > 0;
+  }
+
+  function clampQuantityToAvailability(
+    requestedQuantity: number,
+    row: CustomerAvailabilityRow | undefined
+  ) {
+    const safeQuantity = Math.max(
+      0,
+      Math.floor(Number(requestedQuantity) || 0)
+    );
+
+    if (!row) {
+      return 0;
+    }
+
+    return Math.min(safeQuantity, row.quantity_available);
+  }
 
   return (
     <div>
@@ -328,7 +221,6 @@ export default function Services() {
               <span>🧁 6947 Stirling Road Davie, FL 33314</span>
             </div>
           </div>
-
 
           <div className={pageCSS.headerWave}>
             <svg viewBox="0 0 1200 70" preserveAspectRatio="none">
@@ -378,46 +270,76 @@ export default function Services() {
 
         <div className={pageCSS.appointmentPage}>
           <div className={servicesCSS.servicesPage}>
-            {services.map((category) => (
-              <div key={category.category}>
+            {menuLoading && <p>Loading menu...</p>}
+
+            {menuError && (
+              <p style={{ color: "crimson" }}>{menuError}</p>
+            )}
+
+            {!menuLoading && !menuError && menu.length === 0 && (
+              <p>No menu items are currently available.</p>
+            )}
+
+            {menu.map((category) => (
+              <div key={category.id}>
                 <button
                   onClick={() =>
-                    setOpenCategory(openCategory === category.category ? null : category.category)
+                    setOpenCategory(
+                      openCategory === category.id ? null : category.id
+                    )
                   }
                   className={servicesCSS.categoryButton}
                 >
-                  <span>{category.category}</span>
+                  <span>{category.name}</span>
 
                   <span className={servicesCSS.dropdownIcon}>
-                    {openCategory === category.category ? "▴" : "▾"}
+                    {openCategory === category.id ? "▴" : "▾"}
                   </span>
                 </button>
-                {openCategory === category.category && (
+
+                {openCategory === category.id && (
                   <>
                     {category.items.map((item) => {
-                      const exists = cart.some((cartItem) => cartItem.id === item.id);
-                      const currentSize = selectedSizes[item.id] || item.sizes[0];
-                      const currentCustomPage = customOptionPage[item.id] ?? 0;
-                      const safeCustomPage = Math.min(
-                        Math.max(currentCustomPage, 0),
-                        customOptionPages.length - 1
-                      );
-                      const customPage = customOptionPages[safeCustomPage];
+                      const currentSize = selectedSizes[item.id] ?? item.sizes[0];
+                      const currentAvailability = getAvailabilityForSize(currentSize?.id);
+                      const customerAvailabilityStatus = item.isCallOnly
+                        ? item.note || "Call to order"
+                        : getCustomerAvailabilityStatus(currentAvailability);
+
+                      const canAddSelectedItem =
+                        !item.isCallOnly &&
+                        Boolean(currentSize) &&
+                        canAddAvailabilityToCart(currentAvailability);
+
+                      const maxAvailableQuantity =
+                        currentAvailability?.quantity_available;
+
+                      const startingPrice = item.sizes[0]?.price;
+                      const cartId = currentSize
+                        ? `${item.id}:${currentSize.id}`
+                        : String(item.id);
 
                       return (
-                        <div key={item.id} className={servicesCSS.servicesContainer}>
+                        <div
+                          key={item.id}
+                          className={servicesCSS.servicesContainer}
+                        >
                           <div>
                             <div className={servicesCSS.textContent}>
                               <button
                                 onClick={() =>
-                                  setOpenItem(openItem === item.id ? null : item.id)
+                                  setOpenItem(
+                                    openItem === item.id ? null : item.id
+                                  )
                                 }
                                 className={servicesCSS.itemDropdownBtn}
                               >
                                 <span>{item.name}</span>
 
                                 <span className={servicesCSS.itemArrow}>
-                                  {openItem === item.id ? t("services.hideDetails") : t("services.clickForDetails")}
+                                  {openItem === item.id
+                                    ? t("services.hideDetails")
+                                    : t("services.clickForDetails")}
                                 </span>
                               </button>
 
@@ -425,7 +347,7 @@ export default function Services() {
                                 <div className={servicesCSS.productCardGrid}>
                                   <div className={servicesCSS.productImageWrap}>
                                     <Image
-                                      src={item.image}
+                                      src={item.imageUrl || "/images/andy-logo-transparent.png"}
                                       alt={item.name}
                                       width={420}
                                       height={320}
@@ -436,120 +358,100 @@ export default function Services() {
                                   <div className={servicesCSS.productDetails}>
                                     <p>{item.description}</p>
 
-                                    <p style={{ fontWeight: "bold" }}>
-                                      {t("services.startingAt")} ${item.price}
-                                    </p>
+                                    {item.note && <p>{item.note}</p>}
 
-                                    <div style={{ marginTop: "1rem" }}>
-                                      {item.id === "custom-cake" && selectedSizes[item.id] ? (
+                                    {startingPrice !== undefined && (
+                                      <p style={{ fontWeight: "bold" }}>
+                                        {t("services.startingAt")} ${startingPrice}
+                                      </p>
+                                    )}
+
+                                    {item.sizes.length > 0 && (
+                                      <div style={{ marginTop: "1rem" }}>
                                         <p style={{ fontWeight: "bold" }}>
-                                          {t("services.size")}: {selectedSizes[item.id].displaySize} • {t("services.serves")}{" "}
-                                          {selectedSizes[item.id].serves || "varies"}
+                                          {t("services.size")}:
                                         </p>
-                                      ) : (
-                                        <p style={{ fontWeight: "bold" }}>{t("services.size")}:</p>
-                                      )}
 
-                                      <div className={servicesCSS.sizeButtonGroup}>
-                                        {item.sizes.map((size) => (
-                                          <button
-                                            className={
-                                              currentSize?.size === size.size
-                                                ? `${servicesCSS.sizeButton} ${servicesCSS.sizeButtonActive}`
-                                                : servicesCSS.sizeButton
-                                            }
-                                            key={size.size}
-                                            onClick={() =>
-                                              setSelectedSizes({
-                                                ...selectedSizes,
-                                                [item.id]: size,
-                                              })
-                                            }
-                                          >
-                                            {size.size}
-                                          </button>
-                                        ))}
-                                      </div>
+                                        <div className={servicesCSS.sizeButtonGroup}>
+                                          {item.sizes.map((size) => (
+                                            <button
+                                              className={
+                                                currentSize?.id === size.id
+                                                  ? `${servicesCSS.sizeButton} ${servicesCSS.sizeButtonActive}`
+                                                  : servicesCSS.sizeButton
+                                              }
+                                              key={size.id}
+                                              onClick={() => {
+                                                setSelectedSizes({
+                                                  ...selectedSizes,
+                                                  [item.id]: size,
+                                                });
 
-                                      {currentSize && (
-                                        <p className={servicesCSS.sizeSummary}>
-                                          {item.id === "custom-cake" ? (
-                                            <>{t("services.startingPrice")}: ${currentSize.price}</>
-                                          ) : (
-                                            <>
-                                              {t("services.serves")} {currentSize.serves || "varies"} • ${currentSize.price}
-                                            </>
-                                          )}
-                                        </p>
-                                      )}
-                                      {item.id === "custom-cake" && (
-                                        <div className={servicesCSS.customPager}>
-                                          <div className={servicesCSS.customPagerHeader}>
-                                            {safeCustomPage > 0 ? (
-                                              <button
-                                                type="button"
-                                                className={servicesCSS.customArrowButton}
-                                                onClick={() =>
-                                                  setCustomOptionPage({
-                                                    ...customOptionPage,
-                                                    [item.id]: safeCustomPage - 1,
-                                                  })
-                                                }
-                                              >
-                                                <BiChevronLeft className={servicesCSS.customArrowIcon} />
-                                              </button>
-                                            ) : (
-                                              <span className={servicesCSS.customArrowSpacer}></span>
-                                            )}
-
-                                            <p className={servicesCSS.customPagerTitle}>{customPage.title}</p>
-
-                                            {safeCustomPage < customOptionPages.length - 1 ? (
-                                              <button
-                                                type="button"
-                                                className={servicesCSS.customArrowButton}
-                                                onClick={() =>
-                                                  setCustomOptionPage({
-                                                    ...customOptionPage,
-                                                    [item.id]: safeCustomPage + 1,
-                                                  })
-                                                }
-                                              >
-                                                <BiChevronRight className={servicesCSS.customArrowIcon} />
-                                              </button>
-                                            ) : (
-                                              <span className={servicesCSS.customArrowSpacer}></span>
-                                            )}
-                                          </div>
-
-                                          <div className={servicesCSS.customOptionCard}>
-                                            <label className={servicesCSS.optionLabel}>{customPage.label}</label>
-
-                                            <select className={servicesCSS.optionSelect}>
-                                              {customPage.options.map((option) => (
-                                                <option key={option}>{option}</option>
-                                              ))}
-                                            </select>
-                                          </div>
+                                                setQuantityInputs({
+                                                  ...quantityInputs,
+                                                  [item.id]: "1",
+                                                });
+                                              }}
+                                            >
+                                              {size.displaySize || size.sizeName}
+                                            </button>
+                                          ))}
                                         </div>
-                                      )}
-                                    </div>
+
+                                        {currentSize && (
+                                          <p className={servicesCSS.sizeSummary}>
+                                            {t("services.serves")} {currentSize.serves || "varies"} • ${currentSize.price}
+                                          </p>
+                                        )}
+                                      </div>
+                                    )}
+
+                                    {item.isCallOnly ? (
+                                      <p className={servicesCSS.sizeSummary}>
+                                        <strong>Status:</strong>{" "}
+                                        {item.note || "Call to order"}
+                                      </p>
+                                    ) : availabilityLoading ? (
+                                      <p className={servicesCSS.sizeSummary}>
+                                        Checking availability...
+                                      </p>
+                                    ) : (
+                                      <p className={servicesCSS.sizeSummary}>
+                                        <strong>Status:</strong>{" "}
+                                        {customerAvailabilityStatus}
+                                      </p>
+                                    )}
+
+                                    {availabilityError && !item.isCallOnly && (
+                                      <p
+                                        className={servicesCSS.sizeSummary}
+                                        style={{ color: "crimson" }}
+                                      >
+                                        {availabilityError}
+                                      </p>
+                                    )}
                                   </div>
                                 </div>
                               )}
                             </div>
-                            {openItem === item.id && (
+
+                            {openItem === item.id && !item.isCallOnly && (
                               <div className={servicesCSS.orderActionRow}>
                                 <div className={servicesCSS.quantityControl}>
                                   <button
                                     type="button"
                                     className={servicesCSS.qtyButton}
+                                    disabled={!canAddSelectedItem}
                                     onClick={() => {
-                                      const currentQty = Number(quantityInputs[item.id] || 1);
+                                      const currentQty = Number(
+                                        quantityInputs[item.id] || 1
+                                      );
 
                                       setQuantityInputs({
                                         ...quantityInputs,
-                                        [item.id]: String(Math.max(currentQty - 1, 0)),
+                                        [item.id]: String(
+                                          Math.max(currentQty - 1, 0)
+                                        ),
                                       });
                                     }}
                                   >
@@ -559,25 +461,42 @@ export default function Services() {
                                   <input
                                     type="number"
                                     min="0"
+                                    max={maxAvailableQuantity}
+                                    disabled={!canAddSelectedItem}
                                     value={quantityInputs[item.id] ?? "1"}
-                                    onChange={(e) =>
+                                    onChange={(e) => {
+                                      const nextQuantity =
+                                        clampQuantityToAvailability(
+                                          Number(e.target.value),
+                                          currentAvailability
+                                        );
+
                                       setQuantityInputs({
                                         ...quantityInputs,
-                                        [item.id]: e.target.value,
-                                      })
-                                    }
+                                        [item.id]: String(nextQuantity),
+                                      });
+                                    }}
                                     className={servicesCSS.qtyInput}
                                   />
 
                                   <button
                                     type="button"
                                     className={servicesCSS.qtyButton}
+                                    disabled={!canAddSelectedItem}
                                     onClick={() => {
-                                      const currentQty = Number(quantityInputs[item.id] || 1);
+                                      const currentQty = Number(
+                                        quantityInputs[item.id] || 1
+                                      );
+
+                                      const nextQuantity =
+                                        clampQuantityToAvailability(
+                                          currentQty + 1,
+                                          currentAvailability
+                                        );
 
                                       setQuantityInputs({
                                         ...quantityInputs,
-                                        [item.id]: String(currentQty + 1),
+                                        [item.id]: String(nextQuantity),
                                       });
                                     }}
                                   >
@@ -587,31 +506,67 @@ export default function Services() {
 
                                 <div
                                   onClick={() => {
-                                    const quantity = Number(quantityInputs[item.id] || 1);
+                                    if (
+                                      !canAddSelectedItem ||
+                                      !currentSize
+                                    ) {
+                                      return;
+                                    }
+
+                                    const requestedQuantity = Number(
+                                      quantityInputs[item.id] || 1
+                                    );
+
+                                    const quantity =
+                                      clampQuantityToAvailability(
+                                        requestedQuantity,
+                                        currentAvailability
+                                      );
+
+                                    if (quantity <= 0) {
+                                      return;
+                                    }
 
                                     addToCart({
-                                      id: item.id,
-                                      name: currentSize
-                                        ? `${item.name} - ${currentSize.size}`
-                                        : item.name,
-                                      price: currentSize?.price ?? item.price ?? 0,
-                                      duration: item.duration || 0,
-                                      quantity: quantity > 0 ? quantity : 1,
+                                      id: cartId,
+                                      name: `${item.name} - ${
+                                        currentSize.displaySize ||
+                                        currentSize.sizeName
+                                      }`,
+                                      price: currentSize.price,
+                                      duration: 0,
+                                      quantity,
+                                      maxQuantity: maxAvailableQuantity,
                                     });
-                                    setRecentlyAddedItem(item.id);
+
+                                    setRecentlyAddedItem(cartId);
+
                                     window.setTimeout(() => {
                                       setRecentlyAddedItem((currentItem) =>
-                                        currentItem === item.id ? null : currentItem
+                                        currentItem === cartId
+                                          ? null
+                                          : currentItem
                                       );
                                     }, 1200);
                                   }}
+                                  aria-disabled={!canAddSelectedItem}
+                                  style={{
+                                    opacity: canAddSelectedItem ? 1 : 0.55,
+                                    cursor: canAddSelectedItem
+                                      ? "pointer"
+                                      : "not-allowed",
+                                  }}
                                   className={`${servicesCSS.orderAddButton} ${
-                                    recentlyAddedItem === item.id
+                                    recentlyAddedItem === cartId
                                       ? servicesCSS.orderAddButtonAdded
                                       : ""
                                   }`}
                                 >
-                                  {recentlyAddedItem === item.id ? `${t("services.added")} ✓` : t("services.addToBasket")}
+                                  {!canAddSelectedItem
+                                    ? customerAvailabilityStatus
+                                    : recentlyAddedItem === cartId
+                                      ? `${t("services.added")} ✓`
+                                      : t("services.addToBasket")}
                                 </div>
                               </div>
                             )}
@@ -628,7 +583,9 @@ export default function Services() {
           <div className={pageCSS.cartContainer}>
             {exists && (
               <h2 className={pageCSS.cartTitle}>
-                🍰 {t("services.yourBasket")} ({cart.reduce((total, item) => total + item.quantity, 0)})
+                🍰 {t("services.yourBasket")} ({
+                  cart.reduce((total, item) => total + item.quantity, 0)
+                })
               </h2>
             )}
 
@@ -653,7 +610,11 @@ export default function Services() {
                       <td style={{ paddingLeft: "1rem" }}>
                         ${service.price * service.quantity}
                       </td>
-                      <td style={{ paddingLeft: "1rem" }}>x{service.quantity}</td>
+
+                      <td style={{ paddingLeft: "1rem" }}>
+                        x{service.quantity}
+                      </td>
+
                       <td>
                         <div className={pageCSS.basketActionGroup}>
                           <input
@@ -665,10 +626,15 @@ export default function Services() {
                                 ? basketQtyInput
                                 : ""
                             }
-                            onChange={(e) => setBasketQtyInput(e.target.value)}
+                            onChange={(e) =>
+                              setBasketQtyInput(e.target.value)
+                            }
                             onKeyDown={(e) => {
                               if (e.key === "Enter") {
-                                decreaseQuantity(service.id, Number(basketQtyInput || 0));
+                                decreaseQuantity(
+                                  service.id,
+                                  Number(basketQtyInput || 0)
+                                );
                                 setActiveQtyEditor(null);
                                 setBasketQtyInput("");
                               }
@@ -690,7 +656,10 @@ export default function Services() {
                               ) {
                                 setActiveQtyEditor(null);
                               } else {
-                                setActiveQtyEditor({ id: service.id, mode: "subtract" });
+                                setActiveQtyEditor({
+                                  id: service.id,
+                                  mode: "subtract",
+                                });
                               }
 
                               setBasketQtyInput("");
@@ -706,7 +675,10 @@ export default function Services() {
                               ) {
                                 setActiveQtyEditor(null);
                               } else {
-                                setActiveQtyEditor({ id: service.id, mode: "add" });
+                                setActiveQtyEditor({
+                                  id: service.id,
+                                  mode: "add",
+                                });
                               }
 
                               setBasketQtyInput("");
@@ -716,16 +688,22 @@ export default function Services() {
                           <input
                             type="number"
                             min="1"
+                            max={service.maxQuantity}
                             value={
                               activeQtyEditor?.id === service.id &&
                               activeQtyEditor.mode === "add"
                                 ? basketQtyInput
                                 : ""
                             }
-                            onChange={(e) => setBasketQtyInput(e.target.value)}
+                            onChange={(e) =>
+                              setBasketQtyInput(e.target.value)
+                            }
                             onKeyDown={(e) => {
                               if (e.key === "Enter") {
-                                increaseQuantity(service.id, Number(basketQtyInput || 0));
+                                increaseQuantity(
+                                  service.id,
+                                  Number(basketQtyInput || 0)
+                                );
                                 setActiveQtyEditor(null);
                                 setBasketQtyInput("");
                               }
@@ -744,9 +722,12 @@ export default function Services() {
                 </tbody>
               </table>
             )}
+
             {exists ? (
               <div className={pageCSS.cartSummary}>
-                <h3>{t("services.total")}: ${totalPrice}</h3>
+                <h3>
+                  {t("services.total")}: ${totalPrice}
+                </h3>
               </div>
             ) : (
               <div></div>
@@ -759,7 +740,14 @@ export default function Services() {
                 </Link>
               </div>
             ) : (
-              <h5 style={{ display: "flex", marginTop: "1rem", justifyContent: "center", padding: "1rem" }}>
+              <h5
+                style={{
+                  display: "flex",
+                  marginTop: "1rem",
+                  justifyContent: "center",
+                  padding: "1rem",
+                }}
+              >
                 {t("services.cartEmpty")} {"😔"}
               </h5>
             )}
@@ -774,6 +762,7 @@ export default function Services() {
           </div>
         </div>
       </main>
+
       <BottomSheetNav />
     </div>
   );
