@@ -199,11 +199,18 @@ export default function Book() {
 
       const paymentResult = await paymentResponse.json();
 
-      if (!paymentResponse.ok || !paymentResult.success) {
+      if (!paymentResponse.ok) {
         throw new Error(paymentResult.message || "Failed to create payment checkout.");
       }
 
-      window.location.href = paymentResult.checkoutUrl;
+      const checkoutUrl =
+        paymentResult.checkoutUrl ?? paymentResult.checkout_url ?? paymentResult.url;
+
+      if (typeof checkoutUrl !== "string") {
+        throw new Error("Payment service did not return a checkout URL.");
+      }
+
+      window.location.assign(checkoutUrl);
     } catch (error) {
       console.error(error);
       setErrorMessage(t("book.errorMessage"));
