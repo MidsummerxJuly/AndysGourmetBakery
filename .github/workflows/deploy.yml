@@ -31,3 +31,9 @@ jobs:
             git pull origin main
             npm install
             npm run build
+            if pm2 describe andyBakery > /dev/null 2>&1; then
+              pm2 restart andyBakery
+            else
+              pm2 start npm --name andyBakery -- run start
+              pm2 save
+            fi
