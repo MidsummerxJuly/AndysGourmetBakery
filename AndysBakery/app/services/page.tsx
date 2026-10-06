@@ -58,15 +58,16 @@ export default function Services() {
   const [recentlyAddedItem, setRecentlyAddedItem] = useState<number | null>(null);
 
   useEffect(() => {
-    const controller = new AbortController();
+    let isActive = true;
 
     async function loadMenu() {
       try {
-        setMenuLoading(true);
-        setMenuError("");
+        if (isActive) {
+          setMenuLoading(true);
+          setMenuError("");
+        }
 
         const response = await fetch("/api/menu", {
-          signal: controller.signal,
           cache: "no-store",
         });
 
@@ -75,23 +76,25 @@ export default function Services() {
         }
 
         const data: unknown = await response.json();
-        setMenu(Array.isArray(data) ? (data as MenuCategory[]) : []);
-      } catch (error) {
-        if (error instanceof DOMException && error.name === "AbortError") {
-          return;
+        if (isActive) {
+          setMenu(Array.isArray(data) ? (data as MenuCategory[]) : []);
         }
-
+      } catch (error) {
         console.error("Unable to load the bakery menu.", error);
-        setMenuError("The menu could not be loaded. Please try again later.");
+        if (isActive) {
+          setMenuError("The menu could not be loaded. Please try again later.");
+        }
       } finally {
-        if (!controller.signal.aborted) {
+        if (isActive) {
           setMenuLoading(false);
         }
       }
     }
 
     loadMenu();
-    return () => controller.abort();
+    return () => {
+      isActive = false;
+    };
   }, []);
 
   function updateQuantity(itemId: number, quantity: number) {

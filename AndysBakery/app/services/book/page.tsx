@@ -29,23 +29,20 @@ function formatMoneyFromCents(cents: number) {
   return `$${(cents / 100).toFixed(2)}`;
 }
 
-function getCleanItemName(name: string) {
-  return name.split(" - ")[0];
+function getMenuItemSizeId(cartItemId: string) {
+  const sizeId = Number(cartItemId.split(":")[1]);
+
+  return Number.isSafeInteger(sizeId) && sizeId > 0 ? sizeId : null;
 }
 
-function getSizeFromCartName(name: string) {
-  return name.includes(" - ") ? name.split(" - ")[1] : "";
-}
+function getCreatedOrderId(result: unknown) {
+  if (!result || typeof result !== "object") return null;
 
-function getCategoryFromName(name: string) {
-  const lowerName = name.toLowerCase();
+  const payload = result as Record<string, unknown>;
+  const order = payload.order as Record<string, unknown> | undefined;
+  const id = payload.orderId ?? payload.id ?? order?.id;
 
-  if (lowerName.includes("custom")) return "Custom Orders";
-  if (lowerName.includes("cake")) return "Cakes";
-  if (lowerName.includes("croissant") || lowerName.includes("pastry")) return "Pastries";
-  if (lowerName.includes("bread") || lowerName.includes("sourdough")) return "Bread";
-
-  return "Bakery Item";
+  return typeof id === "string" ? id : null;
 }
 
 export default function Book() {
@@ -61,6 +58,7 @@ export default function Book() {
   const [orderMonth, setOrderMonth] = useState("");
   const [orderDay, setOrderDay] = useState("");
   const [orderYear, setOrderYear] = useState("");
+  const [pickupTime, setPickupTime] = useState("");
   const [customerNotes, setCustomerNotes] = useState("");
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -133,7 +131,8 @@ export default function Book() {
     customerPhone.trim() !== "" &&
     isEmailValid &&
     fulfillmentType.trim() !== "" &&
-    orderDate.trim() !== "";
+    orderDate.trim() !== "" &&
+    (fulfillmentType !== "pickup" || pickupTime !== "");
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -146,28 +145,38 @@ export default function Book() {
     setIsSubmitting(true);
     setErrorMessage("");
 
+    const items = cart.map((item) => ({
+      menuItemSizeId: getMenuItemSizeId(item.id),
+      quantity: item.quantity,
+      customCakeOptions: {},
+    }));
+
+    if (items.some((item) => item.menuItemSizeId === null)) {
+      setErrorMessage("One or more basket items are invalid. Please add them again.");
+      return;
+    }
+
+    const isPickup = fulfillmentType === "pickup";
     const orderPayload = {
-      customer_name: customerName,
-      customer_phone: customerPhone,
-      customer_email: customerEmail,
-
-      subtotal_cents: subtotalCents,
-      total_cents: totalCents,
-
-      fulfillment_type: fulfillmentType,
-      pickup: fulfillmentType === "pickup" ? "Bakery pickup" : "Delivery requested",
-      order_date: orderDate,
-      customer_notes: customerNotes,
-
-      items: cart.map((item) => ({
-        item_name: getCleanItemName(item.name),
-        category: getCategoryFromName(item.name),
-        size: getSizeFromCartName(item.name),
+      customer: {
+        name: customerName.trim(),
+        email: customerEmail.trim(),
+        phone: customerPhone.trim(),
+      },
+      items: items.map((item) => ({
+        menuItemSizeId: item.menuItemSizeId as number,
         quantity: item.quantity,
-        unit_price_cents: toCents(item.price),
-        line_total_cents: toCents(item.price) * item.quantity,
-        custom_cake_options_json: "",
+        customCakeOptions: item.customCakeOptions,
       })),
+      fulfillmentType,
+      pickup: isPickup,
+      pickupDate: isPickup ? orderDate : null,
+      pickupTime: isPickup ? pickupTime : null,
+      requestedDatetime:
+        isPickup && pickupTime ? `${orderDate}T${pickupTime}:00` : null,
+      scheduleNotes: null,
+      customerNotes: customerNotes.trim() || null,
+      orderDate,
     };
 
     try {
@@ -179,13 +188,19 @@ export default function Book() {
         body: JSON.stringify(orderPayload),
       });
 
-      const result = await response.json();
+      const result: unknown = await response.json();
 
-      if (!response.ok || !result.success) {
-        throw new Error(result.message || "Failed to create order.");
+      if (!response.ok) {
+        throw new Error("Failed to create order.");
       }
 
-      setOrderId(result.orderId);
+      const createdOrderId = getCreatedOrderId(result);
+
+      if (!createdOrderId) {
+        throw new Error("Order service did not return an order ID.");
+      }
+
+      setOrderId(createdOrderId);
 
       const paymentResponse = await fetch("/api/payment", {
         method: "POST",
@@ -193,7 +208,7 @@ export default function Book() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          orderId: result.orderId,
+          orderId: createdOrderId,
         }),
       });
 
@@ -376,6 +391,18 @@ export default function Book() {
                     </select>
                   </div>
                 </div>
+
+                {fulfillmentType === "pickup" && (
+                  <label className={styles.formField}>
+                    Pickup time
+                    <input
+                      type="time"
+                      value={pickupTime}
+                      onChange={(event) => setPickupTime(event.target.value)}
+                      required
+                    />
+                  </label>
+                )}
 
                 <label className={styles.formField}>
                   {t("book.notesLabel")}
