@@ -218,8 +218,9 @@
     }
 
     .bakeryHeader {
-      grid-template-columns: 1fr;
-      padding: 1rem 1rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+      border-bottom: none;
     }
 
     .logoArea {
@@ -554,10 +555,7 @@
   height: 24px;
 }
 
-.waveFill {
-  fill: #fff0e7;
-  stroke: none;
-}
+
 
 .waveLine {
   fill: none;
@@ -940,4 +938,16 @@
     padding-left: 1rem;
     padding-right: 1rem;
   }
+}
+
+.headerDivider {
+  width: 100%;
+  height: 2px;
+  margin: 0;
+  padding: 0;
+
+  background: #df91a5;
+
+  border: none;
+  pointer-events: none;
 }

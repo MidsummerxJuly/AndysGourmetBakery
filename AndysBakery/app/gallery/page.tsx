@@ -29,226 +29,230 @@ const galleryPhotos: GalleryPhoto[] = [
     category: "Custom Cakes",
     image: "/images/gallery1.jpg",
     description:
-      "A custom decorated cake design that can be adjusted by color, size, flavor, and theme.",
+      "An elegant custom cake finished with floral-inspired decoration for a soft, polished presentation.",
     details:
-      "Placeholder info: final flavor, filling, frosting, and decorations can be confirmed with Andy’s Bakery.",
-    goodFor: "Birthdays, family events, celebrations",
+      "Colors, flowers, cake size, flavor, filling, and finishing details can be personalized for your event. Please call Andy to confirm available options, pricing, and lead time.",
+    goodFor: "Birthdays, showers, anniversaries, family celebrations",
   },
   {
     title: "Character Birthday Cake",
     category: "Custom Cakes",
     image: "/images/gallery2.jpg",
     description:
-      "A themed birthday cake example with custom decorations and character-inspired details.",
+      "A fun character-inspired birthday cake designed around a personalized party theme.",
     details:
-      "Placeholder info: design details can vary based on theme, serving size, and availability.",
-    goodFor: "Kids birthdays, themed parties",
+      "Character designs, colors, serving size, flavor, filling, and decorative details may be customized. Please call Andy to discuss the theme and confirm pricing and availability.",
+    goodFor: "Kids birthdays, themed parties, family celebrations",
   },
   {
     title: "Celebration Cake",
     category: "Custom Cakes",
     image: "/images/gallery3.jpg",
     description:
-      "A decorated celebration cake that can be customized for different events and styles.",
+      "A festive custom cake created to make birthdays, milestones, and special gatherings feel more personal.",
     details:
-      "Placeholder info: customer can request colors, message, flavor, filling, and frosting.",
-    goodFor: "Birthdays, graduations, family gatherings",
+      "The color palette, message, decorations, flavor, filling, and size can be discussed when ordering. Please call Andy to confirm the available choices for your event.",
+    goodFor: "Birthdays, graduations, anniversaries, family gatherings",
   },
   {
     title: "Dulce de Leche Cake",
     category: "Menu Cakes",
     image: "/images/gallery4.jpg",
     description:
-      "A menu-style cake option featuring dulce de leche flavor inspiration.",
+      "A rich cake inspired by the classic sweetness of dulce de leche and traditional bakery flavors.",
     details:
-      "Placeholder info: final cake layers, filling, and frosting details should be confirmed before launch.",
-    goodFor: "Dessert tables, birthdays, family celebrations",
+      "Available sizes, layers, fillings, finishing style, and current pricing may vary. Please call Andy to confirm the exact cake details before ordering.",
+    goodFor: "Birthdays, dessert tables, family celebrations",
   },
   {
     title: "Sonic Birthday Cake",
     category: "Custom Cakes",
     image: "/images/gallery5.jpg",
     description:
-      "A themed custom cake example made for a birthday celebration.",
+      "A colorful Sonic-inspired birthday cake made for a playful themed celebration.",
     details:
-      "Placeholder info: themed cakes may vary depending on customer request and decoration complexity.",
-    goodFor: "Kids birthdays, themed parties",
+      "Theme elements can be adapted to the celebration, including colors, writing, size, flavor, and filling. Please call Andy to confirm design possibilities, pricing, and required notice.",
+    goodFor: "Kids birthdays, gaming parties, themed celebrations",
   },
   {
     title: "Lavender Birthday Cake",
     category: "Custom Cakes",
     image: "/images/gallery6.jpg",
     description:
-      "A soft decorative birthday cake with a clean custom design.",
+      "A soft lavender-toned birthday cake with an elegant and understated decorative style.",
     details:
-      "Placeholder info: colors, decorations, and writing can be customized.",
-    goodFor: "Birthdays, small celebrations",
+      "Colors, message, decorations, flavor, filling, and serving size can be discussed for your order. Please call Andy to confirm available options and pricing.",
+    goodFor: "Birthdays, showers, intimate celebrations",
   },
   {
     title: "Heart Cake",
     category: "Custom Cakes",
     image: "/images/gallery7.jpg",
     description:
-      "A heart-shaped custom cake design for special occasions.",
+      "A romantic heart-shaped custom cake designed for celebrations centered around someone special.",
     details:
-      "Placeholder info: available flavors, fillings, and design options should be finalized with the bakery.",
-    goodFor: "Birthdays, anniversaries, romantic celebrations",
+      "The cake can be personalized with colors, writing, decorations, flavor, filling, and size. Please call Andy to confirm current design options and pricing.",
+    goodFor: "Birthdays, anniversaries, Valentine's celebrations, engagements",
   },
   {
     title: "Bakery Case",
     category: "Bakery Case",
     image: "/images/gallery8.jpg",
     description:
-      "A look at bakery items and dessert options available from Andy’s Bakery.",
+      "A look at the variety of cakes, pastries, and sweets prepared by Andy’s Gourmet Bakery.",
     details:
-      "Placeholder info: availability may change depending on the day and order schedule.",
-    goodFor: "Walk-in style inspiration, dessert trays",
+      "Bakery selections can change depending on the baking schedule and existing orders. Please call Andy to confirm what is currently available for pickup or advance ordering.",
+    goodFor: "Dessert inspiration, gatherings, bakery treats",
   },
   {
     title: "Dulce de Leche Celebration Cake",
     category: "Menu Cakes",
     image: "/images/gallery9.jpg",
     description:
-      "A cake option inspired by dulce de leche and classic bakery flavors.",
+      "A celebration cake inspired by the smooth caramel flavor of dulce de leche.",
     details:
-      "Placeholder info: final price, size, and flavor details should be confirmed.",
-    goodFor: "Family parties, birthdays, dessert tables",
+      "Exact layers, filling, frosting, size choices, and pricing should be confirmed before ordering. Please call Andy for the current menu options.",
+    goodFor: "Birthdays, family parties, dessert tables",
   },
   {
     title: "Fruit Tart",
     category: "Pastries",
     image: "/images/gallery10.jpg",
     description:
-      "A fruit tart dessert option with fresh fruit presentation.",
+      "A colorful fruit tart with a bright, fresh presentation that works beautifully on a dessert table.",
     details:
-      "Placeholder price: around $4.00 each. Final price should be confirmed.",
-    goodFor: "Dessert trays, parties, individual treats",
+      "Fruit selection, tart size, quantity, and pricing may vary depending on availability. Please call Andy to confirm the current fruit tart options and order quantity.",
+    goodFor: "Dessert trays, parties, showers, individual treats",
   },
   {
     title: "Dessert Tarts",
     category: "Pastries",
     image: "/images/gallery11.jpg",
     description:
-      "Small tart-style pastries that work well for dessert tables and gatherings.",
+      "Small tart-style pastries that add variety and an elegant touch to dessert tables and gatherings.",
     details:
-      "Placeholder info: flavors, topping options, and pricing should be confirmed.",
-    goodFor: "Dessert tables, parties, small events",
+      "Available flavors, toppings, quantities, and pricing may change. Please call Andy to confirm which tart varieties are currently available.",
+    goodFor: "Dessert tables, parties, showers, small events",
   },
   {
     title: "Custom Communion Cake",
     category: "Custom Cakes",
     image: "/images/galley12.jpg",
     description:
-      "A custom event cake example for a special religious or family celebration.",
+      "A custom cake created for a meaningful Communion or faith-centered family celebration.",
     details:
-      "Placeholder info: decorations, colors, and serving size can be adjusted.",
-    goodFor: "Communions, baptisms, family events",
+      "Decorations, colors, message, serving size, flavor, and filling can be discussed for the occasion. Please call Andy to confirm design options, pricing, and lead time.",
+    goodFor: "First Communions, baptisms, confirmations, family events",
   },
   {
     title: "Rose Tier Cake",
     category: "Custom Cakes",
     image: "/images/gallery13.jpg",
     description:
-      "A tiered custom cake design with floral decoration inspiration.",
+      "An elegant tiered cake featuring floral-inspired rose details for a refined celebration centerpiece.",
     details:
-      "Placeholder info: tiered cakes may require custom pricing based on size and detail.",
-    goodFor: "Weddings, birthdays, large celebrations",
+      "Tiered cakes are consultation-only and may vary significantly by serving size and design complexity. Please call Andy to discuss tiers, flowers, flavors, fillings, pricing, and lead time.",
+    goodFor: "Weddings, anniversaries, milestone birthdays, large celebrations",
   },
   {
     title: "Elegant Custom Cake",
     category: "Custom Cakes",
     image: "/images/galerry14.jpg",
     description:
-      "An elegant custom cake example with decorative details.",
+      "A refined custom cake designed with elegant decorative details for a polished event presentation.",
     details:
-      "Placeholder info: final design, filling, frosting, and price should be confirmed.",
-    goodFor: "Formal events, birthdays, celebrations",
+      "The final look can be tailored through color, decoration, size, flavor, and filling choices. Please call Andy to confirm the design, pricing, and availability for your date.",
+    goodFor: "Formal events, birthdays, showers, celebrations",
   },
   {
     title: "Blue Rose Tier Cake",
     category: "Custom Cakes",
     image: "/images/gallery15.jpg",
     description:
-      "A custom tier cake with blue floral decoration.",
+      "A tiered celebration cake accented with blue rose-inspired floral decoration.",
     details:
-      "Placeholder info: colors and floral details can be adjusted based on customer request.",
-    goodFor: "Birthdays, formal events, large celebrations",
+      "Tiered cakes require direct consultation. Colors, flowers, tier sizes, flavors, fillings, serving count, and pricing can be discussed with Andy before the order is confirmed.",
+    goodFor: "Birthdays, weddings, formal events, large celebrations",
   },
   {
     title: "Elegant Gold Cake",
     category: "Custom Cakes",
     image: "/images/gallery16.jpg",
     description:
-      "A decorated custom cake with elegant gold-inspired details.",
+      "A sophisticated custom cake featuring gold-inspired decorative accents for an elevated celebration style.",
     details:
-      "Placeholder info: final decorations and pricing depend on cake size and complexity.",
-    goodFor: "Adult birthdays, formal celebrations",
+      "Gold details, colors, size, flavor, filling, writing, and additional decoration can vary by order. Please call Andy to confirm design options and custom pricing.",
+    goodFor: "Adult birthdays, anniversaries, formal celebrations",
   },
   {
     title: "Ocean Theme Cake",
     category: "Custom Cakes",
     image: "/images/gallery17.jpg",
     description:
-      "A custom themed cake example with ocean-style decoration.",
+      "A playful ocean-inspired custom cake designed around an under-the-sea style celebration theme.",
     details:
-      "Placeholder info: custom themes can be adjusted by color, flavor, and cake size.",
-    goodFor: "Kids birthdays, themed events",
+      "Theme colors, ocean decorations, writing, cake size, flavor, and filling may be personalized. Please call Andy to discuss your ideas and confirm pricing and lead time.",
+    goodFor: "Kids birthdays, beach themes, ocean-themed parties",
   },
   {
     title: "Bakery Display",
     category: "Bakery Case",
     image: "/images/gallery19.jpg",
-    description: "A display of bakery items and dessert options.",
+    description:
+      "A display showcasing the range of cakes and sweets prepared by Andy’s Gourmet Bakery.",
     details:
-      "Placeholder info: availability may change depending on orders and baking schedule.",
-    goodFor: "Dessert inspiration, bakery variety",
+      "Daily and weekly selections depend on the bakery’s order and preparation schedule. Please call Andy to confirm what is available or to arrange an advance order.",
+    goodFor: "Dessert inspiration, gatherings, bakery variety",
   },
   {
     title: "Pink Sheet Cake",
     category: "Custom Cakes",
     image: "/images/gallery20.jpg",
-    description: "A custom sheet cake design with pink decoration.",
+    description:
+      "A pink custom sheet cake designed to provide generous servings while still feeling festive and personalized.",
     details:
-      "Placeholder info: sheet cakes can be customized with writing, color, and flavor options.",
-    goodFor: "Birthdays, family parties, larger servings",
+      "Sheet cakes may be customized with colors, writing, decorations, flavor, filling, and serving size. Please call Andy to confirm the available sizes and custom pricing.",
+    goodFor: "Birthdays, family parties, school events, larger gatherings",
   },
   {
     title: "Dulce de Leche & Peach Cake",
     category: "Menu Cakes",
     image: "/images/Dulce_de_Leche_&_Peach.jpg",
     description:
-      "A menu cake option with dulce de leche and peach flavor inspiration.",
+      "A cake pairing the rich sweetness of dulce de leche with a lighter peach-inspired flavor profile.",
     details:
-      "Placeholder info: final layers, filling, frosting, size, and price should be confirmed.",
-    goodFor: "Birthdays, dessert tables, family gatherings",
+      "Available cake sizes, filling, finishing style, serving counts, and current pricing should be confirmed before ordering. Please call Andy for the latest menu details.",
+    goodFor: "Birthdays, family gatherings, dessert tables",
   },
   {
     title: "Italian Meringue Cake",
     category: "Menu Cakes",
     image: "/images/Italian_Meringue.jpg",
-    description: "A cake option featuring Italian meringue-style frosting.",
+    description:
+      "A classic-style celebration cake finished with smooth Italian meringue-inspired decoration.",
     details:
-      "Placeholder info: final cake flavor, filling, and size options should be confirmed.",
-    goodFor: "Birthdays, celebrations, classic cake orders",
+      "Flavor, filling, available sizes, serving counts, and current pricing may vary. Please call Andy to confirm the exact options available for this cake.",
+    goodFor: "Birthdays, family celebrations, classic cake orders",
   },
   {
     title: "Thousand Layer Cake",
     category: "Menu Cakes",
     image: "/images/Thousand_Layer_ With_Dulce_de_Leche.jpg",
-    description: "A layered cake option with dulce de leche inspiration.",
+    description:
+      "A layered cake inspired by traditional thin pastry layers paired with rich dulce de leche.",
     details:
-      "Placeholder info: final name, serving sizes, and pricing should be confirmed.",
-    goodFor: "Family parties, dessert tables, special occasions",
+      "The exact number of layers, filling, size, serving count, and price should be confirmed when ordering. Please call Andy for current availability and menu details.",
+    goodFor: "Family celebrations, dessert tables, special occasions",
   },
   {
     title: "Black Forest Cake",
     category: "Menu Cakes",
     image: "/images/selva_negra.jpg",
     description:
-      "A Black Forest-style cake option with chocolate and cherry flavor inspiration.",
+      "A classic Black Forest-inspired cake combining rich chocolate character with cherry-style flavor notes.",
     details:
-      "Placeholder info: final ingredients, filling, frosting, and price should be confirmed.",
-    goodFor: "Birthdays, chocolate lovers, celebrations",
+      "Exact ingredients, filling, frosting, available sizes, and current pricing should be confirmed directly with the bakery. Please call Andy before ordering if you have ingredient or allergy questions.",
+    goodFor: "Birthdays, chocolate lovers, family celebrations",
   },
 ];
 
