@@ -65,6 +65,10 @@ export default function BottomSheetNav({ buttonTop, buttonLeft }: BottomSheetNav
             <Link className="sheetItem" href="/gallery" onClick={closeMenu}>
               Gallery
             </Link>
+            
+            <Link className="sheetItem" href="/about-me" onClick={closeMenu}> 
+            About Me
+            </Link>
 
             <Link className="sheetItem" href="/contact" onClick={closeMenu}>
               Contact
