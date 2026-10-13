@@ -1992,7 +1992,7 @@ main {
 }
 
 .fabWrapper {
-  position: fixed;
+  position: absolute;
   top: 4.5rem;
   left: 1.5rem;
   bottom: auto;
