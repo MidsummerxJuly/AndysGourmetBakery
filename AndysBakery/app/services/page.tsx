@@ -706,13 +706,25 @@ export default function Services() {
                   className={pageCSS.basketItem}
                 >
                   <div className={pageCSS.basketItemInfo}>
-                    <p className={pageCSS.serviceName}>
-                      {service.name}
-                    </p>
+                    <div className={pageCSS.basketDetailRow}>
+                      <span className={pageCSS.basketLabel}>
+                        Item:
+                      </span>
 
-                    <span>
-                      ${service.price * service.quantity}
-                    </span>
+                      <p className={pageCSS.serviceName}>
+                        {service.name}
+                      </p>
+                    </div>
+
+                    <div className={pageCSS.basketDetailRow}>
+                      <span className={pageCSS.basketLabel}>
+                        Price:
+                      </span>
+
+                      <span className={pageCSS.basketPrice}>
+                        ${(service.price * service.quantity).toFixed(2)}
+                      </span>
+                    </div>
                   </div>
 
                   <div className={pageCSS.basketQuantityControls}>
@@ -826,3 +838,5 @@ export default function Services() {
     </div>
   );
 }
+
+
