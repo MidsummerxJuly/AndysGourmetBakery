@@ -160,14 +160,15 @@ export default function Services() {
         if (!response.ok) {
           throw new Error("Failed to load menu.");
         }
-
         const data = await response.json();
 
-        setMenu(
-          Array.isArray(data.categories)
+        const categories = Array.isArray(data)
+          ? data
+          : Array.isArray(data.categories)
             ? data.categories
-            : []
-        );
+            : [];
+
+        setMenu(categories);
       } catch (error) {
         console.error(error);
         setMenuError("The menu could not be loaded.");
