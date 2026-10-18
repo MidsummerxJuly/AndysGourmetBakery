@@ -951,3 +951,213 @@
   border: none;
   pointer-events: none;
 }
+
+/* =========================
+   BASKET
+   ========================= */
+
+.cartContainer {
+  width: calc(100% - 2rem);
+  max-width: 760px;
+  margin: 2rem auto;
+  padding: 2rem 2.5rem;
+  background: #fffdfd;
+  border-radius: 22px;
+  box-shadow: 0 8px 24px rgba(107, 63, 42, 0.08);
+}
+
+.cartTitle {
+  margin: 0 0 1.75rem;
+  text-align: center;
+  color: #6b3f2a;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.basketItems {
+  width: 100%;
+  margin: 0;
+}
+
+.basketItem {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+
+  padding: 1.25rem 0;
+  border-bottom: 1px solid rgba(217, 140, 157, 0.25);
+}
+
+.basketItem:last-child {
+  border-bottom: none;
+}
+
+.basketItemInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.serviceName {
+  margin: 0;
+  color: #5f7191;
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+.basketItemInfo span {
+  color: #5f7191;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* Quantity controls */
+
+.basketQuantityControls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  flex-shrink: 0;
+}
+
+.basketQuantityButton {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 1px solid rgba(217, 140, 157, 0.7);
+  border-radius: 50%;
+
+  background: #fff5f7;
+  color: #6b3f2a;
+
+  font-family: inherit;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.15s ease,
+    border-color 0.2s ease;
+}
+
+.basketQuantityButton:hover {
+  background: #f5dce2;
+  border-color: #d98c9d;
+  transform: translateY(-1px);
+}
+
+.basketQuantityButton:active {
+  transform: scale(0.95);
+}
+
+.basketQuantityButton:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.basketQuantity {
+  min-width: 30px;
+  text-align: center;
+
+  color: #6b3f2a;
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+/* Total */
+
+.cartSummary {
+  margin-top: 1.75rem;
+  text-align: center;
+}
+
+.cartSummary h3 {
+  margin: 0;
+
+  color: #6b3f2a;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+/* Confirm Basket */
+
+.checkoutButton {
+  width: 100%;
+  margin-top: 1.75rem;
+}
+
+.bookBtn {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 1rem 1.5rem;
+
+  background: #f5dce2;
+  border: 1px solid #e6a6b5;
+  border-radius: 14px;
+
+  color: #6b3f2a;
+  text-decoration: none;
+
+  font-size: 1.15rem;
+  font-weight: 800;
+
+  transition:
+    background 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+}
+
+.bookBtn:hover {
+  background: #efcdd5;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(107, 63, 42, 0.1);
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+  .cartContainer {
+    width: calc(100% - 1rem);
+    padding: 1.5rem;
+  }
+
+  .cartTitle {
+    font-size: 1.65rem;
+  }
+
+  .basketItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .basketQuantityControls {
+    align-self: flex-end;
+  }
+
+  .cartSummary h3 {
+    font-size: 1.7rem;
+  }
+
+  .bookBtn {
+    font-size: 1rem;
+  }
+}

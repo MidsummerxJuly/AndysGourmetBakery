@@ -36,18 +36,6 @@ type MenuCategory = {
   items: MenuItem[];
 };
 
-type CustomerAvailabilityRow = {
-  menu_item_size_id: number;
-  menu_item_id: number;
-  item_name: string;
-  size_id: number;
-  size_name: string;
-  price_cents: number;
-  batch_availability_id: string | null;
-  quantity_available: number;
-  made_this_batch: boolean;
-};
-
 const CAKE_PLACEHOLDER = "/images/cake_placeholder.png";
 const CUPCAKE_PLACEHOLDER = "/images/cupcake_placeholder.png";
 
@@ -130,15 +118,6 @@ export default function Services() {
   const [selectedSizes, setSelectedSizes] =
     useState<Record<number, MenuSize>>({});
 
-  const [availabilityRows, setAvailabilityRows] =
-    useState<CustomerAvailabilityRow[]>([]);
-
-  const [availabilityLoading, setAvailabilityLoading] =
-    useState(false);
-
-  const [availabilityError, setAvailabilityError] =
-    useState("");
-
   const exists = cart.length > 0;
 
   const totalPrice = cart.reduce(
@@ -153,9 +132,12 @@ export default function Services() {
         setMenuLoading(true);
         setMenuError("");
 
-        const response = await fetch("/api/menu", {
-          cache: "no-store",
-        });
+        const response = await fetch(
+          "https://api.plirismos.com/api/andy-bakery/menu",
+          {
+            cache: "no-store",
+          }
+        );
 
         if (!response.ok) {
           throw new Error("Failed to load menu.");
@@ -180,109 +162,10 @@ export default function Services() {
     loadMenu();
   }, []);
 
-  useEffect(() => {
-    async function loadAvailability() {
-      try {
-        setAvailabilityLoading(true);
-        setAvailabilityError("");
-
-        const response = await fetch(
-          "/api/admin/batch-availability",
-          {
-            cache: "no-store",
-          }
-        );
-
-        if (!response.ok) {
-          throw new Error(
-            "Failed to load availability."
-          );
-        }
-
-        const data = await response.json();
-
-        setAvailabilityRows(data.items ?? []);
-      } catch (error) {
-        console.error(error);
-
-        setAvailabilityError(
-          "Availability could not be loaded."
-        );
-      } finally {
-        setAvailabilityLoading(false);
-      }
-    }
-
-    loadAvailability();
-  }, []);
-
-  function getAvailabilityForSize(
-    sizeId: number | undefined
-  ) {
-    if (sizeId === undefined) {
-      return undefined;
-    }
-
-    return availabilityRows.find(
-      (row) =>
-        Number(row.menu_item_size_id) ===
-        Number(sizeId)
-    );
-  }
-
-  function getCustomerAvailabilityStatus(
-    row: CustomerAvailabilityRow | undefined
-  ) {
-    if (!row) {
-      return "Availability not set";
-    }
-
-    if (!row.made_this_batch) {
-      return "Unavailable this batch";
-    }
-
-    if (row.quantity_available <= 0) {
-      return "Sold out";
-    }
-
-    if (row.quantity_available <= 3) {
-      return `Only ${row.quantity_available} left`;
-    }
-
-    return "Available";
-  }
-
-  function canAddAvailabilityToCart(
-    row: CustomerAvailabilityRow | undefined
-  ) {
-    if (!row) {
-      return false;
-    }
-
-    return (
-      row.made_this_batch &&
-      row.quantity_available > 0
-    );
-  }
-
-  function clampQuantityToAvailability(
-    requestedQuantity: number,
-    row: CustomerAvailabilityRow | undefined
-  ) {
-    const safeQuantity = Math.max(
+  function normalizeQuantity(requestedQuantity: number) {
+    return Math.max(
       0,
-      Math.floor(
-        Number(requestedQuantity) || 0
-      )
-    );
-
-    if (!row) {
-      return 0;
-    }
-
-    return Math.min(
-      safeQuantity,
-      row.quantity_available
+      Math.floor(Number(requestedQuantity) || 0)
     );
   }
 
@@ -376,28 +259,9 @@ export default function Services() {
                       selectedSizes[item.id] ??
                       item.sizes[0];
 
-                    const currentAvailability =
-                      getAvailabilityForSize(
-                        currentSize?.id
-                      );
-
-                    const customerAvailabilityStatus =
-                      item.isCallOnly
-                        ? item.note ||
-                          "Call to order"
-                        : getCustomerAvailabilityStatus(
-                            currentAvailability
-                          );
-
                     const canAddSelectedItem =
                       !item.isCallOnly &&
-                      Boolean(currentSize) &&
-                      canAddAvailabilityToCart(
-                        currentAvailability
-                      );
-
-                    const maxAvailableQuantity =
-                      currentAvailability?.quantity_available;
+                      Boolean(currentSize);
 
                     const startingPrice =
                       item.sizes[0]?.price;
@@ -586,57 +450,17 @@ export default function Services() {
                                     </div>
                                   )}
 
-                                  {item.isCallOnly ? (
-                                    <p
-                                      className={
-                                        servicesCSS.sizeSummary
-                                      }
-                                    >
-                                      <strong>
-                                        Status:
-                                      </strong>{" "}
-                                      {item.note ||
-                                        "Call to order"}
-                                    </p>
-                                  ) : availabilityLoading ? (
-                                    <p
-                                      className={
-                                        servicesCSS.sizeSummary
-                                      }
-                                    >
-                                      Checking availability...
-                                    </p>
-                                  ) : (
-                                    <p
-                                      className={
-                                        servicesCSS.sizeSummary
-                                      }
-                                    >
-                                      <strong>
-                                        Status:
-                                      </strong>{" "}
-                                      {
-                                        customerAvailabilityStatus
-                                      }
-                                    </p>
-                                  )}
-
-                                  {availabilityError &&
-                                    !item.isCallOnly && (
-                                      <p
-                                        className={
-                                          servicesCSS.sizeSummary
-                                        }
-                                        style={{
-                                          color:
-                                            "crimson",
-                                        }}
-                                      >
-                                        {
-                                          availabilityError
-                                        }
-                                      </p>
-                                    )}
+                                  <p
+                                    className={
+                                      servicesCSS.sizeSummary
+                                    }
+                                  >
+                                    <strong>Status:</strong>{" "}
+                                    {item.isCallOnly
+                                      ? item.note ||
+                                        "Call to order"
+                                      : "Available"}
+                                  </p>
                                 </div>
                               </div>
                             )}
@@ -691,9 +515,6 @@ export default function Services() {
                                   <input
                                     type="number"
                                     min="0"
-                                    max={
-                                      maxAvailableQuantity
-                                    }
                                     disabled={
                                       !canAddSelectedItem
                                     }
@@ -704,12 +525,10 @@ export default function Services() {
                                     }
                                     onChange={(e) => {
                                       const nextQuantity =
-                                        clampQuantityToAvailability(
+                                        normalizeQuantity(
                                           Number(
-                                            e.target
-                                              .value
-                                          ),
-                                          currentAvailability
+                                            e.target.value
+                                          )
                                         );
 
                                       setQuantityInputs(
@@ -744,10 +563,8 @@ export default function Services() {
                                         );
 
                                       const nextQuantity =
-                                        clampQuantityToAvailability(
-                                          currentQty +
-                                            1,
-                                          currentAvailability
+                                        normalizeQuantity(
+                                          currentQty + 1
                                         );
 
                                       setQuantityInputs(
@@ -782,9 +599,8 @@ export default function Services() {
                                       );
 
                                     const quantity =
-                                      clampQuantityToAvailability(
-                                        requestedQuantity,
-                                        currentAvailability
+                                      normalizeQuantity(
+                                        requestedQuantity
                                       );
 
                                     if (quantity <= 0) {
@@ -803,8 +619,6 @@ export default function Services() {
                                         currentSize.price,
                                       duration: 0,
                                       quantity,
-                                      maxQuantity:
-                                        maxAvailableQuantity,
                                     });
 
                                     setRecentlyAddedItem(
@@ -849,7 +663,7 @@ export default function Services() {
                                   }`}
                                 >
                                   {!canAddSelectedItem
-                                    ? customerAvailabilityStatus
+                                    ? "Unavailable"
                                     : recentlyAddedItem ===
                                         cartId
                                       ? `${t(
