@@ -219,18 +219,18 @@ export default function AboutMePage() {
                 <div className={styles.familyGrid}>
                     <div className={styles.familyPhotoCard}>
                         <img
-                            src="/images/about/andy-family-1.jpg"
-                            alt={t("about.familyPhotoOneAlt", "Andy and her husband")}
+                        src="/images/about/andy-family-1.jpg"
+                        alt={t(
+                            "about.familyPhotoOneAlt",
+                            "Andy and her husband"
+                        )}
                         />
                     </div>
 
                     <div className={styles.familyPhotoCard}>
                         <img
-                            src="/images/about/andy-family-2.jpg"
-                            alt={t(
-                                "about.familyPhotoTwoAlt",
-                                "Andy and her husband smiling together"
-                            )}
+                        src="/images/gallery18.jpg"
+                        alt="Andy’s Bakery family"
                         />
                     </div>
                 </div>
