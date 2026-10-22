@@ -8,10 +8,11 @@ import {useLanguage} from "@/app/context/LanguageContext";
 export default function AboutMePage() {
     const {t} = useLanguage();
 
-    return (
-        <main className={styles.aboutPage}>
-            <BottomSheetNav/>
+        return (
+        <>
+            <BottomSheetNav buttonTop="1.5rem" buttonLeft="1.5rem" />
 
+            <main className={styles.aboutPage}>
             <section className={styles.heroSection}>
                 <p className={styles.eyebrow}>
                     {t("about.eyebrow", "About Andy's Bakery")}
@@ -235,6 +236,7 @@ export default function AboutMePage() {
                     </div>
                 </div>
             </section>
-        </main>
-    );
+          </main>
+  </>
+);
 }
