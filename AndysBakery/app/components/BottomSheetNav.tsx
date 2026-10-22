@@ -95,7 +95,7 @@ export default function BottomSheetNav({ buttonTop, buttonLeft }: BottomSheetNav
           aria-expanded={open}
           aria-controls="site-navigation"
         >
-          ☰ Menu
+          ☰
         </button>
       </div>
     </>
