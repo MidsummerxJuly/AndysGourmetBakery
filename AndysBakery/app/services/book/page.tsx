@@ -54,7 +54,6 @@ export default function Book() {
   const [customerName, setCustomerName] = useState("");
   const [customerPhone, setCustomerPhone] = useState("");
   const [customerEmail, setCustomerEmail] = useState("");
-  const [fulfillmentType, setFulfillmentType] = useState("pickup");
   const [orderMonth, setOrderMonth] = useState("");
   const [orderDay, setOrderDay] = useState("");
   const [orderYear, setOrderYear] = useState("");
@@ -130,9 +129,8 @@ export default function Book() {
     customerName.trim() !== "" &&
     customerPhone.trim() !== "" &&
     isEmailValid &&
-    fulfillmentType.trim() !== "" &&
     orderDate.trim() !== "" &&
-    (fulfillmentType !== "pickup" || pickupTime !== "");
+    pickupTime !== "";
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -156,7 +154,6 @@ export default function Book() {
       return;
     }
 
-    const isPickup = fulfillmentType === "pickup";
     const orderPayload = {
       customer: {
         name: customerName.trim(),
@@ -168,12 +165,11 @@ export default function Book() {
         quantity: item.quantity,
         customCakeOptions: item.customCakeOptions,
       })),
-      fulfillmentType,
-      pickup: isPickup,
-      pickupDate: isPickup ? orderDate : null,
-      pickupTime: isPickup ? pickupTime : null,
-      requestedDatetime:
-        isPickup && pickupTime ? `${orderDate}T${pickupTime}:00` : null,
+      fulfillmentType: "pickup",
+      pickup: true,
+      pickupDate: orderDate,
+      pickupTime,
+      requestedDatetime: `${orderDate}T${pickupTime}:00`,
       scheduleNotes: null,
       customerNotes: customerNotes.trim() || null,
       orderDate,
@@ -334,19 +330,8 @@ export default function Book() {
                   />
                 </label>
 
-                <label className={styles.formField}>
-                  {t("book.fulfillmentLabel")}
-                  <select
-                    value={fulfillmentType}
-                    onChange={(event) => setFulfillmentType(event.target.value)}
-                  >
-                    <option value="pickup">{t("book.pickup")}</option>
-                    <option value="delivery">{t("book.deliveryRequested")}</option>
-                  </select>
-                </label>
-
                 <div className={styles.formField}>
-                  <span>{t("book.dateLabel")}</span>
+                  <span>{t("book.pickupDateLabel")}</span>
 
                   <div className={styles.dateSelectRow}>
                     <select
@@ -392,17 +377,15 @@ export default function Book() {
                   </div>
                 </div>
 
-                {fulfillmentType === "pickup" && (
-                  <label className={styles.formField}>
-                    Pickup time
-                    <input
-                      type="time"
-                      value={pickupTime}
-                      onChange={(event) => setPickupTime(event.target.value)}
-                      required
-                    />
-                  </label>
-                )}
+                <label className={styles.formField}>
+                  {t("book.pickupTimeLabel")}
+                  <input
+                    type="time"
+                    value={pickupTime}
+                    onChange={(event) => setPickupTime(event.target.value)}
+                    required
+                  />
+                </label>
 
                 <label className={styles.formField}>
                   {t("book.notesLabel")}
