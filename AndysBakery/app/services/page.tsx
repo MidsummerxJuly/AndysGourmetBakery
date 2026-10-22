@@ -153,7 +153,7 @@ export default function Services() {
         setMenuLoading(true);
         setMenuError("");
 
-        const response = await fetch("/api/menu", {
+        const response = await fetch("/api/andy-bakery/menu", {
           cache: "no-store",
         });
 
