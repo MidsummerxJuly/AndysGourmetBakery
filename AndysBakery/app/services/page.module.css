@@ -218,9 +218,8 @@
     }
 
     .bakeryHeader {
-      position: relative;
-      overflow: hidden;
-      border-bottom: none;
+      grid-template-columns: 1fr;
+      padding: 1rem 1rem 2.5rem;
     }
 
     .logoArea {

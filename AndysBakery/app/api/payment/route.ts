@@ -39,8 +39,13 @@ export async function POST(request: Request) {
     const data: unknown = await response.json().catch(() => null);
 
     if (!response.ok) {
+      console.error("Bakery checkout request failed:", response.status, data);
+
       return NextResponse.json(
-        { message: "Unable to start checkout." },
+        {
+          message: "Unable to start checkout.",
+          upstream: data,
+        },
         { status: response.status }
       );
     }
