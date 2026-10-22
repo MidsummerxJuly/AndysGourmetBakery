@@ -328,7 +328,7 @@ export default function GalleryPage() {
   return (
     <main className={styles.galleryPage}>
       <div className={styles.galleryMenuFix}>
-        <BottomSheetNav buttonTop="4.5rem" buttonLeft="1.5em" />
+        <BottomSheetNav buttonTop="1.5rem" buttonLeft="1.5rem" />
       </div>
 
       <section className={styles.hero}>
