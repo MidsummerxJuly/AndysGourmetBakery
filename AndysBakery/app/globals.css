@@ -422,6 +422,7 @@ textarea {
   font-size: 1rem;
   font-weight: 700;
   line-height: 1;
+
 }
 
 .languageToggleActive {
@@ -436,7 +437,7 @@ textarea {
 }
 
 .siteLanguageToggle {
-  position: fixed;
+  position: absolute;
   top: max(1rem, env(safe-area-inset-top));
   right: max(1rem, env(safe-area-inset-right));
   z-index: 110;
@@ -1993,7 +1994,7 @@ main {
 
 .fabWrapper {
   position: absolute;
-  top: 4.5rem;
+  top: 1.5rem;
   left: 1.5rem;
   bottom: auto;
   transform: none;
@@ -2532,4 +2533,31 @@ button,
 
 .fab.isClose {
   border: 2px solid #df8fa3;
+}
+
+
+.fab.isClose {
+  font-family: var(--font-lobster);
+  z-index: 60;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #f3d8de;
+  color: #6b3f2a;
+  border: 1px solid rgba(217, 140, 157, 0.75);
+
+  width: 52px;
+  height: 48px;
+  padding: 0;
+
+  border-radius: 13px;
+  cursor: pointer;
+
+  font-size: 1.5rem;
+  font-weight: 700;
+
+  opacity: 1;
+  pointer-events: auto;
 }
